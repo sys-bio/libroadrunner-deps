@@ -1,0 +1,32 @@
+sudo: required
+dist: trusty
+
+language: cpp
+
+notifications:
+  email:
+      - jkmtravisnotify@gmail.com
+
+compiler: gcc
+
+branches:
+  only:
+    - master
+
+
+before_install:
+  # print the distro information
+  - lsb_release -a
+
+  # install cmake
+  - sudo apt-get -y install cmake
+
+  - mkdir ~/install
+  - mkdir -p ~/build/libroadrunner-deps
+  - cd ~/build/libroadrunner-deps
+  - cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=~/install/libroadrunner-deps $TRAVIS_BUILD_DIR
+  - make -j2
+
+install:
+  - cd ~/build/libroadrunner-deps
+  - make install
