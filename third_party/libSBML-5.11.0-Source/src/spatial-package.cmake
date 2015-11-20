@@ -34,7 +34,7 @@
 
 if (ENABLE_SPATIAL )
 
-include(${CMAKE_SOURCE_DIR}/spatial-package.cmake)
+include(${CMAKE_SOURCE_DIR}/third_party/spatial-package.cmake)
 
 #build up sources
 set(SPATIAL_SOURCES)
