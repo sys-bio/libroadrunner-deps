@@ -30,3 +30,7 @@ before_install:
 install:
   - cd ~/build/libroadrunner-deps
   - make install
+
+before_script: true
+
+script: true
