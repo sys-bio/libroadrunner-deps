@@ -25,10 +25,10 @@ before_install:
   - mkdir -p ~/build/libroadrunner-deps
   - cd ~/build/libroadrunner-deps
   - cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=~/install/libroadrunner-deps $TRAVIS_BUILD_DIR
-  - make -j2
 
 install:
   - cd ~/build/libroadrunner-deps
+  - make -j2
   - make install
 
 before_script: true
