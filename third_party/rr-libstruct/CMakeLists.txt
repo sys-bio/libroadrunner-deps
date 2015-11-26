@@ -67,6 +67,7 @@ lsLibStructural.h
 lsLA.h
 lsLibla.h
 lsLUResult.h
+lsUtils.h
 )
 
 #Install required files
