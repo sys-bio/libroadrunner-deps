@@ -10,6 +10,11 @@ FILE (GLOB headers
 FILE (GLOB win32_headers 
     src/Win32/*.h 
     )
+
+FILE (GLOB posix_headers
+    src/Posix/*.h
+    )
+
 set(sources 
 src/AssertException
 src/Checks
@@ -69,6 +74,10 @@ install(FILES ${headers}
 
 install(FILES ${win32_headers} 
         DESTINATION include/unit_test/Win32
+)
+
+install(FILES ${posix_headers}
+        DESTINATION include/unit_test/Posix
 )
 
 install(TARGETS ${target}-static 
