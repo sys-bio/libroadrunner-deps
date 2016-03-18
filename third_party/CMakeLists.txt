@@ -6,15 +6,15 @@ set(THIRD_PARTY_FOLDER 			${CMAKE_CURRENT_SOURCE_DIR})
 
 #--- mark pre-set thirdparty flags as advanced
 mark_as_advanced(
-WITH_BZIP2        
-WITH_SWIG         
-WITH_ZLIB         
+WITH_BZIP2
+WITH_SWIG
+WITH_ZLIB
 WITH_CPP_NAMESPACE
-BUILD_CVODE   
-BUILD_CVODES   
-BUILD_IDA      
-BUILD_IDAS     
-BUILD_KINSOL   
+BUILD_CVODE
+BUILD_CVODES
+BUILD_IDA
+BUILD_IDAS
+BUILD_KINSOL
 BUILD_UNIT_TEST
 BUILD_SHARED_LIBS
 BUILD_STATIC_LIBS
@@ -51,13 +51,17 @@ WITH_STATIC_RUNTIME
 WITH_XERCES
 )
 #pre set libsbml options
-set(WITH_BZIP2          OFF CACHE BOOL "test")
+set(WITH_BZIP2          ON  CACHE BOOL "test")
 set(WITH_SWIG           OFF CACHE BOOL "test")
-set(WITH_ZLIB           OFF CACHE BOOL "test")
+set(WITH_ZLIB           ON  CACHE BOOL "test")
 set(WITH_CPP_NAMESPACE  ON  CACHE BOOL "test")
 set(ENABLE_COMP         ON  CACHE BOOL "test")
 set(ENABLE_DISTRIB      ON  CACHE BOOL "test")
 set(ENABLE_FBC          ON  CACHE BOOL "test")
+
+set(LIBSBML_DEPENDENCY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/libsbml CACHE PATH "Path to libsbml dependencies")
+
+set(LIBZ_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/libsbml/include/zlib CACHE PATH "ZLib include directory")
 
 
 set(LIBSBML_USE_LEGACY_MATH ON CACHE BOOL "test")
@@ -116,11 +120,11 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY 	${PROJECT_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY 	${PROJECT_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY 	${PROJECT_BINARY_DIR}/bin)
 
-link_directories( 
+link_directories(
     ${THIRD_PARTY_FOLDER}/dependencies/libsbml/lib
 )
 
-#=== COMPILER FLAGS 
+#=== COMPILER FLAGS
 
 # UNIX matches ALL Unicies, including Apple
 if(${UNIX})
@@ -149,7 +153,7 @@ endif()
 
 if(${MSVC})
 add_definitions(
--D_CRT_SECURE_NO_WARNINGS 
+-D_CRT_SECURE_NO_WARNINGS
 -D_CRT_NONSTDC_NO_DEPRECATE
 "-wd4244"
 "-wd4554" #use paranthesis to clarify precedence
@@ -189,30 +193,22 @@ endif(WIN32)
 if(${BORLAND})
 set(CG_RUNTIMES		cc32110MT.dll)
 foreach(runtime ${CG_RUNTIMES})
-install (FILES 
-            ${THIRD_PARTY_FOLDER}/dependencies/cg/xe/${runtime} 
-            DESTINATION bin 
+install (FILES
+            ${THIRD_PARTY_FOLDER}/dependencies/cg/xe/${runtime}
+            DESTINATION bin
             COMPONENT rr_core)
 endforeach()
-install (FILES 
-            ${THIRD_PARTY_FOLDER}/dependencies/libsbml/lib/libxml2_xe.lib 
-            DESTINATION lib 
+install (FILES
+            ${THIRD_PARTY_FOLDER}/dependencies/libsbml/lib/libxml2_xe.lib
+            DESTINATION lib
             COMPONENT rr_core)
 endif()
 
 if(WIN32)
-    set(RUNTIMES libxml2.DLL iconv.dll zlib1.dll)
-    foreach(runtime ${RUNTIMES})
-    install(    FILES 	${THIRD_PARTY_FOLDER}/dependencies/libsbml/bin/${runtime} 
-                DESTINATION bin 
-                COMPONENT rr_core)
-    endforeach()
-    
     file(GLOB libxml_deps "${THIRD_PARTY_FOLDER}/dependencies/libsbml/include/*.h")
     install(FILES ${libxml_deps} DESTINATION include)
 
     file(GLOB libxml_headers "${THIRD_PARTY_FOLDER}/dependencies/libsbml/include/libxml2/*.h")
     install(FILES ${libxml_headers} DESTINATION include/libxml2/libxml COMPONENT rr_core)
     install (FILES  ${THIRD_PARTY_FOLDER}/dependencies/libsbml/lib/libxml2.lib DESTINATION lib COMPONENT rr_core)
-
 endif()

@@ -83,10 +83,13 @@ CK_CPPSTART
 
 #include <sys/types.h>
 
+#if WIN32
 /* Used to create the linker script for hiding lib-local symbols. Shall
    be put directly in front of the exported symbol. */
-#define CK_EXPORT 
-//__declspec(dllexport) 
+#define CK_EXPORT __declspec(dllexport) 
+#else 
+#define CK_EXPORT
+#endif
 
 /* check version numbers */
   
@@ -120,13 +123,13 @@ typedef void (*SFun) (void);
 typedef struct Suite Suite;
  
 /* Creates a test suite with the given name */
-Suite * CK_EXPORT suite_create (const char *name);
+CK_EXPORT Suite * suite_create (const char *name);
 
 /* Add a test case to a suite */
-void CK_EXPORT suite_add_tcase (Suite *s, TCase *tc);
+CK_EXPORT void suite_add_tcase (Suite *s, TCase *tc);
 
 /* Create a test case */
-TCase * CK_EXPORT tcase_create (const char *name);
+CK_EXPORT TCase * tcase_create (const char *name);
 
 
 /* Add a test function to a test case (macro version) */
@@ -304,42 +307,42 @@ enum ck_result_ctx {
 };
 
 /* Type of result */
-int CK_EXPORT tr_rtype (TestResult *tr);
+CK_EXPORT int tr_rtype (TestResult *tr);
 /* Context in which the result occurred */ 
-enum ck_result_ctx CK_EXPORT tr_ctx (TestResult *tr); 
+CK_EXPORT enum ck_result_ctx tr_ctx (TestResult *tr); 
 /* Failure message */
-const char * CK_EXPORT tr_msg (TestResult *tr);
+CK_EXPORT const char * tr_msg (TestResult *tr);
 /* Line number at which failure occured */
-int CK_EXPORT tr_lno (TestResult *tr);
+CK_EXPORT int tr_lno (TestResult *tr);
 /* File name at which failure occured */
-const char * CK_EXPORT tr_lfile (TestResult *tr);
+CK_EXPORT const char * tr_lfile (TestResult *tr);
 /* Test case in which unit test was run */
-const char * CK_EXPORT tr_tcname (TestResult *tr);
+CK_EXPORT const char * tr_tcname (TestResult *tr);
 
 /* Creates an SRunner for the given suite */
-SRunner * CK_EXPORT srunner_create (Suite *s);
+CK_EXPORT SRunner * srunner_create (Suite *s);
 
 /* Adds a Suite to an SRunner */
-void CK_EXPORT srunner_add_suite (SRunner *sr, Suite *s);
+CK_EXPORT void srunner_add_suite (SRunner *sr, Suite *s);
 
 /* Frees an SRunner, all suites added to it and all contained test cases */
-void CK_EXPORT srunner_free (SRunner *sr);
+CK_EXPORT void srunner_free (SRunner *sr);
 
  
 /* Test running */
 
 /* Runs an SRunner, printing results as specified (see enum print_output) */
-void CK_EXPORT srunner_run_all (SRunner *sr, enum print_output print_mode);
+CK_EXPORT void srunner_run_all (SRunner *sr, enum print_output print_mode);
 
  
 /* Next functions are valid only after the suite has been
    completely run, of course */
 
 /* Number of failed tests in a run suite. Includes failures + errors */
-int CK_EXPORT srunner_ntests_failed (SRunner *sr);
+CK_EXPORT int srunner_ntests_failed (SRunner *sr);
 
 /* Total number of tests run in a run suite */
-int CK_EXPORT srunner_ntests_run (SRunner *sr);
+CK_EXPORT int srunner_ntests_run (SRunner *sr);
 
 /* Return an array of results for all failures
   
@@ -347,7 +350,7 @@ int CK_EXPORT srunner_ntests_run (SRunner *sr);
    the array is malloc'ed and must be freed, but individual TestResults
    must not
 */
-TestResult ** CK_EXPORT srunner_failures (SRunner *sr);
+CK_EXPORT TestResult ** srunner_failures (SRunner *sr);
 
 /* Return an array of results for all run tests
 
@@ -357,13 +360,13 @@ TestResult ** CK_EXPORT srunner_failures (SRunner *sr);
    Memory is malloc'ed and must be freed, but individual TestResults
    must not
 */  
-TestResult ** CK_EXPORT srunner_results (SRunner *sr);
+CK_EXPORT TestResult ** srunner_results (SRunner *sr);
 
  
 /* Printing */
 
 /* Print the results contained in an SRunner */
-void CK_EXPORT srunner_print (SRunner *sr, enum print_output print_mode);
+CK_EXPORT void srunner_print (SRunner *sr, enum print_output print_mode);
   
   
 /* Set a log file to which to write during test running.
@@ -372,13 +375,13 @@ void CK_EXPORT srunner_print (SRunner *sr, enum print_output print_mode);
   done immediatly after SRunner creation, and the log file can't be
   changed after being set.
 */
-void CK_EXPORT srunner_set_log (SRunner *sr, const char *fname);
+CK_EXPORT void srunner_set_log (SRunner *sr, const char *fname);
 
 /* Does the SRunner have a log file? */
-int CK_EXPORT srunner_has_log (SRunner *sr);
+CK_EXPORT int srunner_has_log (SRunner *sr);
 
 /* Return the name of the log file, or NULL if none */
-const char * CK_EXPORT srunner_log_fname (SRunner *sr);
+CK_EXPORT const char * srunner_log_fname (SRunner *sr);
 
 /* Set a xml file to which to write during test running.
 
@@ -386,13 +389,13 @@ const char * CK_EXPORT srunner_log_fname (SRunner *sr);
   done immediatly after SRunner creation, and the XML file can't be
   changed after being set.
 */
-void CK_EXPORT srunner_set_xml (SRunner *sr, const char *fname);
+CK_EXPORT void srunner_set_xml (SRunner *sr, const char *fname);
 
 /* Does the SRunner have an XML log file? */
-int CK_EXPORT srunner_has_xml (SRunner *sr);
+CK_EXPORT int srunner_has_xml (SRunner *sr);
 
 /* Return the name of the XML file, or NULL if none */
-const char * CK_EXPORT srunner_xml_fname (SRunner *sr);
+CK_EXPORT const char * srunner_xml_fname (SRunner *sr);
 
 
 /* Control forking */
@@ -401,18 +404,20 @@ enum fork_status {
   CK_FORK,        /* call fork to run tests */
   CK_NOFORK       /* don't call fork */
 };
+#ifdef WIN32
  typedef void* pid_t;
+#endif 
 /* Get the current fork status */
-enum fork_status CK_EXPORT srunner_fork_status (SRunner *sr);
+CK_EXPORT enum fork_status srunner_fork_status (SRunner *sr);
 
 /* Set the current fork status */
-void CK_EXPORT srunner_set_fork_status (SRunner *sr, enum fork_status fstat); 
+CK_EXPORT void srunner_set_fork_status (SRunner *sr, enum fork_status fstat); 
   
 /* Fork in a test and make sure messaging and tests work. */
-pid_t CK_EXPORT check_fork(void);
+CK_EXPORT pid_t check_fork(void);
 
 /* Wait for the pid and exit. If pid is zero, just exit. */
-void CK_EXPORT check_waitpid_and_exit(pid_t pid);
+CK_EXPORT void check_waitpid_and_exit(pid_t pid);
 
 #ifdef __cplusplus 
 CK_CPPEND
