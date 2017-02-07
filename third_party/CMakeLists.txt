@@ -55,9 +55,18 @@ set(WITH_BZIP2          ON  CACHE BOOL "test")
 set(WITH_SWIG           OFF CACHE BOOL "test")
 set(WITH_ZLIB           ON  CACHE BOOL "test")
 set(WITH_CPP_NAMESPACE  ON  CACHE BOOL "test")
-set(ENABLE_COMP         ON  CACHE BOOL "test")
-set(ENABLE_DISTRIB      ON  CACHE BOOL "test")
-set(ENABLE_FBC          ON  CACHE BOOL "test")
+set(ENABLE_ARRAYS OFF CACHE BOOL "Enable/disable libSBML options")
+set(ENABLE_COMP ON CACHE BOOL "Enable/disable libSBML options")
+set(ENABLE_DISTRIB ON CACHE BOOL "Enable/disable libSBML options")
+set(ENABLE_DYN ON CACHE BOOL "Enable/disable libSBML options")
+set(ENABLE_FBC ON CACHE BOOL "Enable/disable libSBML options")
+set(ENABLE_GROUPS ON CACHE BOOL "Enable/disable libSBML options")
+set(ENABLE_LAYOUT ON CACHE BOOL "Enable/disable libSBML options")
+set(ENABLE_MULTI OFF CACHE BOOL "Enable/disable libSBML options")
+set(ENABLE_QUAL ON CACHE BOOL "Enable/disable libSBML options")
+set(ENABLE_RENDER ON CACHE BOOL "Enable/disable libSBML options")
+set(ENABLE_REQUIREDELEMENTS ON CACHE BOOL "Enable/disable libSBML options")
+set(ENABLE_SPATIAL OFF CACHE BOOL "Enable/disable libSBML options")
 
 if("${CMAKE_SIZEOF_VOID_P}" EQUAL "8")
   set(LIBSBML_DEPENDENCY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/libsbml CACHE PATH "Path to libsbml dependencies")
@@ -169,11 +178,13 @@ endif()
 #Add Third Party Folders
 
 # Specify the source directory for libsbml here.
-set(RR_LIBSBML "libSBML-5.13.0-experimental-Source")
+set(RR_LIBSBML "libsbml-experimental-5.14-r23759")
 set(LIBSBML_ROOT_SOURCE_DIR "${CMAKE_SOURCE_DIR}/third_party/${RR_LIBSBML}" CACHE PATH
     "Path to the libsbml root source directory")
 set(LIBSBML_ROOT_BINARY_DIR "${CMAKE_BINARY_DIR}/third_party" CACHE PATH
     "Path to the libsbml root build directory")
+message("INCLUDE ${CMAKE_CURRENT_BINARY_DIR}/libsbml-experimental-5.14-r23759/src")
+include_directories(${CMAKE_CURRENT_BINARY_DIR}/libsbml-experimental-5.14-r23759/src)
 add_subdirectory(${RR_LIBSBML})
 
 message("RR_LIBSBML: ${RR_LIBSBML}")

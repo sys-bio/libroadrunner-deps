@@ -1,0 +1,21 @@
+K 10
+svn:ignore
+V 205
+autom4te.cache
+Makefile
+config.log
+config.status
+.deps
+include
+TAGS
+CTAGS
+libsbml.pc
+*.o
+libsbml-config-unix.h
+libsbml-config-packages.h
+.libs
+libsbml-namespace.h
+libsbml-package.h
+libsbml-config-common.h
+
+END
