@@ -1,132 +1,0 @@
-10
-
-dir
-23759
-svn://svn.code.sf.net/p/sbml/code/branches/libsbml-experimental/src/sbml/validator/test/test-data
-svn://svn.code.sf.net/p/sbml/code
-
-
-
-2016-11-15T10:28:01.170752Z
-23685
-sarahkeating
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-c05c2498-8750-0410-b44c-b7d1844e3258
-
-sbml-unit-constraints
-dir
-
-xml-parser-constraints
-dir
-
-sbml-xml-constraints
-dir
-
-sbml-identifier-constraints
-dir
-
-sbml-mathml-constraints
-dir
-
-Makefile.in
-file
-
-
-
-
-2016-12-09T20:49:08.000000Z
-1edf1bcfb5893f68df251440d7b90f79
-2016-11-01T14:51:02.920010Z
-23648
-sarahkeating
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-5727
-
-sbml-sbo-constraints
-dir
-
-sbml-modeling-practice-constraints
-dir
-
-sbml-notes-constraints
-dir
-
-.svnignore
-file
-
-
-
-
-2016-12-09T20:49:08.000000Z
-9f8522f3b75238c36b81a3161bb35acc
-2013-01-18T18:43:30.803461Z
-16899
-mhucka
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-298
-
-libsbml-constraints
-dir
-
-sbml-modeldefinition-constraints
-dir
-
-sbml-annotation-constraints
-dir
-
-sbml-general-consistency-constraints
-dir
-

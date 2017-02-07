@@ -1,8 +1,0 @@
-K 10
-svn:ignore
-V 36
-__pycache__
-prettytable-0.7.2
-*.pyc
-
-END

@@ -1,9 +1,0 @@
-K 18
-svn:global-ignores
-V 110
-libsbml-matlab
-Output
-install_matlab_libsbml_script_xml_win32.iss
-install_matlab_libsbml_script_xml_win64.iss
-
-END
