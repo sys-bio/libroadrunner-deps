@@ -1,0 +1,16 @@
+K 10
+svn:ignore
+V 114
+autom4te.cache
+Makefile
+config.log
+config.status
+.deps
+include
+TAGS
+CTAGS
+libsbml.pc
+*.o
+TestConsistencyValidator
+
+END

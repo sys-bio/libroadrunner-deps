@@ -1,0 +1,11 @@
+K 13
+svn:mergeinfo
+V 833
+/branches/L3Parser/src/sbml/packages/groups/common:15528-15625,15656-15673
+/branches/libsbml-4/src/sbml/packages/groups/common:9056-10118
+/branches/libsbml-5-conversion/src/sbml/packages/groups/common:14155-14227
+/branches/libsbml-ast-plugin/src/sbml/packages/groups/common:16251-19654
+/branches/libsbml-fengkai/multi-dev-base-on-experimental22472/src/sbml/packages/groups/common:22523-22669
+/branches/libsbml-fengkai/multi-dev-based-on-experimental22472/src/sbml/packages/groups/common:22522
+/trunk/libsbml/src/sbml/packages/groups/common:18168-18171,18174-18194,18196-18201,18204,18207-18209,18211-18213,18215-18216,18226,18228-18292,18294-18388,18390-18443,18450-18454,18456-18458,18460-18462,18464,18466,18469-18520,18523-18561,18563,18565-18584,18586-18638,18640-18641,18644-18715,18717-18844,18846-19128,19130-19829,19831-22913
+END

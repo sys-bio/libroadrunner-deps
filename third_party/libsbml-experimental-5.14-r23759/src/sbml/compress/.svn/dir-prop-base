@@ -1,0 +1,10 @@
+K 10
+svn:ignore
+V 32
+.deps
+Makefile
+TAGS
+CTAGS
+.libs
+
+END

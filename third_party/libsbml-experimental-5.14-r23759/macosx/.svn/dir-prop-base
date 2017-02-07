@@ -1,0 +1,13 @@
+K 10
+svn:ignore
+V 78
+Makefile
+.deps
+*.o
+build.sh
+*.pkg
+libsbml-dist
+disk-image
+disk-image-previous
+
+END

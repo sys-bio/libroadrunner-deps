@@ -1,0 +1,16 @@
+K 10
+svn:ignore
+V 95
+autom4te.cache
+Makefile
+config.log
+config.status
+.deps
+include
+TAGS
+CTAGS
+libsbml.pc
+*.o
+.libs
+
+END

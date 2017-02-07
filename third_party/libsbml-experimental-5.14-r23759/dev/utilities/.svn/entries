@@ -1,0 +1,61 @@
+10
+
+dir
+23759
+svn://svn.code.sf.net/p/sbml/code/branches/libsbml-experimental/dev/utilities
+svn://svn.code.sf.net/p/sbml/code
+
+
+
+2016-11-08T12:21:36.325045Z
+23679
+sarahkeating
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+c05c2498-8750-0410-b44c-b7d1844e3258
+
+translateTests
+dir
+
+errorTable
+dir
+
+make-docs-archive
+dir
+
+sboTree
+dir
+
+new_installer
+dir
+
+testconstructors
+dir
+
+comparelinenumbers
+dir
+
+count-lines-of-code
+dir
+
+expdef
+dir
+
+python_package
+dir
+
+build-python
+dir
+
