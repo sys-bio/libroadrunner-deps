@@ -48,7 +48,7 @@ private:
     int                                             _NumRows;
 
     /**
-     * set the the number of reactinos, stochiometry matrix reactions
+     * set the the number of reactions, stochiometry matrix reactions
      * are the number of columns.
      */
     int                                             _NumCols;

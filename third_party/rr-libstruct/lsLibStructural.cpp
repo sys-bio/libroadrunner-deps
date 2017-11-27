@@ -726,7 +726,14 @@ string LibStructural::analyzeWithQR()
         {
             for (int j = 0; j < _NumIndependent; j++)
             {
-                (*_G)(i,j) = -(*_L0)(i,j);
+                if ((*_L0)(i, j) != 0)
+                {
+                    (*_G)(i, j) = -(*_L0)(i, j);
+                }
+                else
+                {
+                    (*_G)(i, j) = (*_L0)(i, j);
+                }
             }
             (*_G)(i,_NumIndependent+i) = 1.0;
         }
