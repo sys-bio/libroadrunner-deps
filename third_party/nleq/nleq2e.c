@@ -1,4 +1,4 @@
-/* nleq1e.f -- translated by f2c (version 20090411).
+/* nleq2e.f -- translated by f2c (version 20100827).
    You must link the resulting object file with libf2c:
 	on Microsoft Windows system, link with libf2c.lib;
 	on Linux or Unix systems, link with .../path/to/libf2c.a -lm
@@ -19,7 +19,7 @@ static integer c__1 = 1;
 static integer c__100 = 100;
 static integer c__3210 = 3210;
 
-/* Subroutine */ int nleq1e_(integer *n, doublereal *x, doublereal *rtol, 
+/* Subroutine */ int nleq2e_(integer *n, doublereal *x, doublereal *rtol, 
 	integer *ierr)
 {
 
@@ -40,24 +40,26 @@ static integer c__3210 = 3210;
     static integer iwk[100], niw;
     static doublereal rwk[3210];
     static integer nrw, iopt[50];
-    extern /* Subroutine */ int nleq1_(integer *, U_fp, f2c_real *, doublereal *, 
+    extern /* Subroutine */ int nleq2_(integer *, U_fp, f2c_real *, doublereal *, 
 	    doublereal *, doublereal *, integer *, integer *, integer *, 
 	    integer *, integer *, doublereal *);
     static doublereal xscal[50];
+    static integer luerr;
     static f2c_real dummy;
+    static integer mprerr;
 
     /* Fortran I/O blocks */
-    static cilist io___5 = { 0, 6, 0, fmt_1001, 0 };
+    static cilist io___7 = { 0, 0, 0, fmt_1001, 0 };
 
 
-/* *    Begin Prologue NLEQ1E */
+/* *    Begin Prologue NLEQ2E */
 /*     ------------------------------------------------------------ */
 
 /* *  Title */
 
 /*     Numerical solution of nonlinear (NL) equations (EQ) */
 /*     especially designed for numerically sensitive problems. */
-/*     (E)asy-to-use driver routine for NLEQ1. */
+/*     (E)asy-to-use driver routine for NLEQ2. */
 
 /* *  Written by        U. Nowak, L. Weimann */
 /* *  Purpose           Solution of systems of highly nonlinear equations */
@@ -77,12 +79,12 @@ static integer c__3210 = 3210;
 /*                     Takustrasse 7, D-14195 Berlin-Dahlem */
 /*                     phone : + 49/30/84185-0 */
 /*                     fax   : + 49/30/84185-125 */
-/* *  Contact           Lutz Weimann */
+/* *  Contact           Bodo Erdmann */
 /*                     ZIB, Division Scientific Computing, */
 /*                          Department Numerical Analysis and Modelling */
 /*                     phone : + 49/30/84185-185 */
 /*                     fax   : + 49/30/84185-107 */
-/*                     e-mail: weimann@zib.de */
+/*                     e-mail: erdmann@zib.de */
 
 /* *    References: */
 
@@ -122,8 +124,8 @@ static integer c__3210 = 3210;
 /*     Damped Newton-algorithm for systems of highly nonlinear */
 /*     equations - damping strategy due to Ref. (1). */
 
-/*     (The iteration is done by subroutine N1INT actually. NLEQ1E */
-/*      calls the standard interface driver NLEQ1, which itself does */
+/*     (The iteration is done by subroutine N2INT actually. NLEQ2E */
+/*      calls the standard interface driver NLEQ2, which itself does */
 /*      some house keeping and builds up workspace.) */
 
 /*     Jacobian approximation by numerical differences. */
@@ -150,7 +152,7 @@ static integer c__3210 = 3210;
 /*                             On input:  Has always value 0 (zero). */
 /*                             On output: Indicates failure of FCN eval- */
 /*                                uation, if having a nonzero value. */
-/*                             If <0: NLEQ1E will be terminated with */
+/*                             If <0: NLEQ2E will be terminated with */
 /*                                    IFAIL returned via IERR. */
 /*                             If =1: A new trial Newton iterate will be */
 /*                                    computed, with the damping factor */
@@ -208,16 +210,16 @@ static integer c__3210 = 3210;
 /*        -    use better initial guess */
 /*        -    or refine model */
 /*        -    or use non-standard options and/or analytical Jacobian */
-/*             via the standard interface NLEQ1 */
+/*             via the standard interface NLEQ2 */
 
 /* *    Machine dependent constants used: */
 /*     ================================= */
 
-/*     DOUBLE PRECISION EPMACH  in  N1PCHK, N1INT */
-/*     DOUBLE PRECISION GREAT   in  N1PCHK */
-/*     DOUBLE PRECISION SMALL   in  N1PCHK, N1INT, N1SCAL */
+/*     DOUBLE PRECISION EPMACH  in  N2PCHK, N2INT */
+/*     DOUBLE PRECISION GREAT   in  N2PCHK */
+/*     DOUBLE PRECISION SMALL   in  N2PCHK, N2INT, N2SCAL */
 
-/* *    Subroutines called: NLEQ1 */
+/* *    Subroutines called: NLEQ2 */
 
 /*     ------------------------------------------------------------ */
 /* *    End Prologue */
@@ -234,10 +236,13 @@ static integer c__3210 = 3210;
     nrw = (*n + 13) * *n + 60;
 /*     Checking dimensional parameter N */
     if (*n < 1 || *n > 50) {
-	s_wsfe(&io___5);
-	do_fio(&c__1, (char *)&c__50, (ftnlen)sizeof(integer));
-	do_fio(&c__1, (char *)&(*n), (ftnlen)sizeof(integer));
-	e_wsfe();
+	if (mprerr >= 1) {
+	    io___7.ciunit = luerr;
+	    s_wsfe(&io___7);
+	    do_fio(&c__1, (char *)&c__50, (ftnlen)sizeof(integer));
+	    do_fio(&c__1, (char *)&(*n), (ftnlen)sizeof(integer));
+	    e_wsfe();
+	}
 	*ierr = 20;
 	return 0;
     }
@@ -271,12 +276,12 @@ static integer c__3210 = 3210;
 /*     Maximum number of Newton iterations */
     iwk[30] = 100;
 
-    nleq1_(n, (U_fp)fcn_, &dummy, &x[1], xscal, rtol, iopt, ierr, &c__100, 
+    nleq2_(n, (U_fp)fcn_, &dummy, &x[1], xscal, rtol, iopt, ierr, &c__100, 
 	    iwk, &c__3210, rwk);
     if (*ierr == 82 && iwk[22] < 0) {
 	*ierr = iwk[22];
     }
-/*     End of subroutine NLEQ1E */
+/*     End of subroutine NLEQ2E */
     return 0;
-} /* nleq1e_ */
+} /* nleq2e_ */
 

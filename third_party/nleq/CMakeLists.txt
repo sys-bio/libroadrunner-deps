@@ -3,10 +3,11 @@ project(nleq)
 
 set(target nleq) 
 
-set(headers nleq1.h f2c_nleq.h)
+set(headers nleq2.h f2c_nleq.h)
 
 set(sources 
-nleq1.c
+nleq2.c
+linalg_nleq2.c
 wnorm.c
 zibconst.c
 zibmon.c

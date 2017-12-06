@@ -1,5 +1,5 @@
-#ifndef nleq1H
-#define nleq1H
+#ifndef nleq2H
+#define nleq2H
 
 //How is this library being built?
 //If you are building, or using, this as a static library, then you need to define STATIC_NLEQ
@@ -36,7 +36,7 @@ extern "C"
 
 #include "f2c_nleq.h"
 
-DLLEXPORT int STDCALL NLEQ1
+DLLEXPORT int STDCALL NLEQ2
 (
     integer *n, 		
     c_NLMFCN fcn,
