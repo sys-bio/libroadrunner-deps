@@ -28,7 +28,7 @@ static integer c__9 = 9;
 //    integer *liwk, integer *iwk, integer *lrwk, doublereal *rwk)
 
 /* Subroutine */ 
-DLLEXPORT int STDCALL NLEQ2(integer *n, U_fp fcn, U_fp jac, doublereal *x,
+DLLEXPORT int STDCALL NLEQ2(integer *n, c_NLMFCN fcn, U_fp jac, doublereal *x,
 	doublereal *xscal, doublereal *rtol, integer *iopt, integer *ierr, 
 	integer *liwk, integer *iwk, integer *lrwk, doublereal *rwk)
 {
