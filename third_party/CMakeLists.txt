@@ -178,7 +178,7 @@ endif()
 #Add Third Party Folders
 
 # Specify the source directory for libsbml here.
-set(RR_LIBSBML "libSBML-5.14.0-Source")
+set(RR_LIBSBML "libSBML-5.16.0-Source")
 set(LIBSBML_ROOT_SOURCE_DIR "${CMAKE_SOURCE_DIR}/third_party/${RR_LIBSBML}" CACHE PATH
     "Path to the libsbml root source directory")
 set(LIBSBML_ROOT_BINARY_DIR "${CMAKE_BINARY_DIR}/third_party" CACHE PATH
