@@ -397,7 +397,7 @@ FluxBound::getValue () const
 bool
 FluxBound::isSetValue () const
 {
-  return (!isnan(mValue));
+  return (!::isnan(mValue));
 }
 
 
