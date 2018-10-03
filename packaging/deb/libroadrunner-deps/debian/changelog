@@ -1,3 +1,15 @@
+libroadrunner-deps (2.0.7) unstable; urgency=low
+
+  * Sync
+
+ -- Kyle Medley <0u812github@gmail.com>  Thu, 16 Aug 2017 12:00:00 -0700
+
+libroadrunner-deps (2.0.6) unstable; urgency=low
+
+  * Sync
+
+ -- Kyle Medley <0u812github@gmail.com>  Wed, 15 Aug 2017 12:00:00 -0700
+
 libroadrunner-deps (2.0.5) unstable; urgency=low
 
   * Update libSBML to 5.17.0
