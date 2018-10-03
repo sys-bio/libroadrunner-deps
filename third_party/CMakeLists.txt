@@ -31,8 +31,10 @@ LIBZ_LIBRARY
 LIBBZ_LIBRARY
 LIBXML_LIBRARY
 MPI_ENABLE
-NLEQ_BUILD_SHARED_LIBS
-NLEQ_BUILD_STATIC_LIBS
+NLEQ2_BUILD_SHARED_LIBS
+NLEQ2_BUILD_STATIC_LIBS
+NLEQ1_BUILD_SHARED_LIBS
+NLEQ1_BUILD_STATIC_LIBS
 SUNDIALS_PRECISION
 WITH_CHECK
 WITH_CSHARP
@@ -193,7 +195,8 @@ message("LIBSBML_ROOT_SOURCE_DIR: ${LIBSBML_ROOT_SOURCE_DIR}")
 
 add_subdirectory(clapack/3.2.1)
 add_subdirectory(sundials)
-add_subdirectory(nleq)
+add_subdirectory(nleq1)
+add_subdirectory(nleq2)
 add_subdirectory(rr-libstruct)
 add_subdirectory(unit_test)
 if(RR_DEPS_BUILD_POCO)

@@ -1,13 +1,12 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
-project(nleq)
+project(nleq1)
 
-set(target nleq) 
+set(target nleq1)
 
-set(headers nleq2.h f2c_nleq.h)
+set(headers nleq1.h f2c_nleq.h)
 
 set(sources 
-nleq2.c
-linalg_nleq2.c
+nleq1.c
 wnorm.c
 zibconst.c
 zibmon.c
@@ -20,12 +19,12 @@ if(WIN32)
 set_property(TARGET ${target}-static  
              PROPERTY  COMPILE_DEFINITIONS 
                        WIN32
-                       STATIC_NLEQ
+                       STATIC_NLEQ1
              ) 
 else()
 set_property(TARGET ${target}-static  
              PROPERTY  COMPILE_DEFINITIONS 
-                       STATIC_NLEQ
+                       STATIC_NLEQ1
              ) 
 
 endif()
@@ -35,7 +34,7 @@ target_link_libraries (${target}-static f2c)
 
 #Install required files
 install(FILES ${headers} 
-        DESTINATION include/nleq)
+        DESTINATION include/nleq1)
 
 install(TARGETS ${target}-static 
         LIBRARY DESTINATION lib 

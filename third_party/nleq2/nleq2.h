@@ -5,18 +5,18 @@
 //If you are building, or using, this as a static library, then you need to define STATIC_NLEQ
 #if defined(WIN32)
 
-#if defined(STATIC_NLEQ)
+#if defined(STATIC_NLEQ2)
 #define DLLEXPORT
 #else
 
 //DLL import/export
-#if defined(SHARED_NLEQ)
+#if defined(SHARED_NLEQ2)
 #define DLLEXPORT __declspec(dllexport)
 #else
 #define DLLEXPORT __declspec(dllimport)
 #endif	//DLL import/export
 
-#endif //STATIC_NLEQ
+#endif //STATIC_NLEQ2
 #else
 #define DLLEXPORT
 #endif
