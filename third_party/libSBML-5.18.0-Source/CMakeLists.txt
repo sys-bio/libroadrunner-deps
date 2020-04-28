@@ -149,7 +149,7 @@ set(CPACK_RPM_PACKAGE_LICENSE "LGPL")
 set(CPACK_RPM_PACKAGE_GROUP "Libraries/Development")
 set(CPACK_DEBIAN_PACKAGE_SECTION "Libraries")
 
-set(CPACK_SOURCE_IGNORE_FILES "${CMAKE_CURRENT_BINARY_DIR};/.svn/;/.libs/;/.deps/;/.bzr/;.*.o$;.*.lo$;.*.la$;${CPACK_SOURCE_IGNORE_FILES};/.DS_Store;/.svnignore;blib;libsbml-dist")
+set(CPACK_SOURCE_IGNORE_FILES "${CMAKE_CURRENT_BINARY_DIR};/.vs/;/.vscode/;/.svn/;/.libs/;/.deps/;/.bzr/;.*.o$;.*.lo$;.*.la$;${CPACK_SOURCE_IGNORE_FILES};/.DS_Store;/.svnignore;blib;libsbml-dist")
 
 if(UNIX)
     set(CPACK_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
@@ -466,7 +466,7 @@ set(USE_LIBXML OFF)
 if(WITH_LIBXML)
   if (NOT LIBXML_LIBRARY)
     find_library(LIBXML_LIBRARY
-        NAMES libxml2.dylib libxml2.lib xml2
+        NAMES libxml2.lib xml2
         PATHS /usr/lib /usr/local/lib
               ${LIBSBML_DEPENDENCY_DIR}/lib
         DOC "The file name of the libxml2 library."

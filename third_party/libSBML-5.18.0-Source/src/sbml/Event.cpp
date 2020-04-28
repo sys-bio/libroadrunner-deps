@@ -1370,7 +1370,7 @@ Event::createObject (XMLInputStream& stream)
 /** @cond doxygenLibsbmlInternal */
 
 /*
- * Gets the value of the "attributeName" attribute of this Event.
+ * Returns the value of the "attributeName" attribute of this Event.
  */
 int
 Event::getAttribute(const std::string& attributeName, bool& value) const
@@ -1398,7 +1398,7 @@ Event::getAttribute(const std::string& attributeName, bool& value) const
 /** @cond doxygenLibsbmlInternal */
 
 /*
- * Gets the value of the "attributeName" attribute of this Event.
+ * Returns the value of the "attributeName" attribute of this Event.
  */
 int
 Event::getAttribute(const std::string& attributeName, int& value) const
@@ -1415,7 +1415,7 @@ Event::getAttribute(const std::string& attributeName, int& value) const
 /** @cond doxygenLibsbmlInternal */
 
 /*
- * Gets the value of the "attributeName" attribute of this Event.
+ * Returns the value of the "attributeName" attribute of this Event.
  */
 int
 Event::getAttribute(const std::string& attributeName, double& value) const
@@ -1432,7 +1432,7 @@ Event::getAttribute(const std::string& attributeName, double& value) const
 /** @cond doxygenLibsbmlInternal */
 
 /*
- * Gets the value of the "attributeName" attribute of this Event.
+ * Returns the value of the "attributeName" attribute of this Event.
  */
 int
 Event::getAttribute(const std::string& attributeName,
@@ -1450,7 +1450,7 @@ Event::getAttribute(const std::string& attributeName,
 /** @cond doxygenLibsbmlInternal */
 
 /*
- * Gets the value of the "attributeName" attribute of this Event.
+ * Returns the value of the "attributeName" attribute of this Event.
  */
 int
 Event::getAttribute(const std::string& attributeName,
@@ -1479,7 +1479,7 @@ Event::getAttribute(const std::string& attributeName,
 /** @cond doxygenLibsbmlInternal */
 
 /*
- * Gets the value of the "attributeName" attribute of this Event.
+ * Returns the value of the "attributeName" attribute of this Event.
  */
 //int
 //Event::getAttribute(const std::string& attributeName, const char* value) const
@@ -1853,6 +1853,12 @@ Event::getObject(const std::string& elementName, unsigned int index)
 /** @endcond */
 
 
+/** @cond doxygenLibsbmlInternal */
+bool Event::isExplicitlySetUVFTT() const 
+{ 
+  return mExplicitlySetUVFTT; 
+}
+/** @endcond */
 
 
 /** @cond doxygenLibsbmlInternal */
@@ -2039,6 +2045,7 @@ Event::readL3Attributes (const XMLAttributes& attributes)
   mIsSetUseValuesFromTriggerTime = attributes.readInto(
       "useValuesFromTriggerTime", mUseValuesFromTriggerTime, 
        getErrorLog(),false, getLine(), getColumn());
+  mExplicitlySetUVFTT = mIsSetUseValuesFromTriggerTime;
  
   if (!mIsSetUseValuesFromTriggerTime)
   {

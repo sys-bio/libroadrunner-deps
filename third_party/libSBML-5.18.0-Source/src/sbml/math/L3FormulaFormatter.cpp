@@ -1,5 +1,5 @@
 /**
- * @file    L3FormulaFormatter.c
+ * @file    L3FormulaFormatter.cpp
  * @brief   Formats an AST formula tree as an SBML L3 formula string.
  * @author  Lucian Smith (from FormulaFormatter, by Ben Bornstein)
  *
@@ -328,7 +328,7 @@ int getL3Precedence(const ASTNode_t* node)
 
 
 /**
- * @return true (non-zero) if the given child ASTNode should be grouped
+ * @return true (nonzero) if the given child ASTNode should be grouped
  * (with parenthesis), false (0) otherwise.
  *
  * A node should be group if it is not an argument to a function and

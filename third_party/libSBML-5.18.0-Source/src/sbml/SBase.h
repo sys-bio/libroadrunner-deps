@@ -2465,27 +2465,44 @@ s.setNotes("<body xmlns='http://www.w3.org/1999/xhtml'><p>here is my note</p></b
 
      /** @cond doxygenLibsbmlInternal */
 
-   virtual int setMath(const ASTNode* math);
-
-  /** @endcond */
-
-     /** @cond doxygenLibsbmlInternal */
-
   virtual int setMessage (const std::string& message, bool addXHTMLMarkup = false);
 
   /** @endcond */
 
-       /** @cond doxygenLibsbmlInternal */
-
-   virtual const ASTNode* getMath() const;
-
+  /** @cond doxygenLibsbmlInternal */
+  /**
+   * Returns @c NULL.  SBase subclasses that define a child Math object
+   * will override this function to return that child.
+   * 
+   * @return @c NULL.
+   */
+  virtual const ASTNode* getMath () const;
   /** @endcond */
 
   /** @cond doxygenLibsbmlInternal */
+  /**
+   * Returns @c false.  SBase subclasses that define a child Math object
+   * will override this function and return whether or not that Math
+   * object is set.
+   *
+   * @return @c false.
+   */
+  virtual bool isSetMath () const;
+  /** @endcond */
 
-   virtual bool isSetMath() const;
-
-   /** @endcond */
+  /** @cond doxygenLibsbmlInternal */
+  /**
+   * Does nothing and returns @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t}.
+   * SBase subclasses that define a child Math object
+   * will override this function to set that Math child.
+   *
+   * @param math an ASTNode representing a formula tree.
+   *
+   * @copydetails doc_returns_one_success_code
+   * @li @sbmlconstant{LIBSBML_INVALID_OBJECT, OperationReturnValues_t}
+   */
+  virtual int setMath (const ASTNode* math);
+  /** @endcond */
 
    /** @cond doxygenLibsbmlInternal */
    virtual std::string getMessageString () const;
@@ -3182,7 +3199,7 @@ newModel.addSpecies(s1);
 
 
   /**
-   * Gets the namespace URI to which this element belongs to.
+   * Returns the namespace URI to which this element belongs to.
    *
    * For example, all elements that belong to SBML Level&nbsp;3 Version&nbsp;1 Core
    * must would have the URI <code>"http://www.sbml.org/sbml/level3/version1/core"</code>;
@@ -3553,7 +3570,7 @@ protected:
 
 
   /**
-   * Gets the XML namespace (URI) to which this element belongs to.
+   * Returns the XML namespace (URI) to which this element belongs to.
    */
   const std::string& getElementNamespace() const;
 

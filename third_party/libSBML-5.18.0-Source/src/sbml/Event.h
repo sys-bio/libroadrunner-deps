@@ -1121,7 +1121,7 @@ public:
   /** @cond doxygenLibsbmlInternal */
 
   /**
-   * Gets the value of the "attributeName" attribute of this Event.
+   * Returns the value of the "attributeName" attribute of this Event.
    *
    * @param attributeName, the name of the attribute to retrieve.
    *
@@ -1141,7 +1141,7 @@ public:
   /** @cond doxygenLibsbmlInternal */
 
   /**
-   * Gets the value of the "attributeName" attribute of this Event.
+   * Returns the value of the "attributeName" attribute of this Event.
    *
    * @param attributeName, the name of the attribute to retrieve.
    *
@@ -1160,7 +1160,7 @@ public:
   /** @cond doxygenLibsbmlInternal */
 
   /**
-   * Gets the value of the "attributeName" attribute of this Event.
+   * Returns the value of the "attributeName" attribute of this Event.
    *
    * @param attributeName, the name of the attribute to retrieve.
    *
@@ -1180,7 +1180,7 @@ public:
   /** @cond doxygenLibsbmlInternal */
 
   /**
-   * Gets the value of the "attributeName" attribute of this Event.
+   * Returns the value of the "attributeName" attribute of this Event.
    *
    * @param attributeName, the name of the attribute to retrieve.
    *
@@ -1200,7 +1200,7 @@ public:
   /** @cond doxygenLibsbmlInternal */
 
   /**
-   * Gets the value of the "attributeName" attribute of this Event.
+   * Returns the value of the "attributeName" attribute of this Event.
    *
    * @param attributeName, the name of the attribute to retrieve.
    *
@@ -1220,7 +1220,7 @@ public:
   /** @cond doxygenLibsbmlInternal */
 
   /**
-   * Gets the value of the "attributeName" attribute of this Event.
+   * Returns the value of the "attributeName" attribute of this Event.
    *
    * @param attributeName, the name of the attribute to retrieve.
    *
@@ -1466,6 +1466,10 @@ public:
 
   /** @endcond */
 
+  /** @cond doxygenLibsbmlInternal */
+  bool isExplicitlySetUVFTT() const;
+  /** @endcond */
+
 
 
 
@@ -1513,8 +1517,6 @@ protected:
    * of this method as well.
    */
   virtual void writeAttributes (XMLOutputStream& stream) const;
-
-  bool isExplicitlySetUVFTT() const { return mExplicitlySetUVFTT; } ;
 
 
   //std::string             mId;

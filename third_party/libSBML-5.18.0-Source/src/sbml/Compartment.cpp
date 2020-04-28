@@ -1018,7 +1018,7 @@ Compartment::hasRequiredAttributes() const
 /** @cond doxygenLibsbmlInternal */
 
 /*
- * Gets the value of the "attributeName" attribute of this Compartment.
+ * Returns the value of the "attributeName" attribute of this Compartment.
  */
 int
 Compartment::getAttribute(const std::string& attributeName, bool& value) const
@@ -1046,7 +1046,7 @@ Compartment::getAttribute(const std::string& attributeName, bool& value) const
 /** @cond doxygenLibsbmlInternal */
 
 /*
- * Gets the value of the "attributeName" attribute of this Compartment.
+ * Returns the value of the "attributeName" attribute of this Compartment.
  */
 int
 Compartment::getAttribute(const std::string& attributeName, int& value) const
@@ -1063,7 +1063,7 @@ Compartment::getAttribute(const std::string& attributeName, int& value) const
 /** @cond doxygenLibsbmlInternal */
 
 /*
- * Gets the value of the "attributeName" attribute of this Compartment.
+ * Returns the value of the "attributeName" attribute of this Compartment.
  */
 int
 Compartment::getAttribute(const std::string& attributeName,
@@ -1102,7 +1102,7 @@ Compartment::getAttribute(const std::string& attributeName,
 /** @cond doxygenLibsbmlInternal */
 
 /*
- * Gets the value of the "attributeName" attribute of this Compartment.
+ * Returns the value of the "attributeName" attribute of this Compartment.
  */
 int
 Compartment::getAttribute(const std::string& attributeName,
@@ -1131,7 +1131,7 @@ Compartment::getAttribute(const std::string& attributeName,
 /** @cond doxygenLibsbmlInternal */
 
 /*
- * Gets the value of the "attributeName" attribute of this Compartment.
+ * Returns the value of the "attributeName" attribute of this Compartment.
  */
 int
 Compartment::getAttribute(const std::string& attributeName,
@@ -1170,7 +1170,7 @@ Compartment::getAttribute(const std::string& attributeName,
 /** @cond doxygenLibsbmlInternal */
 
 /*
- * Gets the value of the "attributeName" attribute of this Compartment.
+ * Returns the value of the "attributeName" attribute of this Compartment.
  */
 //int
 //Compartment::getAttribute(const std::string& attributeName,
@@ -1450,6 +1450,19 @@ Compartment::unsetAttribute(const std::string& attributeName)
 
 /** @endcond */
 
+/** @cond doxygenLibsbmlInternal */
+bool Compartment::isExplicitlySetSpatialDimensions() const 
+{
+    return mExplicitlySetSpatialDimensions; 
+}
+/** @endcond */
+
+/** @cond doxygenLibsbmlInternal */
+bool Compartment::isExplicitlySetConstant() const 
+{
+    return mExplicitlySetConstant;
+}
+/** @endcond */
 
 
 /** @cond doxygenLibsbmlInternal */
@@ -1770,6 +1783,7 @@ Compartment::readL3Attributes (const XMLAttributes& attributes)
   //
   mIsSetConstant = attributes.readInto("constant", mConstant, 
                                           getErrorLog(), false, getLine(), getColumn());
+  mExplicitlySetConstant = mIsSetConstant;
   if (!mIsSetConstant)
   {
     logError(AllowedAttributesOnCompartment, level, version, 

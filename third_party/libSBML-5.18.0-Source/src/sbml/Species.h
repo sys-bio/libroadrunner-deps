@@ -1354,7 +1354,7 @@ public:
   /** @cond doxygenLibsbmlInternal */
 
   /**
-   * Gets the value of the "attributeName" attribute of this Species.
+   * Returns the value of the "attributeName" attribute of this Species.
    *
    * @param attributeName, the name of the attribute to retrieve.
    *
@@ -1374,7 +1374,7 @@ public:
   /** @cond doxygenLibsbmlInternal */
 
   /**
-   * Gets the value of the "attributeName" attribute of this Species.
+   * Returns the value of the "attributeName" attribute of this Species.
    *
    * @param attributeName, the name of the attribute to retrieve.
    *
@@ -1393,7 +1393,7 @@ public:
   /** @cond doxygenLibsbmlInternal */
 
   /**
-   * Gets the value of the "attributeName" attribute of this Species.
+   * Returns the value of the "attributeName" attribute of this Species.
    *
    * @param attributeName, the name of the attribute to retrieve.
    *
@@ -1413,7 +1413,7 @@ public:
   /** @cond doxygenLibsbmlInternal */
 
   /**
-   * Gets the value of the "attributeName" attribute of this Species.
+   * Returns the value of the "attributeName" attribute of this Species.
    *
    * @param attributeName, the name of the attribute to retrieve.
    *
@@ -1433,7 +1433,7 @@ public:
   /** @cond doxygenLibsbmlInternal */
 
   /**
-   * Gets the value of the "attributeName" attribute of this Species.
+   * Returns the value of the "attributeName" attribute of this Species.
    *
    * @param attributeName, the name of the attribute to retrieve.
    *
@@ -1453,7 +1453,7 @@ public:
   /** @cond doxygenLibsbmlInternal */
 
   /**
-   * Gets the value of the "attributeName" attribute of this Species.
+   * Returns the value of the "attributeName" attribute of this Species.
    *
    * @param attributeName, the name of the attribute to retrieve.
    *
@@ -1619,6 +1619,14 @@ public:
 
   /** @endcond */
 
+  /** @cond doxygenLibsbmlInternal */
+  bool isExplicitlySetBoundaryCondition() const;
+
+  bool isExplicitlySetConstant() const;
+
+  bool isExplicitlySetHasOnlySubsUnits() const;
+  /** @endcond */
+
 
 
 
@@ -1657,15 +1665,6 @@ protected:
    * of this method as well.
    */
   virtual void writeAttributes (XMLOutputStream& stream) const;
-
-  bool isExplicitlySetBoundaryCondition() const 
-                            { return mExplicitlySetBoundaryCondition; } ;
-
-  bool isExplicitlySetConstant() const 
-                            { return mExplicitlySetConstant; } ;
-
-  bool isExplicitlySetHasOnlySubsUnits() const 
-                            { return mExplicitlySetHasOnlySubsUnits; } ;
 
   //std::string  mId;
   //std::string  mName;

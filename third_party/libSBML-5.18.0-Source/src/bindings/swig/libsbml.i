@@ -224,11 +224,13 @@ LIBSBML_CPP_NAMESPACE_USE
 /**
  * Ignore internal methods on SBase
  */
-%ignore SBase::removeDuplicateAnnotations;
+//ignore SBase::removeDuplicateAnnotations;
 %ignore SBase::setSBMLNamespaces;
 //%ignore SBase::getSBMLNamespaces;
-%ignore SBase::read;
-%ignore SBase::write;
+//%ignore SBase::read;
+%catches(SBMLConstructorException,SBMLExtensionException,XMLConstructorException,...) SBase::read;
+//%ignore SBase::write;
+%catches(SBMLConstructorException,SBMLExtensionException,XMLConstructorException,...) SBase::write;
 
 /**
  * Ignore internal methods on Model
@@ -338,9 +340,9 @@ LIBSBML_CPP_NAMESPACE_USE
  * Ignore internal implementation methods and some other methods
  * on SBMLNamespces.
  */
-%ignore SBMLNamespaces::setLevel;
-%ignore SBMLNamespaces::setVersion;
-%ignore SBMLNamespaces::setNamespaces;
+//%ignore SBMLNamespaces::setLevel;
+//%ignore SBMLNamespaces::setVersion;
+//%ignore SBMLNamespaces::setNamespaces;
 
 /**
  * Ignore internal implementation methods and some other methods

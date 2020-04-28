@@ -409,13 +409,15 @@ SBMLLevelVersionConverter::convert()
         validateConvertedDocument();
         bool errors = has_fatal_errors(origLevel, origVersion);
         if (errors)
-        { /* error - we dont covert
+        { /* error - we don't covert
            * restore original values and return
            */
           conversion = false;
           /* undo any changes */
-          delete currentModel;
+          delete currentModel; //!! deletes mDocument->mModel!!!!
           currentModel = origModel.clone();
+          mDocument->mModel = currentModel; // so we have to set it again
+
           mDocument->updateSBMLNamespace("core", origLevel, origVersion);
           mDocument->setApplicableValidators(origValidators);
         }
@@ -439,7 +441,7 @@ SBMLLevelVersionConverter::convert()
         if (resetAnnotations) 
         {
           // hack to force the model history to think it haschanged - this will
-          // change the vacrd if necessary
+          // change the vcard if necessary
           if (mDocument->isSetModel() && mDocument->getModel()->isSetModelHistory())
           {
             ModelHistory * history = mDocument->getModel()->getModelHistory()->clone();
@@ -1261,11 +1263,23 @@ SBMLLevelVersionConverter::speciesReferenceIdUsed()
   unsigned int i = 0;
   while (!used && i < mMathElements->getSize())
   {
-    const ASTNode* ast = static_cast<SBase*>(mMathElements->get(i))->getMath();
-    for (unsigned int j = 0; j < mSRIds->size(); j++)
-    {
-      used = containsId(ast, mSRIds->at(j));
-      if (used) break;
+    SBase* element = static_cast<SBase*>(mMathElements->get(i));
+    const ASTNode* ast = element->getMath();
+    KineticLaw* kl = NULL;
+    if (element->getTypeCode() == SBML_KINETIC_LAW) {
+      kl = static_cast<KineticLaw*>(element);
+    }
+    if (ast != NULL) {
+      for (unsigned int j = 0; j < mSRIds->size(); j++)
+      {
+        string id = mSRIds->at(j);
+        if (kl != NULL && kl->getParameter(id) != NULL)
+        {
+          continue;
+        }
+        used = containsId(ast, id);
+        if (used) break;
+      }
     }
     i++;
   }
