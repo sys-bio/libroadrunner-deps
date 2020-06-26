@@ -645,21 +645,31 @@ void  LibStructural::BuildStoichiometryMatrixFromModel(ls::SBMLmodel& oModel)
         for (int j = 0; j < numReactants; j++)
         {
             const SpeciesReference* reference = reaction->getReactant(j);
+            double stoich = reference->getStoichiometry();
+            if (reference->getLevel() == 1 && reference->getDenominator() != 1)
+            {
+                stoich = stoich / reference->getDenominator();
+            }
             if (_bSpeciesIndexList2.find(reference->getSpecies()) == _bSpeciesIndexList2.end())
             {
                 int row_id = _speciesIndexList2[reference->getSpecies()];
-                (*_Nmat)(row_id,i) = (*_Nmat)(row_id,i) - (reference->getStoichiometry());
+                (*_Nmat)(row_id,i) = (*_Nmat)(row_id,i) - stoich;
             }
         }
 
         for (int j = 0; j < numProducts; j++)
         {
             const SpeciesReference* reference = reaction->getProduct(j);
+            double stoich = reference->getStoichiometry();
+            if (reference->getLevel() == 1 && reference->getDenominator() != 1)
+            {
+                stoich = stoich / reference->getDenominator();
+            }
             if (_bSpeciesIndexList2.find(reference->getSpecies()) == _bSpeciesIndexList2.end())
             {
                 int row_id = _speciesIndexList2[reference->getSpecies()];
 
-                (*_Nmat)(row_id,i) = (*_Nmat)(row_id,i) + (reference->getStoichiometry());
+                (*_Nmat)(row_id,i) = (*_Nmat)(row_id,i) + stoich;
             }
         }
     }
