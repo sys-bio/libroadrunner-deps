@@ -1,0 +1,193 @@
+The system is: Windows - 10.0.19041 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.27.29110/bin/Hostx64/x64/cl.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Microsoft (R) C/C++ Optimizing Compiler Version 19.27.29111 for x64
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+CMakeCCompilerId.c
+Microsoft (R) Incremental Linker Version 14.27.29111.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:CMakeCCompilerId.exe 
+CMakeCCompilerId.obj 
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
+
+The C compiler identification is MSVC, found in "D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/CMakeFiles/3.18.1/CompilerIdC/CMakeCCompilerId.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.27.29110/bin/Hostx64/x64/cl.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Microsoft (R) C/C++ Optimizing Compiler Version 19.27.29111 for x64
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+CMakeCXXCompilerId.cpp
+Microsoft (R) Incremental Linker Version 14.27.29111.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:CMakeCXXCompilerId.exe 
+CMakeCXXCompilerId.obj 
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.exe"
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.obj"
+
+The CXX compiler identification is MSVC, found in "D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/CMakeFiles/3.18.1/CompilerIdCXX/CMakeCXXCompilerId.exe"
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake /nologo cmTC_b10e7\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x64\nmake.exe"  -f CMakeFiles\cmTC_b10e7.dir\build.make /nologo -L                  CMakeFiles\cmTC_b10e7.dir\build
+Building C object CMakeFiles/cmTC_b10e7.dir/CMakeCCompilerABI.c.obj
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\cl.exe @C:\Users\Ciaran\AppData\Local\Temp\nm4E8F.tmp
+CMakeCCompilerABI.c
+Linking C executable cmTC_b10e7.exe
+	D:\cmake\cmake-3.18.1-win64-x64\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_b10e7.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\mt.exe --manifests -- C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\cmTC_b10e7.dir\objects1.rsp @C:\Users\Ciaran\AppData\Local\Temp\nm4FD8.tmp
+
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake /nologo cmTC_e7c2c\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x64\nmake.exe"  -f CMakeFiles\cmTC_e7c2c.dir\build.make /nologo -L                  CMakeFiles\cmTC_e7c2c.dir\build
+Building CXX object CMakeFiles/cmTC_e7c2c.dir/CMakeCXXCompilerABI.cpp.obj
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\cl.exe @C:\Users\Ciaran\AppData\Local\Temp\nm50F0.tmp
+CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_e7c2c.exe
+	D:\cmake\cmake-3.18.1-win64-x64\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_e7c2c.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\mt.exe --manifests -- C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\cmTC_e7c2c.dir\objects1.rsp @C:\Users\Ciaran\AppData\Local\Temp\nm5130.tmp
+
+
+
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake /nologo cmTC_dea27\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x64\nmake.exe"  -f CMakeFiles\cmTC_dea27.dir\build.make /nologo -L                  CMakeFiles\cmTC_dea27.dir\build
+Building C object CMakeFiles/cmTC_dea27.dir/CheckIncludeFile.c.obj
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\cl.exe @C:\Users\Ciaran\AppData\Local\Temp\nm5267.tmp
+CheckIncludeFile.c
+Linking C executable cmTC_dea27.exe
+	D:\cmake\cmake-3.18.1-win64-x64\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_dea27.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\mt.exe --manifests -- C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\cmTC_dea27.dir\objects1.rsp @C:\Users\Ciaran\AppData\Local\Temp\nm52A7.tmp
+
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake /nologo cmTC_55589\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x64\nmake.exe"  -f CMakeFiles\cmTC_55589.dir\build.make /nologo -L                  CMakeFiles\cmTC_55589.dir\build
+Building C object CMakeFiles/cmTC_55589.dir/CheckIncludeFile.c.obj
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\cl.exe @C:\Users\Ciaran\AppData\Local\Temp\nm53AF.tmp
+CheckIncludeFile.c
+Linking C executable cmTC_55589.exe
+	D:\cmake\cmake-3.18.1-win64-x64\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_55589.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\mt.exe --manifests -- C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\cmTC_55589.dir\objects1.rsp @C:\Users\Ciaran\AppData\Local\Temp\nm53DF.tmp
+
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake /nologo cmTC_ee0a8\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x64\nmake.exe"  -f CMakeFiles\cmTC_ee0a8.dir\build.make /nologo -L                  CMakeFiles\cmTC_ee0a8.dir\build
+Building C object CMakeFiles/cmTC_ee0a8.dir/CheckIncludeFile.c.obj
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\cl.exe @C:\Users\Ciaran\AppData\Local\Temp\nm54E8.tmp
+CheckIncludeFile.c
+Linking C executable cmTC_ee0a8.exe
+	D:\cmake\cmake-3.18.1-win64-x64\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_ee0a8.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\mt.exe --manifests -- C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\cmTC_ee0a8.dir\objects1.rsp @C:\Users\Ciaran\AppData\Local\Temp\nm5518.tmp
+
+
+
+
+
+Detecting C [] compiler features compiled with the following output:
+Change Dir: D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake /nologo cmTC_364e4\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x64\nmake.exe"  -f CMakeFiles\cmTC_364e4.dir\build.make /nologo -L                  CMakeFiles\cmTC_364e4.dir\build
+Building C object CMakeFiles/cmTC_364e4.dir/feature_tests.c.obj
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\cl.exe @C:\Users\Ciaran\AppData\Local\Temp\nm6747.tmp
+feature_tests.c
+Linking C executable cmTC_364e4.exe
+	D:\cmake\cmake-3.18.1-win64-x64\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_364e4.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\mt.exe --manifests -- C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\cmTC_364e4.dir\objects1.rsp @C:\Users\Ciaran\AppData\Local\Temp\nm6786.tmp
+
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [] compiler features compiled with the following output:
+Change Dir: D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake /nologo cmTC_e9b8f\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x64\nmake.exe"  -f CMakeFiles\cmTC_e9b8f.dir\build.make /nologo -L                  CMakeFiles\cmTC_e9b8f.dir\build
+Building C object CMakeFiles/cmTC_e9b8f.dir/feature_tests.c.obj
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\cl.exe @C:\Users\Ciaran\AppData\Local\Temp\nm688F.tmp
+feature_tests.c
+Linking C executable cmTC_e9b8f.exe
+	D:\cmake\cmake-3.18.1-win64-x64\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_e9b8f.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\mt.exe --manifests -- C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\cmTC_e9b8f.dir\objects1.rsp @C:\Users\Ciaran\AppData\Local\Temp\nm68CE.tmp
+
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [] compiler features compiled with the following output:
+Change Dir: D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake /nologo cmTC_a620c\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x64\nmake.exe"  -f CMakeFiles\cmTC_a620c.dir\build.make /nologo -L                  CMakeFiles\cmTC_a620c.dir\build
+Building C object CMakeFiles/cmTC_a620c.dir/feature_tests.c.obj
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\cl.exe @C:\Users\Ciaran\AppData\Local\Temp\nm69C7.tmp
+feature_tests.c
+Linking C executable cmTC_a620c.exe
+	D:\cmake\cmake-3.18.1-win64-x64\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_a620c.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\mt.exe --manifests -- C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\cmTC_a620c.dir\objects1.rsp @C:\Users\Ciaran\AppData\Local\Temp\nm69F7.tmp
+
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_variadic_macros
+Determining if files errno.h exist passed with the following output:
+Change Dir: D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake /nologo cmTC_9cfc1\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x64\nmake.exe"  -f CMakeFiles\cmTC_9cfc1.dir\build.make /nologo -L                  CMakeFiles\cmTC_9cfc1.dir\build
+Building C object CMakeFiles/cmTC_9cfc1.dir/HAVE_ERRNO_H.c.obj
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\cl.exe @C:\Users\Ciaran\AppData\Local\Temp\nm6D71.tmp
+HAVE_ERRNO_H.c
+Linking C executable cmTC_9cfc1.exe
+	D:\cmake\cmake-3.18.1-win64-x64\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_9cfc1.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\mt.exe --manifests -- C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\cmTC_9cfc1.dir\objects1.rsp @C:\Users\Ciaran\AppData\Local\Temp\nm6DB0.tmp
+
+
+
+Determining if files math.h exist passed with the following output:
+Change Dir: D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake /nologo cmTC_bae74\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x64\nmake.exe"  -f CMakeFiles\cmTC_bae74.dir\build.make /nologo -L                  CMakeFiles\cmTC_bae74.dir\build
+Building C object CMakeFiles/cmTC_bae74.dir/HAVE_MATH_H.c.obj
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\cl.exe @C:\Users\Ciaran\AppData\Local\Temp\nm6F26.tmp
+HAVE_MATH_H.c
+Linking C executable cmTC_bae74.exe
+	D:\cmake\cmake-3.18.1-win64-x64\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_bae74.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\mt.exe --manifests -- C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\cmTC_bae74.dir\objects1.rsp @C:\Users\Ciaran\AppData\Local\Temp\nm6F66.tmp
+
+
+
+Determining if files float.h exist passed with the following output:
+Change Dir: D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake /nologo cmTC_50048\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\bin\HostX64\x64\nmake.exe"  -f CMakeFiles\cmTC_50048.dir\build.make /nologo -L                  CMakeFiles\cmTC_50048.dir\build
+Building C object CMakeFiles/cmTC_50048.dir/STDC_HEADERS.c.obj
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\cl.exe @C:\Users\Ciaran\AppData\Local\Temp\nm706F.tmp
+STDC_HEADERS.c
+Linking C executable cmTC_50048.exe
+	D:\cmake\cmake-3.18.1-win64-x64\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_50048.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x64\mt.exe --manifests -- C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\14.27.29110\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\cmTC_50048.dir\objects1.rsp @C:\Users\Ciaran\AppData\Local\Temp\nm70AE.tmp
+
+
+

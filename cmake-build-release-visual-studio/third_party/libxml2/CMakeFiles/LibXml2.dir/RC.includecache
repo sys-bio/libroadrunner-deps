@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/rrbuild/libroadrunner-deps/third_party/libxml2/win32/libxml2.rc
+winver.h
+-
+rcVersion.h
+D:/rrbuild/libroadrunner-deps/third_party/libxml2/win32/rcVersion.h
+
+third_party/libxml2/rcVersion.h
+

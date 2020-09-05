@@ -18,7 +18,7 @@
 
 # Require a fairly recent cmake version
 
-CMAKE_MINIMUM_REQUIRED(VERSION 2.2)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 
 # Project SUNDIALS (initially only C supported)
 
@@ -515,6 +515,10 @@ CONFIGURE_FILE(
   ${PROJECT_SOURCE_DIR}/include/sundials/sundials_config.in
   ${PROJECT_BINARY_DIR}/include/sundials/sundials_config.h
   )
+install(
+        FILES "${PROJECT_BINARY_DIR}/include/sundials/sundials_config.h"
+        DESTINATION include/sundials
+        )
 
 # Add the include directory in the source tree and the one in
 # the binary tree (for the header file sundials_config.h)
@@ -706,8 +710,28 @@ ENDIF(EXAMPLES_ENABLE)
 #----------------------------------
 
 # install configured header file
-INSTALL(
-  FILES ${PROJECT_BINARY_DIR}/include/sundials/sundials_config.h
-  DESTINATION include/sundials
-  )
+#INSTALL(
+#  FILES ${PROJECT_BINARY_DIR}/include/sundials/sundials_config.h
+#  DESTINATION include/sundials
+#  )
+
+install(TARGETS sundials_cvode_static sundials_nvecserial_static
+        EXPORT sundials
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/sundials
+        )
+
+# install the export info
+install(
+        EXPORT sundials
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake
+        NAMESPACE sundials::
+        FILE sundials-config.cmake
+)
+
+#install public headers
+install(FILES ${header_files} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${target})
+
 

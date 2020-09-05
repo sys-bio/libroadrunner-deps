@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/rrbuild/libroadrunner-deps/third_party/nleq1/f2c_nleq.h
+
+D:/rrbuild/libroadrunner-deps/third_party/nleq1/nleq1.c
+nleq1.h
+D:/rrbuild/libroadrunner-deps/third_party/nleq1/nleq1.h
+
+D:/rrbuild/libroadrunner-deps/third_party/nleq1/nleq1.h
+f2c_nleq.h
+D:/rrbuild/libroadrunner-deps/third_party/nleq1/f2c_nleq.h
+
+D:/rrbuild/libroadrunner-deps/third_party/nleq1/wnorm.c
+f2c_nleq.h
+D:/rrbuild/libroadrunner-deps/third_party/nleq1/f2c_nleq.h
+
+D:/rrbuild/libroadrunner-deps/third_party/nleq1/zibconst.c
+f2c_nleq.h
+D:/rrbuild/libroadrunner-deps/third_party/nleq1/f2c_nleq.h
+
+D:/rrbuild/libroadrunner-deps/third_party/nleq1/zibmon.c
+f2c_nleq.h
+D:/rrbuild/libroadrunner-deps/third_party/nleq1/f2c_nleq.h
+
+D:/rrbuild/libroadrunner-deps/third_party/nleq1/zibsec.c
+f2c_nleq.h
+D:/rrbuild/libroadrunner-deps/third_party/nleq1/f2c_nleq.h
+

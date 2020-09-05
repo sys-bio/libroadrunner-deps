@@ -1,0 +1,13 @@
+Name: libSBML
+Description: A library for reading/writing/manipulating SBML
+URL: http://sbml.org/Software/libSBML
+Version: 5.18.1
+
+prefix=D:/rrbuild/libroadrunner-deps/install-Ubuntu18.04-gcc10.1/Release
+libdir=D:/rrbuild/libroadrunner-deps/install-Ubuntu18.04-gcc10.1/Release/lib
+includedir=D:/rrbuild/libroadrunner-deps/install-Ubuntu18.04-gcc10.1/Release/include
+
+Libs: -L${libdir} -lsbml
+Libs.private:        $<TARGET_LINKER_FILE:LibXml2> LIBBZ_LIBRARY-NOTFOUND /usr/lib/x86_64-linux-gnu/libz.so -lstdc++ -lm
+Cflags: -I${includedir}
+Requires.private: libxml-2.0 >= 2.6.22

@@ -1,0 +1,2890 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Poco"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="msvc8"/>
+		<Option virtualFolders="CMake Files\;CMake Files\third_party\;CMake Files\third_party\clapack\;CMake Files\third_party\clapack\F2CLIBS\;CMake Files\third_party\clapack\F2CLIBS\libf2c\;CMake Files\third_party\clapack\BLAS\;CMake Files\third_party\clapack\BLAS\SRC\;CMake Files\third_party\clapack\SRC\;CMake Files\third_party\clapack\INCLUDE\;CMake Files\third_party\poco\;CMake Files\third_party\poco\cmake\;CMake Files\third_party\poco\Foundation\;CMake Files\third_party\poco\Net\;CMake Files\third_party\bzip2\;CMake Files\third_party\googletest\;CMake Files\third_party\googletest\googlemock\;CMake Files\third_party\googletest\googlemock\cmake\;CMake Files\third_party\googletest\googletest\;CMake Files\third_party\googletest\googletest\cmake\;CMake Files\third_party\iconv\;CMake Files\third_party\iconv\include\;CMake Files\third_party\iconv\libcharset\;CMake Files\third_party\iconv\libcharset\include\;CMake Files\third_party\nleq1\;CMake Files\third_party\nleq2\;CMake Files\third_party\zlib\;CMake Files\third_party\libxml2\;CMake Files\third_party\libxml2\include\;CMake Files\third_party\libxml2\include\libxml\;CMake Files\third_party\libSBML-5.18.1-experimental-Source\;CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\;CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\sbml\;CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\sbml\common\;CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\bindings\;CMake Files\third_party\rr-libstruct\;CMake Files\third_party\sundials\;CMake Files\third_party\sundials\include\;CMake Files\third_party\sundials\include\sundials\;CMake Files\third_party\sundials\src\;CMake Files\third_party\sundials\src\sundials\;CMake Files\third_party\sundials\src\nvec_ser\;CMake Files\third_party\sundials\src\cvode\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/third_party/poco"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f D:\rrbuild\libroadrunner-deps\cmake-build-release-visual-studio\third_party\poco\Makefile VERBOSE=1 all"/>
+					<CompileFile command="nmake /NOLOGO /f D:\rrbuild\libroadrunner-deps\cmake-build-release-visual-studio\third_party\poco\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\rrbuild\libroadrunner-deps\cmake-build-release-visual-studio\third_party\poco\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\rrbuild\libroadrunner-deps\cmake-build-release-visual-studio\third_party\poco\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PocoFoundation">
+				<Option output="D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/lib/PocoFoundation.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/third_party/poco/Foundation"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add option="-DPOCO_STATIC"/>
+					<Add option="-DPOCO_NO_AUTOMATIC_LIBS"/>
+					<Add option="-DPOCO_OS_FAMILY_WINDOWS"/>
+					<Add option="-DPCRE_STATIC"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/CppUnit/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/CppUnit/WinTestRunner/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/XML/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/NetSSL_OpenSSL/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Util/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Data/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Data/MySQL/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Data/SQLite/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Data/ODBC/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Zip/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Crypto/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Web/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/JSON/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/MongoDB/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/PDF/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/SevenZip/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/third_party/poco/Foundation"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f D:\rrbuild\libroadrunner-deps\cmake-build-release-visual-studio\third_party\poco\Foundation\Makefile VERBOSE=1 PocoFoundation"/>
+					<CompileFile command="nmake /NOLOGO /f D:\rrbuild\libroadrunner-deps\cmake-build-release-visual-studio\third_party\poco\Foundation\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\rrbuild\libroadrunner-deps\cmake-build-release-visual-studio\third_party\poco\Foundation\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\rrbuild\libroadrunner-deps\cmake-build-release-visual-studio\third_party\poco\Foundation\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PocoFoundation/fast">
+				<Option output="D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/lib/PocoFoundation.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/third_party/poco/Foundation"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add option="-DPOCO_STATIC"/>
+					<Add option="-DPOCO_NO_AUTOMATIC_LIBS"/>
+					<Add option="-DPOCO_OS_FAMILY_WINDOWS"/>
+					<Add option="-DPCRE_STATIC"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/CppUnit/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/CppUnit/WinTestRunner/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/XML/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/NetSSL_OpenSSL/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Util/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Data/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Data/MySQL/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Data/SQLite/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Data/ODBC/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Zip/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Crypto/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Web/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/JSON/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/MongoDB/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/PDF/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/SevenZip/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/third_party/poco/Foundation"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f D:\rrbuild\libroadrunner-deps\cmake-build-release-visual-studio\third_party\poco\Foundation\Makefile VERBOSE=1 PocoFoundation/fast"/>
+					<CompileFile command="nmake /NOLOGO /f D:\rrbuild\libroadrunner-deps\cmake-build-release-visual-studio\third_party\poco\Foundation\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\rrbuild\libroadrunner-deps\cmake-build-release-visual-studio\third_party\poco\Foundation\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\rrbuild\libroadrunner-deps\cmake-build-release-visual-studio\third_party\poco\Foundation\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PocoNet">
+				<Option output="D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/lib/PocoNet.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/third_party/poco/Net"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add option="-DPOCO_STATIC"/>
+					<Add option="-DPOCO_NO_AUTOMATIC_LIBS"/>
+					<Add option="-DPOCO_OS_FAMILY_WINDOWS"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/CppUnit/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/CppUnit/WinTestRunner/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/XML/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/NetSSL_OpenSSL/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Util/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Data/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Data/MySQL/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Data/SQLite/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Data/ODBC/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Zip/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Crypto/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Web/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/JSON/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/MongoDB/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/PDF/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/SevenZip/include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f D:\rrbuild\libroadrunner-deps\cmake-build-release-visual-studio\third_party\poco\Net\Makefile VERBOSE=1 PocoNet"/>
+					<CompileFile command="nmake /NOLOGO /f D:\rrbuild\libroadrunner-deps\cmake-build-release-visual-studio\third_party\poco\Net\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\rrbuild\libroadrunner-deps\cmake-build-release-visual-studio\third_party\poco\Net\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\rrbuild\libroadrunner-deps\cmake-build-release-visual-studio\third_party\poco\Net\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PocoNet/fast">
+				<Option output="D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/lib/PocoNet.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/third_party/poco/Net"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add option="-DPOCO_STATIC"/>
+					<Add option="-DPOCO_NO_AUTOMATIC_LIBS"/>
+					<Add option="-DPOCO_OS_FAMILY_WINDOWS"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/CppUnit/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/CppUnit/WinTestRunner/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/XML/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/NetSSL_OpenSSL/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Util/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Data/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Data/MySQL/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Data/SQLite/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Data/ODBC/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Zip/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Crypto/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/Web/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/JSON/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/MongoDB/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/PDF/include"/>
+					<Add directory="D:/rrbuild/libroadrunner-deps/third_party/poco/SevenZip/include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f D:\rrbuild\libroadrunner-deps\cmake-build-release-visual-studio\third_party\poco\Net\Makefile VERBOSE=1 PocoNet/fast"/>
+					<CompileFile command="nmake /NOLOGO /f D:\rrbuild\libroadrunner-deps\cmake-build-release-visual-studio\third_party\poco\Net\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f D:\rrbuild\libroadrunner-deps\cmake-build-release-visual-studio\third_party\poco\Net\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f D:\rrbuild\libroadrunner-deps\cmake-build-release-visual-studio\third_party\poco\Net\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/third_party/poco/Foundation/pocomsg.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/cmake-build-release-visual-studio/third_party/poco/Foundation/pocomsg.h.rule">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ASCIIEncoding.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/AbstractCache.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/AbstractDelegate.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/AbstractEvent.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/AbstractObserver.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/AbstractPriorityDelegate.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/AbstractStrategy.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/AccessExpirationDecorator.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/AccessExpireCache.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/AccessExpireLRUCache.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/AccessExpireStrategy.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ActiveDispatcher.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ActiveMethod.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ActiveResult.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ActiveRunnable.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ActiveStarter.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Activity.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Alignment.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Any.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ArchiveStrategy.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Array.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Ascii.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/AsyncChannel.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/AtomicCounter.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/AutoPtr.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/AutoReleasePool.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Base32Decoder.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Base32Encoder.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Base64Decoder.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Base64Encoder.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/BasicEvent.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/BinaryReader.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/BinaryWriter.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Buffer.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/BufferAllocator.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/BufferedBidirectionalStreamBuf.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/BufferedStreamBuf.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Bugcheck.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ByteOrder.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Channel.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Checksum.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ClassLibrary.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ClassLoader.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Clock.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Condition.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Config.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Configurable.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ConsoleChannel.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/CountingStream.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/DateTime.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/DateTimeFormat.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/DateTimeFormatter.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/DateTimeParser.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Debugger.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/DefaultStrategy.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/DeflatingStream.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Delegate.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/DigestEngine.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/DigestStream.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/DirectoryIterator.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/DirectoryIteratorStrategy.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/DirectoryIterator_UNIX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/DirectoryIterator_VMS.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/DirectoryIterator_WIN32.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/DirectoryIterator_WIN32U.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/DirectoryWatcher.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Dynamic/Pair.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Dynamic/Struct.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Dynamic/Var.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Dynamic/VarHolder.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Dynamic/VarIterator.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/DynamicAny.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/DynamicAnyHolder.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/DynamicFactory.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/DynamicStruct.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Environment.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Environment_UNIX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Environment_VMS.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Environment_VX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Environment_WIN32.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Environment_WIN32U.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Environment_WINCE.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Error.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ErrorHandler.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Event.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/EventArgs.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/EventLogChannel.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Event_POSIX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Event_VX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Event_WIN32.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Exception.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ExpirationDecorator.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Expire.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ExpireCache.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ExpireLRUCache.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ExpireStrategy.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/FIFOBuffer.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/FIFOBufferStream.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/FIFOEvent.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/FIFOStrategy.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/FPEnvironment.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/FPEnvironment_C99.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/FPEnvironment_DEC.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/FPEnvironment_DUMMY.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/FPEnvironment_SUN.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/FPEnvironment_WIN32.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/File.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/FileChannel.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/FileStream.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/FileStreamFactory.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/FileStream_POSIX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/FileStream_WIN32.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/File_UNIX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/File_VMS.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/File_VX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/File_WIN32.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/File_WIN32U.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/File_WINCE.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Format.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Formatter.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/FormattingChannel.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Foundation.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/FunctionDelegate.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/FunctionPriorityDelegate.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Glob.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/HMACEngine.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Hash.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/HashFunction.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/HashMap.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/HashSet.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/HashStatistic.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/HashTable.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/HexBinaryDecoder.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/HexBinaryEncoder.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/InflatingStream.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Instantiator.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/KeyValueArgs.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/LRUCache.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/LRUStrategy.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Latin1Encoding.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Latin2Encoding.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Latin9Encoding.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/LineEndingConverter.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/LinearHashTable.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ListMap.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/LocalDateTime.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/LogFile.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/LogFile_STD.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/LogFile_VMS.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/LogFile_WIN32.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/LogFile_WIN32U.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/LogStream.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Logger.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/LoggingFactory.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/LoggingRegistry.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/MD4Engine.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/MD5Engine.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Manifest.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/MemoryPool.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/MemoryStream.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Message.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/MetaObject.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/MetaProgramming.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Mutex.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Mutex_POSIX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Mutex_VX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Mutex_WIN32.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Mutex_WINCE.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NObserver.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NamedEvent.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NamedEvent_Android.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NamedEvent_UNIX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NamedEvent_VMS.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NamedEvent_WIN32.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NamedEvent_WIN32U.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NamedMutex.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NamedMutex_Android.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NamedMutex_UNIX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NamedMutex_VMS.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NamedMutex_WIN32.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NamedMutex_WIN32U.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NamedTuple.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NestedDiagnosticContext.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Notification.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NotificationCenter.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NotificationQueue.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NotificationStrategy.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NullChannel.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NullStream.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Nullable.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NumberFormatter.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NumberParser.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/NumericString.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ObjectPool.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Observer.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/OpcomChannel.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Optional.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/PBKDF2Engine.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Path.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Path_UNIX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Path_VMS.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Path_WIN32.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Path_WIN32U.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Path_WINCE.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/PatternFormatter.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Pipe.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/PipeImpl.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/PipeImpl_DUMMY.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/PipeImpl_POSIX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/PipeImpl_WIN32.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/PipeStream.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Platform.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Platform_POSIX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Platform_VMS.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Platform_VX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Platform_WIN32.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Poco.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/PriorityDelegate.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/PriorityEvent.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/PriorityExpire.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/PriorityNotificationQueue.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/PriorityStrategy.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Process.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Process_UNIX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Process_VMS.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Process_VX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Process_WIN32.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Process_WIN32U.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Process_WINCE.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/PurgeStrategy.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/RWLock.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/RWLock_Android.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/RWLock_POSIX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/RWLock_VX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/RWLock_WIN32.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/RWLock_WINCE.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Random.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/RandomStream.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/RecursiveDirectoryIterator.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/RecursiveDirectoryIteratorImpl.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/RefCountedObject.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/RegularExpression.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/RotateStrategy.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Runnable.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/RunnableAdapter.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/SHA1Engine.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ScopedLock.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ScopedUnlock.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Semaphore.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Semaphore_POSIX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Semaphore_VX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Semaphore_WIN32.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/SharedLibrary.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/SharedLibrary_HPUX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/SharedLibrary_UNIX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/SharedLibrary_VMS.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/SharedLibrary_VX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/SharedLibrary_WIN32.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/SharedLibrary_WIN32U.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/SharedMemory.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/SharedMemory_DUMMY.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/SharedMemory_POSIX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/SharedMemory_WIN32.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/SharedPtr.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/SignalHandler.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/SimpleFileChannel.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/SimpleHashTable.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/SingletonHolder.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/SortedDirectoryIterator.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/SplitterChannel.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Stopwatch.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/StrategyCollection.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/StreamChannel.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/StreamConverter.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/StreamCopier.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/StreamTokenizer.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/StreamUtil.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/String.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/StringTokenizer.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/SynchronizedObject.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/SyslogChannel.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Task.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/TaskManager.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/TaskNotification.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/TeeStream.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/TemporaryFile.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/TextBufferIterator.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/TextConverter.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/TextEncoding.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/TextIterator.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Thread.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ThreadLocal.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ThreadPool.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ThreadTarget.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Thread_POSIX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Thread_VX.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Thread_WIN32.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Thread_WINCE.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/TimedNotificationQueue.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Timer.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Timespan.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Timestamp.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Timezone.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Token.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Tuple.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/TypeList.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Types.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/URI.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/URIStreamFactory.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/URIStreamOpener.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/UTF16Encoding.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/UTF32Encoding.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/UTF8Encoding.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/UTF8String.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/UTFString.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/UUID.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/UUIDGenerator.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/UnWindows.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/UnbufferedStreamBuf.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Unicode.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/UnicodeConverter.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/UniqueAccessExpireCache.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/UniqueAccessExpireLRUCache.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/UniqueAccessExpireStrategy.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/UniqueExpireCache.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/UniqueExpireLRUCache.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/UniqueExpireStrategy.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/ValidArgs.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Version.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Void.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Windows1250Encoding.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Windows1251Encoding.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/Windows1252Encoding.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/WindowsConsoleChannel.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/zconf.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/include/Poco/zlib.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/ASCIIEncoding.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/AbstractObserver.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/ActiveDispatcher.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/ArchiveStrategy.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Ascii.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/AsyncChannel.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/AtomicCounter.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Base32Decoder.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Base32Encoder.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Base64Decoder.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Base64Encoder.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/BinaryReader.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/BinaryWriter.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Bugcheck.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/ByteOrder.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Channel.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Checksum.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Clock.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Condition.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Configurable.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/ConsoleChannel.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/CountingStream.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/DateTime.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/DateTimeFormat.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/DateTimeFormatter.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/DateTimeParser.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Debugger.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/DeflatingStream.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/DigestEngine.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/DigestStream.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/DirectoryIterator.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/DirectoryIteratorStrategy.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/DirectoryIterator_UNIX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/DirectoryIterator_VMS.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/DirectoryIterator_WIN32.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/DirectoryIterator_WIN32U.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/DirectoryWatcher.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Environment.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Environment_UNIX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Environment_VMS.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Environment_VX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Environment_WIN32.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Environment_WIN32U.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Environment_WINCE.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Error.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/ErrorHandler.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Event.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/EventArgs.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/EventLogChannel.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Event_POSIX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Event_VX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Event_WIN32.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Exception.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/FIFOBufferStream.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/FPEnvironment.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/FPEnvironment_C99.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/FPEnvironment_DEC.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/FPEnvironment_DUMMY.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/FPEnvironment_SUN.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/FPEnvironment_WIN32.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/File.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/FileChannel.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/FileStream.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/FileStreamFactory.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/FileStream_POSIX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/FileStream_WIN32.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/File_UNIX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/File_VMS.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/File_VX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/File_WIN32.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/File_WIN32U.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/File_WINCE.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Format.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Formatter.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/FormattingChannel.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Glob.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Hash.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/HashStatistic.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/HexBinaryDecoder.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/HexBinaryEncoder.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/InflatingStream.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Latin1Encoding.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Latin2Encoding.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Latin9Encoding.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/LineEndingConverter.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/LocalDateTime.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/LogFile.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/LogFile_STD.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/LogFile_VMS.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/LogFile_WIN32.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/LogFile_WIN32U.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/LogStream.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Logger.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/LoggingFactory.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/LoggingRegistry.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/MD4Engine.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/MD5Engine.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Manifest.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/MemoryPool.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/MemoryStream.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Message.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Mutex.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Mutex_POSIX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Mutex_VX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Mutex_WIN32.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Mutex_WINCE.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/NamedEvent.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/NamedEvent_Android.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/NamedEvent_UNIX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/NamedEvent_VMS.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/NamedEvent_WIN32.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/NamedEvent_WIN32U.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/NamedMutex.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/NamedMutex_Android.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/NamedMutex_UNIX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/NamedMutex_VMS.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/NamedMutex_WIN32.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/NamedMutex_WIN32U.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/NestedDiagnosticContext.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Notification.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/NotificationCenter.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/NotificationQueue.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/NullChannel.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/NullStream.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/NumberFormatter.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/NumberParser.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/NumericString.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/OpcomChannel.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Path.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Path_UNIX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Path_VMS.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Path_WIN32.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Path_WIN32U.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Path_WINCE.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/PatternFormatter.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Pipe.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/PipeImpl.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/PipeImpl_DUMMY.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/PipeImpl_POSIX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/PipeImpl_WIN32.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/PipeStream.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/PriorityNotificationQueue.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Process.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Process_UNIX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Process_VMS.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Process_VX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Process_WIN32.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Process_WIN32U.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Process_WINCE.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/PurgeStrategy.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/RWLock.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/RWLock_Android.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/RWLock_POSIX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/RWLock_VX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/RWLock_WIN32.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/RWLock_WINCE.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Random.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/RandomStream.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/RefCountedObject.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/RegularExpression.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/RotateStrategy.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Runnable.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/SHA1Engine.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Semaphore.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Semaphore_POSIX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Semaphore_VX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Semaphore_WIN32.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/SharedLibrary.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/SharedLibrary_HPUX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/SharedLibrary_UNIX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/SharedLibrary_VMS.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/SharedLibrary_VX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/SharedLibrary_WIN32.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/SharedLibrary_WIN32U.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/SharedMemory.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/SharedMemory_DUMMY.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/SharedMemory_POSIX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/SharedMemory_WIN32.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/SignalHandler.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/SimpleFileChannel.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/SortedDirectoryIterator.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/SplitterChannel.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Stopwatch.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/StreamChannel.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/StreamConverter.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/StreamCopier.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/StreamTokenizer.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/String.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/StringTokenizer.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/SynchronizedObject.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/SyslogChannel.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Task.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/TaskManager.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/TaskNotification.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/TeeStream.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/TemporaryFile.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/TextBufferIterator.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/TextConverter.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/TextEncoding.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/TextIterator.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Thread.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/ThreadLocal.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/ThreadPool.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/ThreadTarget.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Thread_POSIX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Thread_VX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Thread_WIN32.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Thread_WINCE.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/TimedNotificationQueue.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Timer.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Timespan.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Timestamp.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Timezone.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Timezone_UNIX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Timezone_VX.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Timezone_WIN32.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Timezone_WINCE.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Token.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/URI.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/URIStreamFactory.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/URIStreamOpener.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/UTF16Encoding.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/UTF32Encoding.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/UTF8Encoding.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/UTF8String.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/UUID.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/UUIDGenerator.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Unicode.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/UnicodeConverter.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Var.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/VarHolder.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/VarIterator.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Void.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Windows1250Encoding.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Windows1251Encoding.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/Windows1252Encoding.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/WindowsConsoleChannel.cpp">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/adler32.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/compress.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/crc32.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/crc32.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/deflate.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/deflate.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/infback.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/inffast.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/inffast.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/inflate.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/inflate.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/inftrees.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/inftrees.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_byte_order.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_chartables.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_compile.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_config.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_config.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_dfa_exec.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_exec.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_fullinfo.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_get.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_globals.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_jit_compile.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_maketables.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_newline.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_ord2utf8.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_refcount.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_string_utils.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_study.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_tables.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_ucd.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_valid_utf8.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_version.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pcre_xclass.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/pocomsg.mc">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/trees.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/trees.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/zutil.c">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/src/zutil.h">
+			<Option target="PocoFoundation"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/AbstractHTTPRequestHandler.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/DNS.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/DatagramSocket.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/DatagramSocketImpl.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/DialogSocket.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/FTPClientSession.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/FTPStreamFactory.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/FilePartSource.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTMLForm.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPAuthenticationParams.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPBasicCredentials.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPBasicStreamBuf.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPBufferAllocator.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPChunkedStream.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPClientSession.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPCookie.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPCredentials.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPDigestCredentials.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPFixedLengthStream.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPHeaderStream.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPIOStream.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPMessage.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPRequest.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPRequestHandler.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPRequestHandlerFactory.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPResponse.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPServer.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPServerConnection.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPServerConnectionFactory.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPServerParams.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPServerRequest.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPServerRequestImpl.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPServerResponse.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPServerResponseImpl.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPServerSession.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPSession.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPSessionFactory.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPSessionInstantiator.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPStream.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HTTPStreamFactory.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/HostEntry.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/ICMPClient.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/ICMPEventArgs.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/ICMPPacket.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/ICMPPacketImpl.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/ICMPSocket.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/ICMPSocketImpl.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/ICMPv4PacketImpl.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/IPAddress.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/IPAddressImpl.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/MailMessage.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/MailRecipient.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/MailStream.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/MediaType.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/MessageHeader.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/MulticastSocket.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/MultipartReader.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/MultipartWriter.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/NTPClient.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/NTPEventArgs.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/NTPPacket.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/NameValueCollection.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/Net.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/NetException.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/NetworkInterface.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/NullPartHandler.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/POP3ClientSession.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/ParallelSocketAcceptor.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/ParallelSocketReactor.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/PartHandler.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/PartSource.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/PartStore.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/QuotedPrintableDecoder.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/QuotedPrintableEncoder.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/RawSocket.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/RawSocketImpl.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/RemoteSyslogChannel.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/RemoteSyslogListener.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/SMTPChannel.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/SMTPClientSession.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/ServerSocket.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/ServerSocketImpl.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/Socket.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/SocketAcceptor.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/SocketAddress.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/SocketAddressImpl.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/SocketConnector.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/SocketDefs.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/SocketImpl.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/SocketNotification.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/SocketNotifier.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/SocketReactor.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/SocketStream.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/StreamSocket.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/StreamSocketImpl.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/StringPartSource.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/TCPServer.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/TCPServerConnection.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/TCPServerConnectionFactory.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/TCPServerDispatcher.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/TCPServerParams.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/WebSocket.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/include/Poco/Net/WebSocketImpl.h">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/AbstractHTTPRequestHandler.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/DNS.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/DatagramSocket.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/DatagramSocketImpl.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/DialogSocket.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/FTPClientSession.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/FTPStreamFactory.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/FilePartSource.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTMLForm.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPAuthenticationParams.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPBasicCredentials.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPBufferAllocator.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPChunkedStream.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPClientSession.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPCookie.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPCredentials.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPDigestCredentials.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPFixedLengthStream.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPHeaderStream.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPIOStream.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPMessage.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPRequest.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPRequestHandler.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPRequestHandlerFactory.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPResponse.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPServer.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPServerConnection.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPServerConnectionFactory.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPServerParams.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPServerRequest.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPServerRequestImpl.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPServerResponse.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPServerResponseImpl.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPServerSession.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPSession.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPSessionFactory.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPSessionInstantiator.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPStream.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HTTPStreamFactory.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/HostEntry.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/ICMPClient.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/ICMPEventArgs.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/ICMPPacket.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/ICMPPacketImpl.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/ICMPSocket.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/ICMPSocketImpl.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/ICMPv4PacketImpl.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/IPAddress.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/IPAddressImpl.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/MailMessage.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/MailRecipient.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/MailStream.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/MediaType.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/MessageHeader.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/MulticastSocket.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/MultipartReader.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/MultipartWriter.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/NTPClient.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/NTPEventArgs.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/NTPPacket.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/NameValueCollection.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/Net.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/NetException.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/NetworkInterface.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/NullPartHandler.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/POP3ClientSession.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/PartHandler.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/PartSource.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/PartStore.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/QuotedPrintableDecoder.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/QuotedPrintableEncoder.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/RawSocket.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/RawSocketImpl.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/RemoteSyslogChannel.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/RemoteSyslogListener.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/SMTPChannel.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/SMTPClientSession.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/ServerSocket.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/ServerSocketImpl.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/Socket.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/SocketAddress.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/SocketAddressImpl.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/SocketImpl.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/SocketNotification.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/SocketNotifier.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/SocketReactor.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/SocketStream.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/StreamSocket.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/StreamSocketImpl.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/StringPartSource.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/TCPServer.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/TCPServerConnection.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/TCPServerConnectionFactory.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/TCPServerDispatcher.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/TCPServerParams.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/WebSocket.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/src/WebSocketImpl.cpp">
+			<Option target="PocoNet"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/clapack/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\clapack\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/clapack/clapack-config-version.cmake.in">
+			<Option virtualFolder="CMake Files\third_party\clapack\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/clapack/clapack-config.cmake.in">
+			<Option virtualFolder="CMake Files\third_party\clapack\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/clapack/F2CLIBS/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\clapack\F2CLIBS\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/clapack/F2CLIBS/libf2c/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\clapack\F2CLIBS\libf2c\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/clapack/BLAS/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\clapack\BLAS\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/clapack/BLAS/SRC/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\clapack\BLAS\SRC\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/clapack/SRC/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\clapack\SRC\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/clapack/INCLUDE/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\clapack\INCLUDE\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\poco\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/cmake/FindAPR.cmake">
+			<Option virtualFolder="CMake Files\third_party\poco\cmake\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/cmake/FindApache2.cmake">
+			<Option virtualFolder="CMake Files\third_party\poco\cmake\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/cmake/PocoMacros.cmake">
+			<Option virtualFolder="CMake Files\third_party\poco\cmake\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Foundation/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\poco\Foundation\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/poco/Net/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\poco\Net\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/bzip2/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\bzip2\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/googletest/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\googletest\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/googletest/googlemock/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\googletest\googlemock\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/googletest/googlemock/cmake/gmock.pc.in">
+			<Option virtualFolder="CMake Files\third_party\googletest\googlemock\cmake\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/googletest/googlemock/cmake/gmock_main.pc.in">
+			<Option virtualFolder="CMake Files\third_party\googletest\googlemock\cmake\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/googletest/googletest/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\googletest\googletest\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/googletest/googletest/cmake/Config.cmake.in">
+			<Option virtualFolder="CMake Files\third_party\googletest\googletest\cmake\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/googletest/googletest/cmake/gtest.pc.in">
+			<Option virtualFolder="CMake Files\third_party\googletest\googletest\cmake\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/googletest/googletest/cmake/gtest_main.pc.in">
+			<Option virtualFolder="CMake Files\third_party\googletest\googletest\cmake\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/googletest/googletest/cmake/internal_utils.cmake">
+			<Option virtualFolder="CMake Files\third_party\googletest\googletest\cmake\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/iconv/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\iconv\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/iconv/config.h.in">
+			<Option virtualFolder="CMake Files\third_party\iconv\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/iconv/include/iconv.h.build.in">
+			<Option virtualFolder="CMake Files\third_party\iconv\include\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/iconv/libcharset/include/libcharset.h.in">
+			<Option virtualFolder="CMake Files\third_party\iconv\libcharset\include\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/iconv/libcharset/include/localcharset.h.build.in">
+			<Option virtualFolder="CMake Files\third_party\iconv\libcharset\include\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/nleq1/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\nleq1\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/nleq2/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\nleq2\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/zlib/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\zlib\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/zlib/zconf.h.cmakein">
+			<Option virtualFolder="CMake Files\third_party\zlib\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/zlib/zlib.pc.cmakein">
+			<Option virtualFolder="CMake Files\third_party\zlib\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libxml2/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\libxml2\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libxml2/include/win32config.h">
+			<Option virtualFolder="CMake Files\third_party\libxml2\include\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libxml2/include/libxml/xmlversion.h.in">
+			<Option virtualFolder="CMake Files\third_party\libxml2\include\libxml\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libxml2/include/libxml/xmlwin32version.h.in">
+			<Option virtualFolder="CMake Files\third_party\libxml2\include\libxml\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/arrays-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/comp-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/distrib-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/dyn-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/fbc-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/groups-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/l3v2extendedmath-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/layout-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/multi-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/qual-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/render-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/req-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/spatial-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/src/arrays-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/src/comp-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/src/distrib-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/src/dyn-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/src/fbc-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/src/groups-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/src/l3v2extendedmath-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/src/layout-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/src/multi-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/src/qual-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/src/render-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/src/req-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/src/spatial-package.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/src/sbml/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\sbml\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/src/sbml/common/libsbml-config-common.h.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\sbml\common\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/src/sbml/common/libsbml-namespace.h.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\sbml\common\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/src/sbml/common/libsbml-package.h.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\sbml\common\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/src/sbml/common/libsbml-version.h.cmake">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\sbml\common\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/libSBML-5.18.1-experimental-Source/src/bindings/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\libSBML-5.18.1-experimental-Source\src\bindings\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/rr-libstruct/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\rr-libstruct\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/sundials/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\sundials\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/sundials/include/sundials/sundials_config.in">
+			<Option virtualFolder="CMake Files\third_party\sundials\include\sundials\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/sundials/src/sundials/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\sundials\src\sundials\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/sundials/src/nvec_ser/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\sundials\src\nvec_ser\"/>
+		</Unit>
+		<Unit filename="D:/rrbuild/libroadrunner-deps/third_party/sundials/src/cvode/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\third_party\sundials\src\cvode\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
