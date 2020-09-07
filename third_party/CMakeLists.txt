@@ -65,6 +65,10 @@ add_subdirectory(rr-libstruct)
 #
 ## sundials
 message(STATUS "Adding sundials as subdirectory")
+# sundials handles the BUILD_SHARED_LIBS variable
+# differently to most other packages - they also have a
+# BUILD_STATIC_LIBS variable. Since we only want static for sundials,
+# if BUILD_SHARED_LIBS, temporarily turn it off for sundials then turn back on
 if (${BUILD_SHARED_LIBS})
     # temporarily turn off build_shared_libs FOR SUNDIALS WE ONLY WANT STATIC
     set(BUILD_SHARED_LIBS OFF)
@@ -72,71 +76,30 @@ if (${BUILD_SHARED_LIBS})
 endif ()
 
 add_subdirectory(sundials)
+
+# turn BUILD_SHARED_LIBS back on, if it was on before
 if (_TEMP_NO_SHARED_LIBS)
-    # turn BUILD_SHARED_LIBS back on, if it was on before
     set(BUILD_SHARED_LIBS ON)
 endif ()
+unset(_TEMP_NO_SHARED_LIBS) # clean up temp variable
 
-if(${BUILD_LLVM})
-    message(STATUS "Adding llvm-6.x/llvm as subdirectory")
-    add_subdirectory(llvm-6.x/llvm)
-else()
-    message(WARNING "Not building LLVM. LLVM is a required dependency of roadrunner. Not \
-marking LLVM for building means that you already have a built copy of llvm-6.x built and installed. If installed in a \
-non-standard location you will have to give the install directory to roadrunner cmake with
-    -DLLVM_INSTALL_PREFIX=\"/full/path/to/llvm\"
-If you do not already have llvm-6.x, please re-run cmake with
-    -DBUILD_LLVM=ON
-")
-endif()
-
-
-set(
-        DEPENDENCY_TARGETS
-        libz2
-        f2c blas lapack
-        libcharset libiconv-static
-        LibXml2
-        sbml-static libsbml
-        nleq1-static
-        nleq2-static
-        PocoFoundation
-        PocoNet
-        zlibstatic
-)
-
-add_subdirectory(googletest)
+#if(${BUILD_LLVM})
+#    message(STATUS "Adding llvm-6.x/llvm as subdirectory")
+#    add_subdirectory(llvm-6.x/llvm)
+#else()
+#    message(WARNING "Not building LLVM. LLVM is a required dependency of roadrunner. Not \
+#marking LLVM for building means that you already have a built copy of llvm-6.x built and installed. If installed in a \
+#non-standard location you will have to give the install directory to roadrunner cmake with
+#    -DLLVM_INSTALL_PREFIX=\"/full/path/to/llvm\"
+#If you do not already have llvm-6.x, please re-run cmake with
+#    -DBUILD_LLVM=ON
+#")
+#endif()
+#
+#
+#add_subdirectory(googletest)
 
 
-
-# todo consider whether to remove. These are not needed unless third party libraries are embedded in roadrunner.
-set(
-        DEPENDENCY_INCLUDE_DIRS
-        $<TARGET_PROPERTY:libz2,INCLUDE_DIRECTORIES>
-        $<TARGET_PROPERTY:f2c,INCLUDE_DIRECTORIES>
-        $<TARGET_PROPERTY:blas,INCLUDE_DIRECTORIES>
-        $<TARGET_PROPERTY:lapack,INCLUDE_DIRECTORIES>
-        $<TARGET_PROPERTY:libcharset,INCLUDE_DIRECTORIES>
-        $<TARGET_PROPERTY:LibXml2,INCLUDE_DIRECTORIES>
-        $<TARGET_PROPERTY:libsbml,INCLUDE_DIRECTORIES>
-        $<TARGET_PROPERTY:PocoFoundation,INCLUDE_DIRECTORIES>
-        $<TARGET_PROPERTY:PocoNet,INCLUDE_DIRECTORIES>
-        $<TARGET_PROPERTY:zlibstatic,INCLUDE_DIRECTORIES>
-        $<TARGET_PROPERTY:libiconv-static,INCLUDE_DIRECTORIES>
-        $<TARGET_PROPERTY:sbml-static,INCLUDE_DIRECTORIES>
-        $<TARGET_PROPERTY:nleq1-static,INCLUDE_DIRECTORIES>
-        $<TARGET_PROPERTY:nleq2-static,INCLUDE_DIRECTORIES>
-        PARENT_SCOPE
-)
-
-add_custom_target(
-        printGenex
-        COMMENT "Result of generator expression:"
-        COMMAND ${CMAKE_COMMAND} -E echo "${DEPENDENCY_INCLUDE_DIRS}"
-        VERBATIM
-)
-
-set(DEPENDENCY_TARGETS ${DEPENDENCY_TARGETS} PARENT_SCOPE)
 
 
 
