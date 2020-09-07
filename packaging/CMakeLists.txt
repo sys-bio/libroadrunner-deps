@@ -9,10 +9,6 @@ set(
         arithchk
         f2c
         lapack
-        gmock
-        gmock_main
-        gtest
-        gtest_main
         libcharset
         libiconv-static
         libsbml
@@ -52,7 +48,6 @@ set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Ciaran Welsh")
 
 include(CPack)
 
-
 # In order to have the packaging targets depend on
 # first installing libroadrunner-deps we need to create a target
 # that does the install.
@@ -69,7 +64,7 @@ add_dependencies(rrDEPS_INSTALL ${all_targets})
 add_custom_target(packaging)
 add_dependencies(packaging rrDEPS_INSTALL)
 
-if (WIN32)
+if (${WIN32})
     add_custom_target(
             packaging-zip
             COMMENT "Create a zip binary distribution"
