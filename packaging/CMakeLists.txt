@@ -54,7 +54,7 @@ include(CPack)
 
 
 # In order to have the packaging targets depend on
-# first installing libomexmeta we need to create a target
+# first installing libroadrunner-deps we need to create a target
 # that does the install.
 add_custom_target(
         rrDEPS_INSTALL
