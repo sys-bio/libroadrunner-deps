@@ -60,7 +60,6 @@ set(LIBSBML_INCLUDE_DIR $<TARGET_PROPERTY:libsbml,INCLUDE_DIRECTORIES>) # used b
 #
 ## rr-libstruct
 message(STATUS "Adding rr-libstruct as subdirectory")
-# poco options
 add_subdirectory(rr-libstruct)
 
 #
@@ -74,9 +73,22 @@ endif ()
 
 add_subdirectory(sundials)
 if (_TEMP_NO_SHARED_LIBS)
-    # turn BUILD_SHARED_LIBS back on
+    # turn BUILD_SHARED_LIBS back on, if it was on before
     set(BUILD_SHARED_LIBS ON)
 endif ()
+
+if(${BUILD_LLVM})
+    message(STATUS "Adding llvm-6.x/llvm as subdirectory")
+    add_subdirectory(llvm-6.x/llvm)
+else()
+    message(WARNING "Not building LLVM. LLVM is a required dependency of roadrunner. Not \
+marking LLVM for building means that you already have a built copy of llvm-6.x built and installed. If installed in a \
+non-standard location you will have to give the install directory to roadrunner cmake with
+    -DLLVM_INSTALL_PREFIX=\"/full/path/to/llvm\"
+If you do not already have llvm-6.x, please re-run cmake with
+    -DBUILD_LLVM=ON
+")
+endif()
 
 
 set(

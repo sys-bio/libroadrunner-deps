@@ -44,3 +44,6 @@ build*
 
 # jetbrains build trees
 cmake-build*
+
+#install trees that begin with install
+install-

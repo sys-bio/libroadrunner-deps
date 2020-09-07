@@ -1,9 +1,22 @@
 cmake_minimum_required(VERSION 3.18)
-project(libroadrunner_deps)
+
+set(VERSION_MAJOR 2)
+set(VERSION_MINOR 0)
+set(VERSION_MICRO 1)
+
+set(LIBROADRUNNER_DEPS_VERSION "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO}")
+
+project(
+        libroadrunner_deps
+        VERSION ${LIBROADRUNNER_DEPS_VERSION}
+)
 
 include(GNUInstallDirs)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
+option(BUILD_PACKAGING OFF)
+option(BUILD_LLVM OFF)
 
 # GNUInstallDirs creates cache variable CMAKE_INSTALL_DOCDIR for documentation
 # but the default is defined by a call to project, which can vary throughout the
@@ -22,53 +35,87 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 # archives
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 
-#--- mark pre-set thirdparty flags as advanced
+
+#pre set libsbml options
+option(WITH_BZIP2 ON)
+option(WITH_SWIG OFF)
+option(WITH_ZLIB ON)
+option(WITH_CPP_NAMESPACE ON)
+option(ENABLE_ARRAYS OFF)
+option(ENABLE_COMP ON)
+option(ENABLE_DISTRIB ON)
+option(ENABLE_DYN OFF)
+option(ENABLE_FBC ON)
+option(ENABLE_GROUPS ON)
+option(ENABLE_LAYOUT ON)
+option(ENABLE_MULTI OFF)
+option(ENABLE_QUAL ON)
+option(ENABLE_RENDER ON)
+option(ENABLE_REQUIREDELEMENTS OFF)
+option(ENABLE_SPATIAL OFF)
 mark_as_advanced(
         WITH_BZIP2
         WITH_SWIG
         WITH_ZLIB
         WITH_CPP_NAMESPACE
+        ENABLE_ARRAYS
+        ENABLE_COMP
+        ENABLE_DISTRIB
+        ENABLE_DYN
+        ENABLE_FBC
+        ENABLE_GROUPS
+        ENABLE_LAYOUT
+        ENABLE_MULTI
+        ENABLE_QUAL
+        ENABLE_RENDER
+        ENABLE_REQUIREDELEMENTS
+        ENABLE_SPATIAL
+)
+# sundials options
+option(BUILD_CVODE ON)
+option(BUILD_CVODES OFF)
+option(BUILD_IDA OFF)
+option(BUILD_IDAS OFF)
+option(BUILD_KINSOL OFF)
+option(BUILD_UNIT_TEST OFF)
+mark_as_advanced(
         BUILD_CVODE
         BUILD_CVODES
         BUILD_IDA
         BUILD_IDAS
         BUILD_KINSOL
         BUILD_UNIT_TEST
-        BUILD_SHARED_LIBS
-        BUILD_STATIC_LIBS
-        ENABLE_LAYOUT
-        EXAMPLES_ENABLE
-        EXTRA_LIBS
-        FCMIX_ENABLE
-        LAPACK_ENABLE
-        LIBSBML_DEPENDENCY_DIR
-        LIBSTRUCT_BUILD_SHARED_LIBS
-        LIBSTRUCT_BUILD_STATIC_LIBS
-        LIBXML_INCLUDE_DIR
-        LIBZ_LIBRARY
-        LIBBZ_LIBRARY
-        LIBXML_LIBRARY
-        MPI_ENABLE
-        NLEQ2_BUILD_SHARED_LIBS
-        NLEQ2_BUILD_STATIC_LIBS
-        NLEQ1_BUILD_SHARED_LIBS
-        NLEQ1_BUILD_STATIC_LIBS
-        SUNDIALS_PRECISION
-        WITH_CHECK
-        WITH_CSHARP
-        WITH_DOXYGEN
-        WITH_EXAMPLES
-        WITH_EXPAT
-        WITH_JAVA
-        WITH_LIBXML
-        WITH_MATLAB
-        WITH_OCTAVE
-        WITH_PERL
-        WITH_PYTHON
-        WITH_R
-        WITH_RUBY
-        WITH_STATIC_RUNTIME
-        # poco options
+)
+
+# Poco options
+option(ENABLE_APACHECONNECTOR OFF)
+option(ENABLE_CPPPARSER OFF)
+option(ENABLE_CRYPTO OFF)
+option(ENABLE_DATA OFF)
+option(ENABLE_DATA_MYSQL OFF)
+option(ENABLE_DATA_ODBC OFF)
+option(ENABLE_DATA_POSTGRESQL OFF)
+option(ENABLE_DATA_SQLITE OFF)
+option(ENABLE_ENCODINGS OFF)
+option(ENABLE_ENCODINGS_COMPILER OFF)
+option(ENABLE_FOUNDATION ON)
+option(ENABLE_JSON OFF)
+option(ENABLE_JWT OFF)
+option(ENABLE_MONGODB OFF)
+option(ENABLE_PDF OFF)
+option(ENABLE_NET ON)
+option(ENABLE_NETSSL OFF)
+option(ENABLE_NETSSL_WIN OFF)
+option(ENABLE_UTIL OFF)
+option(ENABLE_XML OFF)
+option(ENABLE_ZIP OFF)
+option(ENABLE_PAGECOMPILER OFF)
+option(ENABLE_PAGECOMPILER_FILE2PAGE OFF)
+option(ENABLE_REDIS OFF)
+option(ENABLE_POCODOC OFF)
+option(ENABLE_TESTS OFF)
+
+mark_as_advanced(
         ENABLE_APACHECONNECTOR
         ENABLE_CPPPARSER
         ENABLE_CRYPTO
@@ -95,62 +142,57 @@ mark_as_advanced(
         ENABLE_REDIS
         ENABLE_POCODOC
         ENABLE_TESTS
-
 )
 
-#pre set libsbml options
-set(WITH_BZIP2 ON CACHE BOOL "build libsbml with bzip")
-set(WITH_SWIG OFF CACHE BOOL "build libsbml with swig")
-set(WITH_ZLIB ON CACHE BOOL "build libsbml with zlib")
-set(WITH_CPP_NAMESPACE ON CACHE BOOL "build libsbml with CPP namespace")
-set(ENABLE_ARRAYS OFF CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_COMP ON CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_DISTRIB ON CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_DYN OFF CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_FBC ON CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_GROUPS ON CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_LAYOUT ON CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_MULTI OFF CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_QUAL ON CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_RENDER ON CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_REQUIREDELEMENTS OFF CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_SPATIAL OFF CACHE BOOL "Enable/disable libSBML options")
+# LLVM options - turn as much as we can off
 
-# sundials options
-set(BUILD_CVODE ON CACHE BOOL "Build sundials with these options set to off")
-set(BUILD_CVODES OFF CACHE BOOL "Build sundials with these options set to off")
-set(BUILD_IDA OFF CACHE BOOL "Build sundials with these options set to off")
-set(BUILD_IDAS OFF CACHE BOOL "Build sundials with these options set to off")
-set(BUILD_KINSOL OFF CACHE BOOL "Build sundials with these options set to off")
-set(BUILD_UNIT_TEST OFF CACHE BOOL "Build sundials with these options set to off")
+# we need tools on for llvm-config, which is used in FindLLVM.
+# ... or we could hard code the options that we extract from llvm-config
+# and save some built time on llvm. The downside of this idea is reduced flexibility
+# should we choose to update llvm.
+option(LLVM_INCLUDE_TOOLS ON)
+option(LLVM_BUILD_TOOLS ON)
+option(LLVM_INCLUDE_UTILS OFF)
+option(LLVM_BUILD_UTILS OFF)
+option(LLVM_INCLUDE_RUNTIMES OFF)
+option(LLVM_BUILD_RUNTIMES OFF)
+option(LLVM_BUILD_RUNTIME OFF)
+option(LLVM_INCLUDE_TESTS OFF)
+option(LLVM_BUILD_TESTS OFF)
+option(LLVM_INCLUDE_TESTS OFF)
+option(LLVM_BUILD_EXAMPLES OFF)
+option(LLVM_INCLUDE_EXAMPLES OFF)
+option(LLVM_BUILD_DOCS OFF)
+option(LLVM_INCLUDE_DOCS OFF)
+option(LLVM_ENABLE_DOXYGEN OFF)
+option(LLVM_ENABLE_SPHINX OFF)
+option(LLVM_ENABLE_OCAMLDOC OFF)
 
-# Poco options
-set(ENABLE_APACHECONNECTOR OFF)
-set(ENABLE_CPPPARSER OFF)
-set(ENABLE_CRYPTO OFF)
-set(ENABLE_DATA OFF)
-set(ENABLE_DATA_MYSQL OFF)
-set(ENABLE_DATA_ODBC OFF)
-set(ENABLE_DATA_POSTGRESQL OFF)
-set(ENABLE_DATA_SQLITE OFF)
-set(ENABLE_ENCODINGS OFF)
-set(ENABLE_ENCODINGS_COMPILER OFF)
-set(ENABLE_FOUNDATION ON)
-set(ENABLE_JSON OFF)
-set(ENABLE_JWT OFF)
-set(ENABLE_MONGODB OFF)
-set(ENABLE_PDF OFF)
-set(ENABLE_NET ON)
-set(ENABLE_NETSSL OFF)
-set(ENABLE_NETSSL_WIN OFF)
-set(ENABLE_UTIL OFF)
-set(ENABLE_XML OFF)
-set(ENABLE_ZIP OFF)
-set(ENABLE_PAGECOMPILER OFF)
-set(ENABLE_PAGECOMPILER_FILE2PAGE OFF)
-set(ENABLE_REDIS OFF)
-set(ENABLE_POCODOC OFF)
-set(ENABLE_TESTS OFF)
+mark_as_advanced(
+        LLVM_INCLUDE_TOOLS
+        LLVM_BUILD_TOOLS
+        LLVM_INCLUDE_UTILS
+        LLVM_BUILD_UTILS
+        LLVM_INCLUDE_RUNTIMES
+        LLVM_BUILD_RUNTIMES
+        LLVM_BUILD_RUNTIME
+        LLVM_INCLUDE_TESTS
+        LLVM_BUILD_TESTS
+        LLVM_INCLUDE_TESTS
+        LLVM_BUILD_EXAMPLES
+        LLVM_INCLUDE_EXAMPLES
+        LLVM_BUILD_DOCS
+        LLVM_INCLUDE_DOCS
+        LLVM_ENABLE_DOXYGEN
+        LLVM_ENABLE_SPHINX
+        LLVM_ENABLE_OCAMLDOC
+)
 
-add_subdirectory( third_party )
+add_subdirectory(third_party)
+
+if (${BUILD_PACKAGING})
+    add_subdirectory(packaging)
+endif ()
+
+
 
