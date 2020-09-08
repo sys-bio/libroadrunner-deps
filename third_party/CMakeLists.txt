@@ -202,6 +202,7 @@ add_subdirectory(unit_test)
 if(RR_DEPS_BUILD_POCO)
   add_subdirectory(poco_1.5.3)
 endif()
+add_subdirectory(googletest)
 
 
 if(WIN32)
@@ -231,3 +232,5 @@ if(WIN32)
     install(FILES ${libxml_headers} DESTINATION include/libxml2/libxml COMPONENT rr_core)
     install (FILES  ${THIRD_PARTY_FOLDER}/dependencies/libsbml/lib/libxml2.lib DESTINATION lib COMPONENT rr_core)
 endif()
+
+set( gtest_force_shared_crt ON CACHE BOOL "Always use msvcrt.dll" FORCE)
