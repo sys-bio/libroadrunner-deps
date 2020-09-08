@@ -46,4 +46,4 @@ build*
 cmake-build*
 
 #install trees that begin with install
-install-
+install-*

@@ -11,7 +11,6 @@ set(
         lapack
         libcharset
         libiconv-static
-        libsbml
         sbml-static
         LibXml2
         nleq1-static
@@ -23,7 +22,11 @@ set(
         zlibstatic
         zlib
 )
-
+if (${WIN32})
+    set(all_targets ${all_targets} "libsbml")
+elseif (${UNIX})
+    set(all_targets ${all_targets} "sbml")
+endif ()
 # We add some variables before including CPath
 set(CPACK_PACKAGE_NAME ${CMAKE_PROJECT_NAME})
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Roadrunner: Fast simulation of sbml models")
