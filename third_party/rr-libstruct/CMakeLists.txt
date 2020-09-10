@@ -1,4 +1,4 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.18)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.15..3.18)
 project(rr-libstruct)
 
 # Option that allows users to build static and/or shared libraries
