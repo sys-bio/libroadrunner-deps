@@ -18,6 +18,8 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 option(BUILD_PACKAGING "Build the packaging" OFF)
 option(BUILD_LLVM "build llvm" OFF)
 
+set(CMAKE_CXX_STANDARD 14)
+
 # GNUInstallDirs creates cache variable CMAKE_INSTALL_DOCDIR for documentation
 # but the default is defined by a call to project, which can vary throughout the
 # cmake hierachy. Therefore its best to set now.
