@@ -95,6 +95,11 @@ public:
     void initializeFrom2DMatrix(T** &oRawData, int nRows, int nCols);
 
     /**
+     * get values from 2d matrix
+     */
+    std::vector<std::vector<T>> getValues();
+
+    /**
      * initializes the matrix from 2D const data
      */
     void initializeFromConst2DMatrix(const T** oRawData, int nRows, int nCols);
