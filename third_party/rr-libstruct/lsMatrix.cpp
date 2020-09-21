@@ -127,6 +127,16 @@ namespace ls {
         return store;
     }
 
+    template<class T>
+    bool Matrix<T>::operator==(const Matrix &rhs) const {
+        return *_Array == *rhs._Array;
+    }
+
+    template<class T>
+    bool Matrix<T>::operator!=(const Matrix &rhs) const {
+        return rhs != *this;
+    }
+
 // ******************************************************************** }
 // Multiply matrix 'm1' by 'm2' - returns a DoubleMatrix
 //                                                                      }

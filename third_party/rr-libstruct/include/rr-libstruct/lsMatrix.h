@@ -64,6 +64,13 @@ public:
     Matrix(const T** oRawData, int nRows, int nCols);
 
     /**
+     * Equality operator
+     */
+    bool operator==(const Matrix &rhs) const;
+
+    bool operator!=(const Matrix &rhs) const;
+
+    /**
      * destructor
      */
     ~Matrix();

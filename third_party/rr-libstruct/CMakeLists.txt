@@ -18,13 +18,13 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(target rr-libstruct)
 
 set(sources
-        lsMatrix
-        lsLibStructural
-        lsSBMLModel
-        lsUtils
-        lsLibla
-        lsLA
-        lsLUResult
+        lsMatrix.cpp
+        lsLibStructural.cpp
+        lsSBMLModel.cpp
+        lsUtils.cpp
+        lsLibla.cpp
+        lsLA.cpp
+        lsLUResult.cpp
         )
 
 
@@ -75,10 +75,10 @@ set(headers
         lsUtils.h
         )
 
-# install the headers at configure time so we can build rr without the full install configuration
 set(RR_STRUCT_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
-file(MAKE_DIRECTORY ${RR_STRUCT_INCLUDE_DIR})
-file(COPY ${headers} DESTINATION "${RR_STRUCT_INCLUDE_DIR}/rr-libstruct")
+install(FILES ${headers} DESTINATION "${RR_STRUCT_INCLUDE_DIR}/rr-libstruct")
+#file(MAKE_DIRECTORY ${RR_STRUCT_INCLUDE_DIR})
+#file(COPY ${headers} DESTINATION "${RR_STRUCT_INCLUDE_DIR}/rr-libstruct")
 set(RR_STRUCT_INCLUDE_DIR ${RR_STRUCT_INCLUDE_DIR} PARENT_SCOPE)
 
 if (WIN32)
