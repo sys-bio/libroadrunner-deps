@@ -11,20 +11,35 @@ project(
         VERSION ${LIBROADRUNNER_DEPS_VERSION}
 )
 
+##############################################################
+#   includes
+#
 include(GNUInstallDirs)
 
-set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+# generate automatic export headers
+include(GenerateExportHeader)
+
+
+##############################################################
+#   policies
+#
+cmake_policy(SET CMP0063 NEW)
+
+###############################################################
+#   options and varibles
+#
 
 option(BUILD_PACKAGING OFF)
 option(BUILD_LLVM OFF)
+
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 # GNUInstallDirs creates cache variable CMAKE_INSTALL_DOCDIR for documentation
 # but the default is defined by a call to project, which can vary throughout the
 # cmake hierachy. Therefore its best to set now.
 set(CMAKE_INSTALL_DOCDIR ${CMAKE_INSTALL_PREFIX}/docs)
 
-# generate automatic export headers
-include(GenerateExportHeader)
+
 
 # put all runtime targets (exe and dll) into bin
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
@@ -35,6 +50,16 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 # archives
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 
+set(CMAKE_MACOSX_RPATH 1)
+
+#visibility settings
+# note - this is recommended by cmake gurus. I tried it and it broke the build.
+#set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+#set(CMAKE_VISIBILITY_INLINES_HIDDEN YES)
+
+# preset libxml2 options
+option(LIBXML2_WITH_LZMA "libxm2 with or without lzma" OFF)
+mark_as_advanced(LIBXML2_WITH_LZMA)
 
 #pre set libsbml options
 option(WITH_BZIP2 "libsbml option \"WITH_BZIP2\"" ON)
