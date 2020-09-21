@@ -29,8 +29,10 @@ cmake_policy(SET CMP0063 NEW)
 #   options and varibles
 #
 
-option(BUILD_PACKAGING OFF)
-option(BUILD_LLVM OFF)
+option(BUILD_PACKAGING "Build the packaging" OFF)
+option(BUILD_LLVM "build llvm" OFF)
+
+set(CMAKE_CXX_STANDARD 14)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
