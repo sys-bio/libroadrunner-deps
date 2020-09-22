@@ -12,6 +12,7 @@
 #include <ostream>
 #include <complex>
 #include <vector>
+#include <iostream>
 #include "lsExporter.h"
 
 
@@ -62,6 +63,16 @@ public:
      * constructs a matrix from 2D const data
      */
     Matrix(const T** oRawData, int nRows, int nCols);
+
+    /**
+     * constructs a matrix from 2D std::vector
+     */
+    explicit Matrix(std::vector<std::vector<T>> matrix);
+
+    /**
+     * constructs a matrix from 2D initializer list
+     */
+    Matrix(std::initializer_list<std::initializer_list<T>> matrix);
 
     /**
      * Equality operator
@@ -515,6 +526,40 @@ Matrix<T>::Matrix(const T** oRawData, int nRows, int nCols) : _Array(NULL), _Row
 {
   initializeFromConst2DMatrix(oRawData, nRows, nCols);
 }
+
+
+template<class T>
+Matrix<T>::Matrix(std::vector<std::vector<T>> matrix) : _Array(NULL)
+{
+    _Rows = matrix.size();
+    _Cols = matrix[0].size();
+    for (int i=0; i<_Rows; i++){
+        if (matrix[i].size() != _Cols){
+            throw std::logic_error("std::logic_error: Matrix<T>::Matrix: "
+                                   "not all rows are the same length.");
+        }
+    }
+    for (unsigned int i = 0; i < matrix.size(); i++) {
+        for (unsigned int j = 0; j < matrix[i].size(); j++) {
+            (*this)(i, j) = matrix[i][j];
+        }
+    }
+}
+
+
+template<class T>
+Matrix<T>::Matrix(std::initializer_list<std::initializer_list<T>> matrix) {
+    resize(matrix.size(), (*matrix.begin()).size());
+
+    for (int row=0; row < _Rows; row++){
+        const std::initializer_list<T>& r = matrix.begin()[row];
+        for (int col=0; col<_Cols; col++){
+            _Array[row*col + col] = r.begin()[col];
+        }
+    }
+}
+
+
 
 template<class T>
 T* Matrix<T>::getArray() { return _Array; };
