@@ -531,17 +531,11 @@ Matrix<T>::Matrix(const T** oRawData, int nRows, int nCols) : _Array(NULL), _Row
 template<class T>
 Matrix<T>::Matrix(std::vector<std::vector<T>> matrix) : _Array(NULL)
 {
-    _Rows = matrix.size();
-    _Cols = matrix[0].size();
-    for (int i=0; i<_Rows; i++){
-        if (matrix[i].size() != _Cols){
-            throw std::logic_error("std::logic_error: Matrix<T>::Matrix: "
-                                   "not all rows are the same length.");
-        }
-    }
+    resize(matrix.size(), matrix[0].size());
+
     for (unsigned int i = 0; i < matrix.size(); i++) {
         for (unsigned int j = 0; j < matrix[i].size(); j++) {
-            (*this)(i, j) = matrix[i][j];
+            _Array[i*j + j] = matrix[i][j];
         }
     }
 }
