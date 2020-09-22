@@ -531,31 +531,35 @@ Matrix<T>::Matrix(const T** oRawData, int nRows, int nCols) : _Array(NULL), _Row
 template<class T>
 Matrix<T>::Matrix(std::vector<std::vector<T>> matrix) : _Array(NULL)
 {
-    _Rows = matrix.size();
-    _Cols = matrix[0].size();
-    for (int i=0; i<_Rows; i++){
-        if (matrix[i].size() != _Cols){
-            throw std::logic_error("std::logic_error: Matrix<T>::Matrix: "
-                                   "not all rows are the same length.");
-        }
-    }
+    resize(matrix.size(), matrix[0].size());
+
     for (unsigned int i = 0; i < matrix.size(); i++) {
         for (unsigned int j = 0; j < matrix[i].size(); j++) {
-            (*this)(i, j) = matrix[i][j];
+            _Array[i*j + j] = matrix[i][j];
         }
     }
 }
 
 
 template<class T>
-Matrix<T>::Matrix(std::initializer_list<std::initializer_list<T>> matrix) {
+Matrix<T>::Matrix(std::initializer_list<std::initializer_list<T>> matrix)
+  : _Array(nullptr){
+    printf("%s:%d\n", __FILE__, __LINE__);
     resize(matrix.size(), (*matrix.begin()).size());
 
+    printf("%s:%d\n", __FILE__, __LINE__);
     for (int row=0; row < _Rows; row++){
+    printf("%s:%d\n", __FILE__, __LINE__);
         const std::initializer_list<T>& r = matrix.begin()[row];
+    printf("%s:%d\n", __FILE__, __LINE__);
         for (int col=0; col<_Cols; col++){
+    printf("%s:%d\n", __FILE__, __LINE__);
+            printf("row: %d, col: %d, val: %d", row, col, r.begin()[col]);
+    printf("%s:%d\n", __FILE__, __LINE__);
             _Array[row*col + col] = r.begin()[col];
+    printf("%s:%d\n", __FILE__, __LINE__);
         }
+    printf("%s:%d\n", __FILE__, __LINE__);
     }
 }
 
@@ -624,20 +628,33 @@ void Matrix<T>::swapCols(unsigned int col1, unsigned int col2)
 template<class T>
 void Matrix<T>::resize(unsigned int rows, unsigned int cols)
 {
+    printf("%s:%d\n", __FILE__, __LINE__);
     if (rows * cols != _Rows * _Cols)
+    printf("%s:%d\n", __FILE__, __LINE__);
     {
+    printf("%s:%d\n", __FILE__, __LINE__);
         if (_Array)
+    printf("%s:%d\n", __FILE__, __LINE__);
         {
+    printf("%s:%d\n", __FILE__, __LINE__);
             delete [] _Array;
+    printf("%s:%d\n", __FILE__, __LINE__);
             _Array = NULL;
+    printf("%s:%d\n", __FILE__, __LINE__);
         }
+    printf("%s:%d\n", __FILE__, __LINE__);
         if (rows && cols)
+    printf("%s:%d\n", __FILE__, __LINE__);
         {
+    printf("%s:%d\n", __FILE__, __LINE__);
             _Array = new T[rows * cols];
+    printf("%s:%d\n", __FILE__, __LINE__);
         }
     }
+  printf("%s:%d\n", __FILE__, __LINE__);
 
     _Rows = rows;
+  printf("%s:%d\n", __FILE__, __LINE__);
     _Cols = cols;
 }
 

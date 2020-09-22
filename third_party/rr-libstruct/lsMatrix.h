@@ -529,10 +529,9 @@ Matrix<T>::Matrix(const T** oRawData, int nRows, int nCols) : _Array(NULL), _Row
 
 
 template<class T>
-Matrix<T>::Matrix(std::vector<std::vector<T>> matrix) : _Array(NULL)
+Matrix<T>::Matrix(std::vector<std::vector<T>> matrix) : _Array(nullptr)
 {
     resize(matrix.size(), matrix[0].size());
-
     for (unsigned int i = 0; i < matrix.size(); i++) {
         for (unsigned int j = 0; j < matrix[i].size(); j++) {
             _Array[i*j + j] = matrix[i][j];
@@ -542,7 +541,8 @@ Matrix<T>::Matrix(std::vector<std::vector<T>> matrix) : _Array(NULL)
 
 
 template<class T>
-Matrix<T>::Matrix(std::initializer_list<std::initializer_list<T>> matrix) {
+Matrix<T>::Matrix(std::initializer_list<std::initializer_list<T>> matrix)
+  : _Array(nullptr){
     resize(matrix.size(), (*matrix.begin()).size());
 
     for (int row=0; row < _Rows; row++){
