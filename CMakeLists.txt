@@ -39,18 +39,18 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 # GNUInstallDirs creates cache variable CMAKE_INSTALL_DOCDIR for documentation
 # but the default is defined by a call to project, which can vary throughout the
 # cmake hierachy. Therefore its best to set now.
-set(CMAKE_INSTALL_DOCDIR ${CMAKE_INSTALL_PREFIX}/docs)
+set(CMAKE_INSTALL_DOCDIR "${CMAKE_INSTALL_PREFIX}/docs")
 
 
 
 # put all runtime targets (exe and dll) into bin
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/bin")
 
 # put libraries into lib
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib")
 
 # archives
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib")
 
 set(CMAKE_MACOSX_RPATH 1)
 

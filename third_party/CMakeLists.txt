@@ -3,13 +3,13 @@
 # nleq1
 message(STATUS "Adding nleq1 as subdirectory")
 add_subdirectory(nleq1)
-set(NLEQ1_INCLUDE_DIR $<TARGET_PROPERTY:nleq1,INCLUDE_DIRECTORIES>) # or libsbml
+set(NLEQ1_INCLUDE_DIR "$<TARGET_PROPERTY:nleq1,INCLUDE_DIRECTORIES>") # or libsbml
 
 
 # nleq2
 message(STATUS "Adding nleq2 as subdirectory")
 add_subdirectory(nleq2)
-set(NLEQ2_INCLUDE_DIR $<TARGET_PROPERTY:nleq2,INCLUDE_DIRECTORIES>)
+set(NLEQ2_INCLUDE_DIR "$<TARGET_PROPERTY:nleq2,INCLUDE_DIRECTORIES>")
 
 # bzip
 message(STATUS "Adding bzip2 as subdirectory")
@@ -21,18 +21,18 @@ set(LIBBZ_LIBRARY "$<TARGET_FILE:libz2>")
 # zlib
 message(STATUS "Adding zlib as subdirectory")
 add_subdirectory(zlib)
-set(ZLIB_INCLUDE_DIR $<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>)
+set(ZLIB_INCLUDE_DIR "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>")
 set(LIBZ_INCLUDE_DIR "${ZLIB_INCLUDE_DIR}") # an alias, used by libsbml
 
 # iconv
 message(STATUS "Adding iconv as subdirectory")
 add_subdirectory(iconv)
-set(LIBICONV_INCLUDE_DIR ${LIBICONV_INCLUDE_DIR} $<TARGET_PROPERTY:libiconv-static,INCLUDE_DIRECTORIES>)
+set(LIBICONV_INCLUDE_DIR "${LIBICONV_INCLUDE_DIR}" "$<TARGET_PROPERTY:libiconv-static,INCLUDE_DIRECTORIES>")
 
 # clapack
 message(STATUS "Adding clapack as subdirectory")
 add_subdirectory(clapack)
-set(CLAPACK_INCLUDE_DIR $<TARGET_PROPERTY:lapack,INCLUDE_DIRECTORIES>)
+set(CLAPACK_INCLUDE_DIR "$<TARGET_PROPERTY:lapack,INCLUDE_DIRECTORIES>")
 
 
 # libxml2
@@ -41,15 +41,15 @@ add_subdirectory(libxml2)
 add_dependencies(LibXml2 zlib libiconv-static libz2)
 
 set(
-        LIBXML_INCLUDE_DIR ${LIBXML_INCLUDE_DIR}
-        $<TARGET_PROPERTY:LibXml2,INCLUDE_DIRECTORIES>
-        $<TARGET_PROPERTY:libz2,INCLUDE_DIRECTORIES>
+        LIBXML_INCLUDE_DIR "${LIBXML_INCLUDE_DIR}"
+        "$<TARGET_PROPERTY:LibXml2,INCLUDE_DIRECTORIES>"
+        "$<TARGET_PROPERTY:libz2,INCLUDE_DIRECTORIES>"
         "${CMAKE_CURRENT_SOURCE_DIR}/libxml2/include"
         "${CMAKE_CURRENT_BINARY_DIR}/libxml2"
 )
 
 # note the TARGET_LINKER_FILE generator expression gives us the export library on windows
-set(LIBXML_LIBRARY $<TARGET_LINKER_FILE:LibXml2>)
+set(LIBXML_LIBRARY "$<TARGET_LINKER_FILE:LibXml2>")
 
 ## poco
 message(STATUS "Adding poco as subdirectory")
@@ -61,9 +61,9 @@ add_subdirectory(libSBML-5.18.1-experimental-Source)
 
 # needed because of the weird way libsbml handles the "lib" prefix
 if (WIN32)
-    set(LIBSBML_INCLUDE_DIR $<TARGET_PROPERTY:libsbml,INCLUDE_DIRECTORIES>)
+    set(LIBSBML_INCLUDE_DIR "$<TARGET_PROPERTY:libsbml,INCLUDE_DIRECTORIES>")
 else (WIN32)
-    set(LIBSBML_INCLUDE_DIR $<TARGET_PROPERTY:sbml,INCLUDE_DIRECTORIES>)
+    set(LIBSBML_INCLUDE_DIR "$<TARGET_PROPERTY:sbml,INCLUDE_DIRECTORIES>")
 endif (WIN32)
 
 ## rr-libstruct
