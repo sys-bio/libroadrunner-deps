@@ -17,5 +17,4 @@ services: docker
 
 before_install:
   - docker pull ciaranwelsh/ubuntu-base
-  - docker run ciaranwelsh/ubuntu-base /bin/sh -c "wget
-  -
+  - docker run ciaranwelsh/ubuntu-base /bin/sh -c "wget https://raw.githubusercontent.com/CiaranWelsh/libroadrunner-deps/master/roadrunner_deps_build.py; python roadrunner_deps_build.py"
