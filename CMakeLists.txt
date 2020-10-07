@@ -141,6 +141,7 @@ option(ENABLE_PAGECOMPILER_FILE2PAGE "poco option \"ENABLE_PAGECOMPILER_FILE2PAG
 option(ENABLE_REDIS "poco option \"ENABLE_REDIS\"" OFF)
 option(ENABLE_POCODOC "poco option \"ENABLE_POCODOC\"" OFF)
 option(ENABLE_TESTS "poco option \"ENABLE_TESTS\"" OFF)
+option(POCO_STATIC "build poco as a static library. Set to off for SHARED" ON)
 
 # added by ciaran welsh for roadrunner
 option(BUILD_XML "BUILD POCO XML" OFF)
