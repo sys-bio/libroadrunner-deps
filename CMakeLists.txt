@@ -142,6 +142,18 @@ option(ENABLE_REDIS "poco option \"ENABLE_REDIS\"" OFF)
 option(ENABLE_POCODOC "poco option \"ENABLE_POCODOC\"" OFF)
 option(ENABLE_TESTS "poco option \"ENABLE_TESTS\"" OFF)
 
+# added by ciaran welsh for roadrunner
+option(BUILD_XML "BUILD POCO XML" OFF)
+option(BUILD_JSON "BUILD JSON" OFF)
+option(BUILD_MongoDB "BUILD MongoDB" OFF)
+option(BUILD_PDF "BUILD POCO PDF" OFF)
+option(BUILD_Util "BUILD UPOCO til" OFF)
+option(BUILD_Net "BUILD POCO Net" ON)
+option(BUILD_DATA "BUILD_DATA poco option" OFF)
+option(BUILD_ZIP "BUILD_ZIP poco option" OFF)
+option(UNINSTALL_POCO "poco uninstall target" OFF)
+option(BUILD_SSL "build poco ssl related targets" OFF)
+
 mark_as_advanced(
         ENABLE_APACHECONNECTOR
         ENABLE_CPPPARSER
