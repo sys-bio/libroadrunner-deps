@@ -5,7 +5,7 @@ language: cpp
 
 notifications:
   email:
-      - jkmtravisnotify@gmail.com
+      - cwelsh2@uw.edu
 
 compiler: gcc
 
@@ -13,23 +13,9 @@ branches:
   only:
     - master
 
+services: docker
 
 before_install:
-  # print the distro information
-  - lsb_release -a
-
-  # install cmake
-  - sudo apt-get -y install cmake
-
-  - mkdir ~/install
-  - mkdir -p ~/build/libroadrunner-deps
-
-install:
-  - cd ~/build/libroadrunner-deps
-  - cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=~/install/libroadrunner-deps $TRAVIS_BUILD_DIR
-  - make -j2
-  - make install
-
-before_script: true
-
-script: true
+  - docker pull ciaranwelsh/ubuntu-base
+  - docker run ciaranwelsh/ubuntu-base /bin/sh -c "wget
+  -
