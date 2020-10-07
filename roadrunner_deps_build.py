@@ -31,7 +31,7 @@ INSTALL_LOCATION = os.path.join(LIBROADRUNNER_DEPS_DIR, "libroadrunner-deps-trav
 do_check_call(["cmake", f"-DCMAKE_INSTALL_PREFIX={INSTALL_LOCATION}", "-DBUILD_LLVM=ON", LIBROADRUNNER_DEPS_DIR])
 
 # build command
-do_check_call(["cmake", "--build", LIBROADRUNNER_DEPS_BUILD_DIR])
+do_check_call(["cmake", "--build", LIBROADRUNNER_DEPS_BUILD_DIR, "-j", "12"])
 
 # install command
 do_check_call(["cmake" "--build", "install"])
