@@ -31,7 +31,7 @@ set(LIBICONV_INCLUDE_DIR ${LIBICONV_INCLUDE_DIR} $<TARGET_PROPERTY:libiconv-stat
 
 # clapack
 message(STATUS "Adding clapack as subdirectory")
-add_subdirectory(CLAPACK)
+add_subdirectory(clapack)
 set(CLAPACK_INCLUDE_DIR $<TARGET_PROPERTY:lapack,INCLUDE_DIRECTORIES>)
 
 
