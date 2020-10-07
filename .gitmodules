@@ -30,7 +30,7 @@
 	url = https://github.com/CiaranWelsh/libSBML-5.18.0-core-plus-packages.git
 [submodule "third_party/llvm-6.x"]
 	path = third_party/llvm-6.x
-	url = https://github.com/sys-bio/llvm-6.x.git
+	url = https://github.com/CiaranWelsh/llvm-6.x.git
 [submodule "third_party/rr-libstruct"]
 	path = third_party/rr-libstruct
 	url = https://github.com/CiaranWelsh/rr-libstruct.git
