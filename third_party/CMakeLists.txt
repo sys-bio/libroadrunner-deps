@@ -21,8 +21,9 @@ set(LIBBZ_LIBRARY "$<TARGET_FILE:libz2>")
 # zlib
 message(STATUS "Adding zlib as subdirectory")
 add_subdirectory(zlib)
-set(ZLIB_INCLUDE_DIR "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>")
+set(ZLIB_INCLUDE_DIR "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>" "${CMAKE_CURRENT_SOURCE_DIR}/zlib")
 set(LIBZ_INCLUDE_DIR "${ZLIB_INCLUDE_DIR}") # an alias, used by libsbml
+set(LIBZ_LIBRARY "$<TARGET_FILE:zlibstatic>")
 
 # iconv
 message(STATUS "Adding iconv as subdirectory")
@@ -44,6 +45,7 @@ set(
         LIBXML_INCLUDE_DIR "${LIBXML_INCLUDE_DIR}"
         "$<TARGET_PROPERTY:LibXml2,INCLUDE_DIRECTORIES>"
         "$<TARGET_PROPERTY:libz2,INCLUDE_DIRECTORIES>"
+        "$<TARGET_PROPERTY:zlibstatic,INCLUDE_DIRECTORIES>"
         "${CMAKE_CURRENT_SOURCE_DIR}/libxml2/include"
         "${CMAKE_CURRENT_BINARY_DIR}/libxml2"
 )
