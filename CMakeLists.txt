@@ -11,6 +11,12 @@ project(
         VERSION ${LIBROADRUNNER_DEPS_VERSION}
 )
 
+string( FIND "${CMAKE_SYSTEM_PROCESSOR}" "64" IS_64_BIT)
+if ((${IS_64_BIT} GREATER 0) AND ("${CMAKE_SIZEOF_VOID_P}" STREQUAL "4"))
+    message(WARNING "You are generating a 32-bit version of roadrunner on a \
+x64 bit machine" )
+endif()
+
 ##############################################################
 #   includes
 #
