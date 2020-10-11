@@ -1,10 +1,23 @@
+"""
+Build the libroadrunner-deps  roadrunner dependency package.
+
+Usage:
+
+    python roadrunner_deps_build.py "/full/path/to/where/you/want/to/install/the/roadrunner/dependencies/" [--with-llvm] [--build-type=[Release|Debug]]
+
+Options:
+
+    --with-llvm: turns on building llvm along with the other dependencies
+    --build-type=value: where value is a valid cmake build type. Defaults to Release
+"""
+
 import os, sys
 import subprocess
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("install-prefix", type=str, help="the cmake_install_prefix variable")
-parser.add_argument("--with-llvm", type=bool, help="Download and build llvm-6.x (takes longer)", default=False,
+parser.add_argument("install-prefix", help="the cmake_install_prefix variable")
+parser.add_argument("--with-llvm", help="Download and build llvm-6.x (takes longer)", default=False,
                     action="store_true")
 parser.add_argument("--build-type", type=str, help="the cmake_build_type variable", default="Release")
 args = parser.parse_args()
