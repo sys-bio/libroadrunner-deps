@@ -1,7 +1,16 @@
 import os, sys
 import subprocess
+import argparse
 
-def do_check_call(commands:list, error_message=None):
+parser = argparse.ArgumentParser()
+parser.add_argument("install-prefix", type=str, help="the cmake_install_prefix variable")
+parser.add_argument("--with-llvm", type=bool, help="Download and build llvm-6.x (takes longer)", default=False,
+                    action="store_true")
+parser.add_argument("--build-type", type=str, help="the cmake_build_type variable", default="Release")
+args = parser.parse_args()
+
+
+def do_check_call(commands: list, error_message=None):
     try:
         cmake_found = subprocess.check_call(commands)
     except subprocess.CalledProcessError as e:
@@ -10,10 +19,12 @@ def do_check_call(commands:list, error_message=None):
             print(error_message)
         exit(1)
 
+
 BASE_DIRECTORY = os.getcwd()
 
 # will error if cmake not available
-do_check_call(["cmake", "--version"], "Make sure cmake is available and your environment variables are correctly configured to allow the 'cmake' command to be run from shell")
+do_check_call(["cmake", "--version"],
+              "Make sure cmake is available and your environment variables are correctly configured to allow the 'cmake' command to be run from shell")
 
 # clone repo
 libroadrunner_deps_github = r"https://github.com/CiaranWelsh/libroadrunner-deps.git"
@@ -26,23 +37,23 @@ LIBROADRUNNER_DEPS_BUILD_DIR = os.path.join(LIBROADRUNNER_DEPS_DIR, "build")
 os.makedirs(LIBROADRUNNER_DEPS_BUILD_DIR)
 os.chdir(LIBROADRUNNER_DEPS_BUILD_DIR)
 
-INSTALL_LOCATION = os.path.join(LIBROADRUNNER_DEPS_DIR, "libroadrunner-deps-travis-install")
+
 # cmake command
-do_check_call(["cmake", f"-DCMAKE_INSTALL_PREFIX={INSTALL_LOCATION}", "-DBUILD_LLVM=ON", LIBROADRUNNER_DEPS_DIR])
+if (args["with_llvm"]):
+    do_check_call([
+        "cmake",
+        f"-DCMAKE_INSTALL_PREFIX={args['cmake_install_prefix']}",
+        f"CMAKE_BUILD_TYPE={args['cmake_build_type']}",
+        "-DBUILD_LLVM=ON",
+        LIBROADRUNNER_DEPS_DIR
+    ])
+else:
+    do_check_call([
+        "cmake",
+        f"-DCMAKE_INSTALL_PREFIX={args['cmake_install_prefix']}",
+        f"CMAKE_BUILD_TYPE={args['cmake_build_type']}",
+        LIBROADRUNNER_DEPS_DIR
+    ])
 
-# build command
-do_check_call(["cmake", "--build", LIBROADRUNNER_DEPS_BUILD_DIR, "-j", "12"])
-
-# install command
-do_check_call(["cmake" "--build", "install"])
-
-
-
-
-
-
-
-
-
-
-
+# build and install command
+do_check_call(["cmake" "--build", f"{LIBROADRUNNER_DEPS_BUILD_DIR}", "--target", "install", "-j", 12])
