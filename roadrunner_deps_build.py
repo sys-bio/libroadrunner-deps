@@ -16,8 +16,8 @@ import subprocess
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("install-prefix", help="the cmake_install_prefix variable")
-parser.add_argument("--with-llvm", help="Download and build llvm-6.x (takes longer)", default=False,
+parser.add_argument("install_prefix", help="the cmake_install_prefix variable")
+parser.add_argument("--with_llvm", help="Download and build llvm-6.x (takes longer)", default=False,
                     action="store_true")
 parser.add_argument("--build-type", type=str, help="the cmake_build_type variable", default="Release")
 args = parser.parse_args()
@@ -52,19 +52,19 @@ os.chdir(LIBROADRUNNER_DEPS_BUILD_DIR)
 
 
 # cmake command
-if (args["with_llvm"]):
+if (args.with_llvm):
     do_check_call([
         "cmake",
-        f"-DCMAKE_INSTALL_PREFIX={args['cmake_install_prefix']}",
-        f"CMAKE_BUILD_TYPE={args['cmake_build_type']}",
+        f"-DCMAKE_INSTALL_PREFIX={args.cmake_install_prefix}",
+        f"CMAKE_BUILD_TYPE={args.cmake_build_type}",
         "-DBUILD_LLVM=ON",
         LIBROADRUNNER_DEPS_DIR
     ])
 else:
     do_check_call([
         "cmake",
-        f"-DCMAKE_INSTALL_PREFIX={args['cmake_install_prefix']}",
-        f"CMAKE_BUILD_TYPE={args['cmake_build_type']}",
+        f"-DCMAKE_INSTALL_PREFIX={args.cmake_install_prefix}",
+        f"CMAKE_BUILD_TYPE={args.cmake_build_type}",
         LIBROADRUNNER_DEPS_DIR
     ])
 
