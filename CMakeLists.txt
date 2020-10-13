@@ -18,6 +18,8 @@ else()
     message(STATUS "Build on 64-bit platform")
 endif()
 
+message(STATUS "Building roadrunner-deps in \"${CMAKE_BUILD_TYPE}\" mode")
+
 
 # do some bitness checks as its an easy trap to fall into on windows.
 if (WIN32)
