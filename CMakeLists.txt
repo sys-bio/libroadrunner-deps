@@ -7,7 +7,7 @@ set(VERSION_MICRO 1)
 set(LIBROADRUNNER_DEPS_VERSION "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO}")
 
 project(
-        libroadrunner_deps
+        roadrunner_deps
         VERSION ${LIBROADRUNNER_DEPS_VERSION}
 )
 
@@ -158,7 +158,7 @@ option(ENABLE_NET "poco option \"ENABLE_NET\"" ON)
 option(ENABLE_NETSSL "poco option \"ENABLE_NETSSL\"" OFF)
 option(ENABLE_NETSSL_WIN "poco option \"ENABLE_NETSSL_WIN\"" OFF)
 option(ENABLE_UTIL "poco option \"ENABLE_UTIL\"" OFF)
-option(ENABLE_XML "poco option \"ENABLE_XML\"" OFF)
+option(ENABLE_XML "poco option \"ENABLE_XML\"" ON)
 option(ENABLE_ZIP "poco option \"ENABLE_ZIP\"" OFF)
 option(ENABLE_PAGECOMPILER "poco option \"ENABLE_PAGECOMPILER\"" OFF)
 option(ENABLE_PAGECOMPILER_FILE2PAGE "poco option \"ENABLE_PAGECOMPILER_FILE2PAGE\"" OFF)
@@ -167,17 +167,6 @@ option(ENABLE_POCODOC "poco option \"ENABLE_POCODOC\"" OFF)
 option(ENABLE_TESTS "poco option \"ENABLE_TESTS\"" OFF)
 option(POCO_STATIC "build poco as a static library. Set to off for SHARED" ON)
 
-# added by ciaran welsh for roadrunner
-option(BUILD_XML "BUILD POCO XML" OFF)
-option(BUILD_JSON "BUILD JSON" OFF)
-option(BUILD_MongoDB "BUILD MongoDB" OFF)
-option(BUILD_PDF "BUILD POCO PDF" OFF)
-option(BUILD_Util "BUILD UPOCO til" OFF)
-option(BUILD_Net "BUILD POCO Net" ON)
-option(BUILD_DATA "BUILD_DATA poco option" OFF)
-option(BUILD_ZIP "BUILD_ZIP poco option" OFF)
-option(UNINSTALL_POCO "poco uninstall target" OFF)
-option(BUILD_SSL "build poco ssl related targets" OFF)
 
 mark_as_advanced(
         ENABLE_APACHECONNECTOR

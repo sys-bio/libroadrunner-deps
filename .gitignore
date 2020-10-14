@@ -50,3 +50,5 @@ install-mac
 install-*
 
 roadrunner-deps*
+
+.idea
