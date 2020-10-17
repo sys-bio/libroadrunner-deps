@@ -19,7 +19,7 @@ is added to the system PATH variable so that the "cmake" command works from the 
 ### Method 2: Use CMake directly
 Again, assuming cmake is ready for usage:
 
-| WARNING: On Windows be especially careful that you are building for the correct bitness. Sometimes Windows will default to 32-bit builds and usually the preference is x64. Easy fix is to use the x64 developers command prompt or powershell.|
+| WARNING: On Windows use the "x64 developer tools shell" rather than cmd or powershell. This ensures you build 64-bit roadrunner.
 | --- |
 
 ```
@@ -27,9 +27,11 @@ $ git clone https://github.com/CiaranWelsh/libroadrunner-deps.git
 $ cd libroadrunner-deps
 $ mkdir build
 $ cd build
-$ 
+$ cmake -DCMAKE_INSTALL_PREFIX="../install-release" -DCMAKE_BUILD_TYPE=Release ..
+$ cmake --build . --target install --config Release
 ```
-   
+  
+Replace `Release` with another configuration (like Debug) to build in another cmake configuration.
    
    
    
