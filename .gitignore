@@ -33,3 +33,21 @@ wrappers/C/Testing/alexTestOutput.xml
 .swm
 .swn
 .swo
+
+# add jetbrains and microsoft IDE folders 
+.vs
+.idea
+
+# build trees
+build
+build*
+
+# jetbrains build trees
+cmake-build*
+
+#install trees that begin with install
+install-mac
+install-*
+
+roadrunner-deps*
+

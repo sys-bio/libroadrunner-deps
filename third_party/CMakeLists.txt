@@ -1,236 +1,110 @@
-cmake_minimum_required(VERSION 2.8)
-project(RRThirdPartyBuild)
-
-#----- ThirdParties
-set(THIRD_PARTY_FOLDER 			${CMAKE_CURRENT_SOURCE_DIR})
-
-#--- mark pre-set thirdparty flags as advanced
-mark_as_advanced(
-WITH_BZIP2
-WITH_SWIG
-WITH_ZLIB
-WITH_CPP_NAMESPACE
-BUILD_CVODE
-BUILD_CVODES
-BUILD_IDA
-BUILD_IDAS
-BUILD_KINSOL
-BUILD_UNIT_TEST
-BUILD_SHARED_LIBS
-BUILD_STATIC_LIBS
-ENABLE_LAYOUT
-EXAMPLES_ENABLE
-EXTRA_LIBS
-FCMIX_ENABLE
-LAPACK_ENABLE
-LIBSBML_DEPENDENCY_DIR
-LIBSTRUCT_BUILD_SHARED_LIBS
-LIBSTRUCT_BUILD_STATIC_LIBS
-LIBXML_INCLUDE_DIR
-LIBZ_LIBRARY
-LIBBZ_LIBRARY
-LIBXML_LIBRARY
-MPI_ENABLE
-NLEQ2_BUILD_SHARED_LIBS
-NLEQ2_BUILD_STATIC_LIBS
-NLEQ1_BUILD_SHARED_LIBS
-NLEQ1_BUILD_STATIC_LIBS
-SUNDIALS_PRECISION
-WITH_CHECK
-WITH_CSHARP
-WITH_DOXYGEN
-WITH_EXAMPLES
-WITH_EXPAT
-WITH_JAVA
-WITH_LIBXML
-WITH_MATLAB
-WITH_OCTAVE
-WITH_PERL
-WITH_PYTHON
-WITH_R
-WITH_RUBY
-WITH_STATIC_RUNTIME
-WITH_XERCES
-)
-#pre set libsbml options
-set(WITH_BZIP2          ON  CACHE BOOL "test")
-set(WITH_SWIG           OFF CACHE BOOL "test")
-set(WITH_ZLIB           ON  CACHE BOOL "test")
-set(WITH_CPP_NAMESPACE  ON  CACHE BOOL "test")
-set(ENABLE_ARRAYS OFF CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_COMP ON CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_DISTRIB ON CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_DYN OFF CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_FBC ON CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_GROUPS ON CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_LAYOUT ON CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_MULTI OFF CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_QUAL ON CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_RENDER ON CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_REQUIREDELEMENTS OFF CACHE BOOL "Enable/disable libSBML options")
-set(ENABLE_SPATIAL OFF CACHE BOOL "Enable/disable libSBML options")
-
-if("${CMAKE_SIZEOF_VOID_P}" EQUAL "8")
-  set(LIBSBML_DEPENDENCY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/libsbml CACHE PATH "Path to libsbml dependencies")
-else()
-  set(LIBSBML_DEPENDENCY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/libsbml-32 CACHE PATH "Path to libsbml dependencies")
-endif()
-
-set(LIBZ_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/libsbml/include/zlib CACHE PATH "ZLib include directory")
 
 
-set(LIBSBML_USE_LEGACY_MATH ON CACHE BOOL "test")
-
-
-set(BUILD_CVODES        OFF CACHE BOOL "")
-set(BUILD_IDA           OFF CACHE BOOL "")
-set(BUILD_IDAS          OFF CACHE BOOL "")
-set(BUILD_KINSOL        OFF CACHE BOOL "")
-set(BUILD_UNIT_TEST     OFF CACHE BOOL "")
-
-configure_file(roadrunner-deps.pc.in roadrunner-deps.pc @ONLY)
-install( FILES ${CMAKE_CURRENT_BINARY_DIR}/roadrunner-deps.pc DESTINATION lib/pkgconfig )
-# gotta love debian
-install( FILES ${CMAKE_CURRENT_BINARY_DIR}/roadrunner-deps.pc DESTINATION share/pkgconfig )
-
-#LIBXML stuff
-
-if(WIN32)
-    set(LIBXML_INCLUDE_DIR  "${CMAKE_CURRENT_SOURCE_DIR}/dependencies/libsbml/include/" CACHE string "test")
-endif(WIN32)
-
-if(${BORLAND})
-    set(FOLDER_POSTFIX "xe")
-    set(LIBXML_LIBRARY      "${CMAKE_CURRENT_SOURCE_DIR}/dependencies/libsbml/lib/libxml2_xe.lib" CACHE string "test")
-endif(${BORLAND})
-
-if(${MSVC})
-    set(FOLDER_POSTFIX "vs")
-    set(LIBXML_LIBRARY      "${CMAKE_CURRENT_SOURCE_DIR}/dependencies/libsbml/lib/libxml2.lib" CACHE string "test")
-endif()
-
-set(CMAKE_BUILD_TYPE "Debug" CACHE STRING
-    "Choose the build type. The options are: None (CMAKE_CXX_FLAGS or
-     CMAKE_C_FLAGS are used), Debug, Release, RelWithDebInfo, MinSizeRel.")
-if("${CMAKE_BUILD_TYPE}" STREQUAL "")
-  set(CMAKE_BUILD_TYPE "Debug" CACHE STRING
-  "Choose the build type. The options are: None (CMAKE_CXX_FLAGS or
-  CMAKE_C_FLAGS are used), Debug, Release, RelWithDebInfo, MinSizeRel." FORCE)
-endif()
-
-set(exe_path		 			${PROJECT_BINARY_DIR}/bin)
-set(lib_path		 			${PROJECT_BINARY_DIR}/lib)
-
-IF(${MSVC})
-    IF(CMAKE_BUILD_TYPE MATCHES "Debug")
-        set(exe_path ${exe_path}/Debug)
-        set(lib_path ${lib_path}/Debug)
-    ELSE(CMAKE_BUILD_TYPE MATCHES "Debug")
-           set(exe_path ${exe_path}/Release)
-           set(lib_path ${lib_path}/Release)
-    ENDIF(CMAKE_BUILD_TYPE MATCHES "Debug")
-ENDIF(${MSVC})
-
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY 	${PROJECT_BINARY_DIR}/lib)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY 	${PROJECT_BINARY_DIR}/lib)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY 	${PROJECT_BINARY_DIR}/bin)
-
-link_directories(
-    ${THIRD_PARTY_FOLDER}/dependencies/libsbml/lib
-)
-
-#=== COMPILER FLAGS
-
-# UNIX matches ALL Unicies, including Apple
-if(${UNIX})
-  SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
-  SET (CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -fPIC")
-  SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -D_GLIBCXX_USE_CXX11_ABI=1")
-endif()
-
-# Only matches Linux, Linux has some system headers that conflict with std::isnan
-# when building libsbml
-if("${CMAKE_SYSTEM_NAME}" MATCHES "Linux")
-  SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
-endif()
-
-
-if(${BORLAND})
-add_definitions(
-             -w-8012                     #Comparing signed /unsigned
-             -w-8057                     #Parameter never used
-             -w-8004                     #'var' is assigned a value that is never used
-             -w-8123                     #Path not found
-             -w-8066                     #Unreachable code
-             -w-8104                     #Local static with constructor...
-             -w-8008                     #Condition is always false..
-        )
-endif()
-
-if(${MSVC})
-add_definitions(
--D_CRT_SECURE_NO_WARNINGS
--D_CRT_NONSTDC_NO_DEPRECATE
-"-wd4244"
-"-wd4554" #use paranthesis to clarify precedence
-)
-endif()
-
-
-
-#Add Third Party Folders
-
-# Specify the source directory for libsbml here.
-set(RR_LIBSBML "libSBML-5.18.1-experimental-Source")
-set(LIBSBML_ROOT_SOURCE_DIR "${CMAKE_SOURCE_DIR}/third_party/${RR_LIBSBML}" CACHE PATH
-    "Path to the libsbml root source directory")
-set(LIBSBML_ROOT_BINARY_DIR "${CMAKE_BINARY_DIR}/third_party" CACHE PATH
-    "Path to the libsbml root build directory")
-
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/${RR_LIBSBML}/src)
-add_subdirectory(${RR_LIBSBML})
-
-message("RR_LIBSBML: ${RR_LIBSBML}")
-message("LIBSBML_ROOT_SOURCE_DIR: ${LIBSBML_ROOT_SOURCE_DIR}")
-
-add_subdirectory(clapack/3.2.1)
-add_subdirectory(sundials)
+# nleq1
+message(STATUS "Adding nleq1 as subdirectory")
 add_subdirectory(nleq1)
+set(NLEQ1_INCLUDE_DIR "$<TARGET_PROPERTY:nleq1,INCLUDE_DIRECTORIES>") # or libsbml
+
+
+# nleq2
+message(STATUS "Adding nleq2 as subdirectory")
 add_subdirectory(nleq2)
+set(NLEQ2_INCLUDE_DIR "$<TARGET_PROPERTY:nleq2,INCLUDE_DIRECTORIES>")
+
+# bzip
+message(STATUS "Adding bzip2 as subdirectory")
+add_subdirectory(bzip2)
+# these are needed for libsbml
+set(LIBBZ_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/bzip2")
+set(LIBBZ_LIBRARY "$<TARGET_FILE:libz2>")
+
+# zlib
+message(STATUS "Adding zlib as subdirectory")
+add_subdirectory(zlib)
+set(ZLIB_INCLUDE_DIR "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>" "${CMAKE_CURRENT_SOURCE_DIR}/zlib")
+set(LIBZ_INCLUDE_DIR "${ZLIB_INCLUDE_DIR}") # an alias, used by libsbml
+set(LIBZ_LIBRARY "$<TARGET_FILE:zlibstatic>")
+
+# iconv
+message(STATUS "Adding iconv as subdirectory")
+add_subdirectory(iconv)
+set(LIBICONV_INCLUDE_DIR "${LIBICONV_INCLUDE_DIR}" "$<TARGET_PROPERTY:libiconv-static,INCLUDE_DIRECTORIES>")
+
+# clapack
+message(STATUS "Adding clapack as subdirectory")
+add_subdirectory(clapack)
+set(CLAPACK_INCLUDE_DIR "$<TARGET_PROPERTY:lapack,INCLUDE_DIRECTORIES>")
+
+
+# libxml2
+message(STATUS "Adding libxml2 as subdirectory")
+add_subdirectory(libxml2)
+add_dependencies(LibXml2 zlib libiconv-static libz2)
+
+set(
+        LIBXML_INCLUDE_DIR "${LIBXML_INCLUDE_DIR}"
+        "$<TARGET_PROPERTY:LibXml2,INCLUDE_DIRECTORIES>"
+        "$<TARGET_PROPERTY:libz2,INCLUDE_DIRECTORIES>"
+        "$<TARGET_PROPERTY:zlibstatic,INCLUDE_DIRECTORIES>"
+        "${CMAKE_CURRENT_SOURCE_DIR}/libxml2/include"
+        "${CMAKE_CURRENT_BINARY_DIR}/libxml2"
+)
+
+# note the TARGET_LINKER_FILE generator expression gives us the export library on windows
+set(LIBXML_LIBRARY "$<TARGET_LINKER_FILE:LibXml2>")
+
+## poco
+message(STATUS "Adding poco as subdirectory")
+add_subdirectory(poco)
+
+# libsbml
+message(STATUS "Adding libsbml as subdirectory")
+add_subdirectory(libSBML-5.18.1-experimental-Source)
+
+# needed because of the weird way libsbml handles the "lib" prefix
+if (WIN32)
+    set(LIBSBML_INCLUDE_DIR "$<TARGET_PROPERTY:libsbml,INCLUDE_DIRECTORIES>")
+else (WIN32)
+    set(LIBSBML_INCLUDE_DIR "$<TARGET_PROPERTY:sbml,INCLUDE_DIRECTORIES>")
+endif (WIN32)
+
+## rr-libstruct
+message(STATUS "Adding rr-libstruct as subdirectory")
 add_subdirectory(rr-libstruct)
-add_subdirectory(unit_test)
-if(RR_DEPS_BUILD_POCO)
-  add_subdirectory(poco_1.5.3)
-endif()
-add_subdirectory(googletest)
+
+#
+## sundials
+message(STATUS "Adding sundials as subdirectory")
+# sundials handles the BUILD_SHARED_LIBS variable
+# differently to most other packages - they also have a
+# BUILD_STATIC_LIBS variable. Since we only want static for sundials,
+# if BUILD_SHARED_LIBS, temporarily turn it off for sundials then turn back on
+if (${BUILD_SHARED_LIBS})
+    # temporarily turn off build_shared_libs FOR SUNDIALS WE ONLY WANT STATIC
+    set(BUILD_SHARED_LIBS OFF)
+    set(_TEMP_NO_SHARED_LIBS ON) # marker of shared lib needs turning on
+endif ()
+
+add_subdirectory(sundials)
+
+# turn BUILD_SHARED_LIBS back on, if it was on before
+if (_TEMP_NO_SHARED_LIBS)
+    set(BUILD_SHARED_LIBS ON)
+endif ()
+unset(_TEMP_NO_SHARED_LIBS) # clean up temp variable
+
+if (${BUILD_LLVM})
+    message(STATUS "Adding llvm-6.x/llvm as subdirectory")
+    add_subdirectory(llvm-6.x/llvm)
+else ()
+    message(WARNING "Not building LLVM. LLVM is a required dependency of roadrunner. Not \
+marking LLVM for building means that you already have a built copy of llvm-6.x built and installed. If installed in a \
+non-standard location you will have to give the install directory to roadrunner cmake with
+    -DLLVM_INSTALL_PREFIX=\"/full/path/to/llvm\"
+If you do not already have llvm-6.x, please re-run cmake with
+    -DBUILD_LLVM=ON
+")
+endif ()
 
 
-if(WIN32)
-    add_subdirectory(compilers)
-endif(WIN32)
 
-#==== SYSTEM FILES (COMPILER SPECIFICS) =================================================
-if(${BORLAND})
-set(CG_RUNTIMES		cc32110MT.dll)
-foreach(runtime ${CG_RUNTIMES})
-install (FILES
-            ${THIRD_PARTY_FOLDER}/dependencies/cg/xe/${runtime}
-            DESTINATION bin
-            COMPONENT rr_core)
-endforeach()
-install (FILES
-            ${THIRD_PARTY_FOLDER}/dependencies/libsbml/lib/libxml2_xe.lib
-            DESTINATION lib
-            COMPONENT rr_core)
-endif()
-
-if(WIN32)
-    file(GLOB libxml_deps "${THIRD_PARTY_FOLDER}/dependencies/libsbml/include/*.h")
-    install(FILES ${libxml_deps} DESTINATION include)
-
-    file(GLOB libxml_headers "${THIRD_PARTY_FOLDER}/dependencies/libsbml/include/libxml2/*.h")
-    install(FILES ${libxml_headers} DESTINATION include/libxml2/libxml COMPONENT rr_core)
-    install (FILES  ${THIRD_PARTY_FOLDER}/dependencies/libsbml/lib/libxml2.lib DESTINATION lib COMPONENT rr_core)
-endif()
-
-set( gtest_force_shared_crt ON CACHE BOOL "Always use msvcrt.dll" FORCE)
