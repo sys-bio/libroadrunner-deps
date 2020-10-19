@@ -9,8 +9,8 @@ trigger:
   - develop-new-buildsystem
 
 pr:
-  - master
-  - develop
+#  - master
+#  - develop
   - azure-tests
 
 stages:
