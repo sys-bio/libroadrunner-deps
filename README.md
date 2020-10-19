@@ -1,3 +1,4 @@
+[![Build Status](https://dev.azure.com/TheRoadrunnerProject/libroadrunner-deps/_apis/build/status/libroadrunner-deps?repoName=sys-bio%2Flibroadrunner-deps&branchName=develop-new-buildsystem)](https://dev.azure.com/TheRoadrunnerProject/libroadrunner-deps/_build/latest?definitionId=9&repoName=sys-bio%2Flibroadrunner-deps&branchName=develop-new-buildsystem)
 # libroadrunner-deps
 Dependencies for Roadrunner. See http://libroadrunner.org/ for more info on Roadrunner.
 
