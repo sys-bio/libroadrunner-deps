@@ -20,6 +20,7 @@ stages:
     - stage: BuildRoadrunnerDeps
       jobs:
       - job: BuildRoadrunnerDepsLinux
+        timeoutInMinutes: "0"
         displayName: Linux
         continueOnError: "false"
         pool:
@@ -45,6 +46,7 @@ stages:
 
 
       - job: BuildRoadrunnerDepsWindows
+        timeoutInMinutes: "0"
         displayName: Windows
         continueOnError: "false"
         pool:
@@ -72,6 +74,7 @@ stages:
 
 
       - job: BuildRoadrunnerDepsMac
+        timeoutInMinutes: "0"
         displayName: MacOS
         continueOnError: "false"
         pool:
