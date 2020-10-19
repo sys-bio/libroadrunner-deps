@@ -18,7 +18,7 @@ trigger:
 
 stages:
     - stage: BuildRoadrunnerDeps
-    jobs:
+      jobs:
       - job: BuildRoadrunnerDepsLinux
         displayName: Linux
         continueOnError: "false"
