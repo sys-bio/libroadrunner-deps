@@ -40,10 +40,12 @@ do_check_call(["cmake", "--version"],
               "Make sure cmake is available and your environment variables are correctly configured to allow the 'cmake' command to be run from shell")
 
 # clone repo
-libroadrunner_deps_github = r"https://github.com/CiaranWelsh/libroadrunner-deps.git"
+libroadrunner_deps_github = r"https://github.com/sys-bio/libroadrunner-deps.git"
 LIBROADRUNNER_DEPS_DIR = os.path.join(BASE_DIRECTORY, "libroadrunner-deps")
-do_check_call(["git", "clone", "--recurse-submodules", libroadrunner_deps_github, LIBROADRUNNER_DEPS_DIR])
-
+if not os.path.isdir(LIBROADRUNNER_DEPS_DIR):
+    do_check_call(["git", "clone", "--recurse-submodules", libroadrunner_deps_github, LIBROADRUNNER_DEPS_DIR])
+if not os.path.isdir(LIBROADRUNNER_DEPS_DIR):
+    raise ValueError("No roadrunner-deps package has been downloaded")
 # make build directory and cd
 os.chdir(LIBROADRUNNER_DEPS_DIR)
 LIBROADRUNNER_DEPS_BUILD_DIR = os.path.join(LIBROADRUNNER_DEPS_DIR, "build")
