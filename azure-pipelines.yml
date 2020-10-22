@@ -1,0 +1,101 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+name: $(Date:yyyyMMdd)$(Rev:.r)
+trigger:
+  - develop-new-buildsystem
+#  - master
+#  - develop
+#
+#
+#
+#
+#pr:
+##  - master
+##  - develop
+#  - azure-tests
+
+stages:
+    - stage: BuildRoadrunnerDeps
+      jobs:
+      - job: BuildRoadrunnerDepsLinux
+        timeoutInMinutes: "0"
+        displayName: Linux
+        continueOnError: "false"
+        pool:
+          vmImage: "ubuntu-18.04"
+
+        strategy:
+          matrix:
+            64-bit Linux Release:
+              BuildType: Release
+              CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-release"
+            64-bit Linux Debug:
+              BuildType: Debug
+              CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-debug"
+        steps:
+          - task: CMake@1
+            displayName: ConfigureCommand
+            inputs:
+              cmakeArgs: $(CMakeArgs) -DCMAKE_BUILD_TYPE=$(BuildType) ..
+          - task: CMake@1
+            displayName: BuildCommand
+            inputs:
+              cmakeArgs: --build . --target install --config $(BuildType) -j 12
+
+
+      - job: BuildRoadrunnerDepsWindows
+        timeoutInMinutes: "0"
+        displayName: Windows
+        continueOnError: "false"
+        pool:
+          vmImage: "windows-2019"
+
+        strategy:
+          matrix:
+            64-bit Windows Release:
+              BuildType: Release
+              CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-release"
+            64-bit Windows Debug:
+              BuildType: Debug
+              CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-debug"
+
+        steps:
+          - task: CMake@1
+            displayName: ConfigureCommand
+            inputs:
+              cmakeArgs: $(CMakeArgs) ..
+          - task: CMake@1
+            displayName: BuildCommand
+            inputs:
+              cmakeArgs: --build . --target install --config $(BuildType) -j 12
+
+
+
+      - job: BuildRoadrunnerDepsMac
+        timeoutInMinutes: "0"
+        displayName: MacOS
+        continueOnError: "false"
+        pool:
+          vmImage: 'macOS-10.15'
+
+        strategy:
+          matrix:
+            64-bit Mac Release:
+              BuildType: Release
+              CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-release"
+            64-bit Mac Debug:
+              BuildType: Debug
+              CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-debug"
+
+        steps:
+          - task: CMake@1
+            displayName: ConfigureCommand
+            inputs:
+              cmakeArgs: $(CMakeArgs) ..
+          - task: CMake@1
+            displayName: BuildCommand
+            inputs:
+              cmakeArgs: --build . --target install --config $(BuildType) -j 12
+
