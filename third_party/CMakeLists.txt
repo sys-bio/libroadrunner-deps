@@ -59,7 +59,9 @@ add_subdirectory(poco)
 
 # libsbml
 message(STATUS "Adding libsbml as subdirectory")
-add_subdirectory(libSBML-5.18.1-experimental-Source)
+# add_subdirectory(libSBML-5.18.1-experimental-Source)
+add_subdirectory(libsbml)
+
 
 # needed because of the weird way libsbml handles the "lib" prefix
 if (WIN32)
