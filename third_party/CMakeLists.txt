@@ -16,39 +16,42 @@ message(STATUS "Adding bzip2 as subdirectory")
 add_subdirectory(bzip2)
 # these are needed for libsbml
 set(LIBBZ_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/bzip2")
-set(LIBBZ_LIBRARY "$<TARGET_FILE:libz2>")
+#set(LIBBZ_LIBRARY "$<TARGET_LINKER_FILE:bzip2>")
 
 # zlib
 message(STATUS "Adding zlib as subdirectory")
 add_subdirectory(zlib)
 set(ZLIB_INCLUDE_DIR "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>" "${CMAKE_CURRENT_SOURCE_DIR}/zlib")
-set(LIBZ_INCLUDE_DIR "${ZLIB_INCLUDE_DIR}") # an alias, used by libsbml
-set(LIBZ_LIBRARY "$<TARGET_FILE:zlibstatic>")
+set(LIBZ_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/zlib/")
+#For the auto-generated zconf.h:
+#set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "${CMAKE_CURRENT_BINARY_DIR}/zlib/")
+set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>")
+message(STATUS "Extra include directories: ${EXTRA_INCLUDE_DIRS}")
+set(LIBZ_LIBRARY "$<TARGET_LINKER_FILE:zlib>")
 
 # iconv
 message(STATUS "Adding iconv as subdirectory")
 add_subdirectory(iconv)
-set(LIBICONV_INCLUDE_DIR "${LIBICONV_INCLUDE_DIR}" "$<TARGET_PROPERTY:libiconv-static,INCLUDE_DIRECTORIES>")
+set(LIBICONV_INCLUDE_DIR "${LIBICONV_INCLUDE_DIR}")
+set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "$<TARGET_PROPERTY:libiconv-static,INCLUDE_DIRECTORIES>")
+#libsbml does a thing now where it only creates LIBICONV_LIBRARY if EXTRA_LIBS is blank.
+# It also just adds the WS2_32.lib library, regardless of whether it's compiling on 
+# windows or not.  So, I went ahead and basically replicated that here.
+#set(LIBICONV_LIBRARY "$<TARGET_LINKER_FILE:libiconv>")
+set(EXTRA_LIBS "${EXTRA_LIBS}" "WS2_32.lib" "$<TARGET_LINKER_FILE:libiconv-static>")
 
 # clapack
 message(STATUS "Adding clapack as subdirectory")
 add_subdirectory(clapack)
 set(CLAPACK_INCLUDE_DIR "$<TARGET_PROPERTY:lapack,INCLUDE_DIRECTORIES>")
 
-
 # libxml2
 message(STATUS "Adding libxml2 as subdirectory")
 add_subdirectory(libxml2)
 add_dependencies(LibXml2 zlib libiconv-static libz2)
-
-set(
-        LIBXML_INCLUDE_DIR "${LIBXML_INCLUDE_DIR}"
-        "$<TARGET_PROPERTY:LibXml2,INCLUDE_DIRECTORIES>"
-        "$<TARGET_PROPERTY:libz2,INCLUDE_DIRECTORIES>"
-        "$<TARGET_PROPERTY:zlibstatic,INCLUDE_DIRECTORIES>"
-        "${CMAKE_CURRENT_SOURCE_DIR}/libxml2/include"
-        "${CMAKE_CURRENT_BINARY_DIR}/libxml2"
-)
+set(LIBXML_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/libxml2/include")
+set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "${CMAKE_CURRENT_BINARY_DIR}/libxml2/include/")
+message(STATUS "Extra include directories: ${EXTRA_INCLUDE_DIRS}")
 
 # note the TARGET_LINKER_FILE generator expression gives us the export library on windows
 set(LIBXML_LIBRARY "$<TARGET_LINKER_FILE:LibXml2>")
@@ -59,8 +62,14 @@ add_subdirectory(poco)
 
 # libsbml
 message(STATUS "Adding libsbml as subdirectory")
+#Try as I might, I couldn't get anything to recognize the bzip2 library, so I just
+# disabled it here.
+set(WITH_BZIP2 "OFF")
 # add_subdirectory(libSBML-5.18.1-experimental-Source)
 add_subdirectory(libsbml)
+
+add_dependencies(libsbml LibXml2 libiconv-static zlib)
+add_dependencies(libsbml-static LibXml2 libiconv-static zlib)
 
 
 # needed because of the weird way libsbml handles the "lib" prefix
