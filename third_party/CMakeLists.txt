@@ -52,6 +52,7 @@ add_dependencies(LibXml2 zlib libiconv-static libz2)
 set(LIBXML_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/libxml2/include")
 set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "${CMAKE_CURRENT_BINARY_DIR}/libxml2/include/")
 message(STATUS "Extra include directories: ${EXTRA_INCLUDE_DIRS}")
+add_dependencies(LibXml2 libiconv-static zlib)
 
 # note the TARGET_LINKER_FILE generator expression gives us the export library on windows
 set(LIBXML_LIBRARY "$<TARGET_LINKER_FILE:LibXml2>")
@@ -65,23 +66,25 @@ message(STATUS "Adding libsbml as subdirectory")
 #Try as I might, I couldn't get anything to recognize the bzip2 library, so I just
 # disabled it here.
 set(WITH_BZIP2 "OFF")
+set(LIBSBML_SKIP_SHARED_LIBRARY "ON")
 # add_subdirectory(libSBML-5.18.1-experimental-Source)
 add_subdirectory(libsbml)
 
-add_dependencies(libsbml LibXml2 libiconv-static zlib)
+#add_dependencies(libsbml LibXml2 libiconv-static zlib)
 add_dependencies(libsbml-static LibXml2 libiconv-static zlib)
 
 
 # needed because of the weird way libsbml handles the "lib" prefix
 if (WIN32)
-    set(LIBSBML_INCLUDE_DIR "$<TARGET_PROPERTY:libsbml,INCLUDE_DIRECTORIES>")
+    set(LIBSBML_INCLUDE_DIR "$<TARGET_PROPERTY:libsbml-static,INCLUDE_DIRECTORIES>")
 else (WIN32)
-    set(LIBSBML_INCLUDE_DIR "$<TARGET_PROPERTY:sbml,INCLUDE_DIRECTORIES>")
+    set(LIBSBML_INCLUDE_DIR "$<TARGET_PROPERTY:sbml-static,INCLUDE_DIRECTORIES>")
 endif (WIN32)
 
 ## rr-libstruct
 message(STATUS "Adding rr-libstruct as subdirectory")
 add_subdirectory(rr-libstruct)
+add_dependencies(rr-libstruct-static libsbml-static)
 
 #
 ## sundials
