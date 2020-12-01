@@ -50,7 +50,7 @@ message(STATUS "Adding libxml2 as subdirectory")
 add_subdirectory(libxml2)
 add_dependencies(LibXml2 zlib libiconv-static libz2)
 set(LIBXML_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/libxml2/include")
-set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "${CMAKE_CURRENT_BINARY_DIR}/libxml2/include/")
+set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "${CMAKE_CURRENT_BINARY_DIR}/libxml2/include/" "${CMAKE_CURRENT_BINARY_DIR}/third_party/libxml2/include/")
 message(STATUS "Extra include directories: ${EXTRA_INCLUDE_DIRS}")
 add_dependencies(LibXml2 libiconv-static zlib)
 
@@ -70,21 +70,21 @@ set(LIBSBML_SKIP_SHARED_LIBRARY "ON")
 # add_subdirectory(libSBML-5.18.1-experimental-Source)
 add_subdirectory(libsbml)
 
-#add_dependencies(libsbml LibXml2 libiconv-static zlib)
-add_dependencies(libsbml-static LibXml2 libiconv-static zlib)
-
-
 # needed because of the weird way libsbml handles the "lib" prefix
 if (WIN32)
+    set(LIBSBML_TARGET_ID "libsbml-static")
     set(LIBSBML_INCLUDE_DIR "$<TARGET_PROPERTY:libsbml-static,INCLUDE_DIRECTORIES>")
 else (WIN32)
+    set(LIBSBML_TARGET_ID "sbml-static")
     set(LIBSBML_INCLUDE_DIR "$<TARGET_PROPERTY:sbml-static,INCLUDE_DIRECTORIES>")
 endif (WIN32)
+
+add_dependencies("${LIBSBML_TARGET_ID}" LibXml2 libiconv-static zlib)
 
 ## rr-libstruct
 message(STATUS "Adding rr-libstruct as subdirectory")
 add_subdirectory(rr-libstruct)
-add_dependencies(rr-libstruct-static libsbml-static)
+add_dependencies(rr-libstruct-static "${LIBSBML_TARGET_ID}")
 
 #
 ## sundials
