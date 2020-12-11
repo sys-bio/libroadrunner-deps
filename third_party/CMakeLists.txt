@@ -58,7 +58,7 @@ message(STATUS "Extra include directories: ${EXTRA_INCLUDE_DIRS}")
 add_dependencies(LibXml2 libiconv-static zlibstatic)
 
 # note the TARGET_LINKER_FILE generator expression gives us the export library on windows
-set(LIBXML_LIBRARY "$<TARGET_LINKER_FILE:LibXml2>")
+set(LIBXML_LIBRARY LibXml2)
 
 ## poco
 message(STATUS "Adding poco as subdirectory")
@@ -72,13 +72,6 @@ set(WITH_BZIP2 "OFF")
 set(LIBSBML_SKIP_SHARED_LIBRARY "ON")
 # add_subdirectory(libSBML-5.18.1-experimental-Source)
 add_subdirectory(libsbml)
-if ($<TARGET_EXISTS:sbml>)
-    add_dependencies(sbml zlibstatic)
-    add_dependencies(sbml-static zlibstatic)
-elseif ($<TARGET_EXISTS:libsbml>)
-    add_dependencies(libsbml zlibstatic)
-    add_dependencies(libsbml-static zlibstatic)
-endif ()
 
 # needed because of the weird way libsbml handles the "lib" prefix
 if (WIN32)
