@@ -46,7 +46,7 @@ stages:
           - task: PublishBuildArtifacts@1
             inputs:
               pathToPublish: $(Build.ArtifactStagingDirectory)
-              artifactName: libroadrunner-deps-$(Agent.OS)-$(BUILD_TYPE)
+              artifactName: libroadrunner-deps-$(Agent.OS)-$(BuildType)
 
       - job: BuildRoadrunnerDepsWindows
         timeoutInMinutes: "0"
@@ -72,11 +72,11 @@ stages:
           - powershell: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
-              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BUILD_TYPE)" ..
+              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" ..
             displayName: ConfigureCommand
           - powershell: |
               cd $(BUILD_DIRECTORY)
-              cmake --build . --target install --config $(BUILD_TYPE) -j 12
+              cmake --build . --target install --config $(BuildType) -j 12
             displayName: BuildCommand
           - task: CopyFiles@2
             inputs:
@@ -85,7 +85,7 @@ stages:
           - task: PublishBuildArtifacts@1
             inputs:
               pathToPublish: $(Build.ArtifactStagingDirectory)
-              artifactName: libroadrunner-deps-$(Agent.OS)-$(BUILD_TYPE)
+              artifactName: libroadrunner-deps-$(Agent.OS)-$(BuildType)
 
 
       - job: BuildRoadrunnerDepsMac
@@ -127,4 +127,4 @@ stages:
           - task: PublishBuildArtifacts@1
             inputs:
               pathToPublish: $(Build.ArtifactStagingDirectory)
-              artifactName: libroadrunner-deps-$(Agent.OS)-$(BUILD_TYPE)
+              artifactName: libroadrunner-deps-$(Agent.OS)-$(BuildType)
