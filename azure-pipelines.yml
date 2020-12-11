@@ -46,9 +46,7 @@ stages:
           - task: PublishBuildArtifacts@1
             inputs:
               pathToPublish: $(Build.ArtifactStagingDirectory)
-              artifactName: libroadrunner-deps-x64-gcc
-
-
+              artifactName: libroadrunner-deps-$(Agent.OS)-$(BUILD_TYPE)
 
       - job: BuildRoadrunnerDepsWindows
         timeoutInMinutes: "0"
@@ -71,12 +69,12 @@ stages:
         steps:
           - checkout: self
             submodules: recursive          
-          - script: |
+          - powershell: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
-              cmake -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY)\$(BUILD_TYPE) ..
+              cmake -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY)/$(BUILD_TYPE) ..
             displayName: ConfigureCommand
-          - script: |
+          - powershell: |
               cd $(BUILD_DIRECTORY)
               cmake --build . --target install --config $(BUILD_TYPE) -j 12
             displayName: BuildCommand
@@ -87,7 +85,7 @@ stages:
           - task: PublishBuildArtifacts@1
             inputs:
               pathToPublish: $(Build.ArtifactStagingDirectory)
-              artifactName: libroadrunner-deps-x64-gcc
+              artifactName: libroadrunner-deps-$(Agent.OS)-$(BUILD_TYPE)
 
 
       - job: BuildRoadrunnerDepsMac
@@ -129,4 +127,4 @@ stages:
           - task: PublishBuildArtifacts@1
             inputs:
               pathToPublish: $(Build.ArtifactStagingDirectory)
-              artifactName: libroadrunner-deps-x64-gcc
+              artifactName: libroadrunner-deps-$(Agent.OS)-$(BUILD_TYPE)
