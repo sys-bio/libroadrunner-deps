@@ -38,7 +38,10 @@ set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "$<TARGET_PROPERTY:libiconv-stati
 # It also just adds the WS2_32.lib library, regardless of whether it's compiling on 
 # windows or not.  So, I went ahead and basically replicated that here.
 #set(LIBICONV_LIBRARY "$<TARGET_LINKER_FILE:libiconv>")
-set(EXTRA_LIBS "${EXTRA_LIBS}" "WS2_32.lib" "$<TARGET_LINKER_FILE:libiconv-static>")
+set(EXTRA_LIBS "${EXTRA_LIBS}" "$<TARGET_LINKER_FILE:libiconv-static>")
+if (WIN32)
+    set(EXTRA_LIBS "${EXTRA_LIBS}" "WS2_32.lib")
+endif(WIN32)
 
 # clapack
 message(STATUS "Adding clapack as subdirectory")
