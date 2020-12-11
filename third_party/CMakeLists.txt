@@ -27,7 +27,7 @@ set(LIBZ_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/zlib/")
 #set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "${CMAKE_CURRENT_BINARY_DIR}/zlib/")
 set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>")
 message(STATUS "Extra include directories: ${EXTRA_INCLUDE_DIRS}")
-set(LIBZ_LIBRARY "$<TARGET_LINKER_FILE:zlib>")
+set(LIBZ_LIBRARY "$<TARGET_LINKER_FILE:zlibstatic>")
 
 # iconv
 message(STATUS "Adding iconv as subdirectory")
@@ -48,11 +48,11 @@ set(CLAPACK_INCLUDE_DIR "$<TARGET_PROPERTY:lapack,INCLUDE_DIRECTORIES>")
 # libxml2
 message(STATUS "Adding libxml2 as subdirectory")
 add_subdirectory(libxml2)
-add_dependencies(LibXml2 zlib libiconv-static libz2)
+add_dependencies(LibXml2 zlibstatic libiconv-static libz2)
 set(LIBXML_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/libxml2/include")
 set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "${CMAKE_CURRENT_BINARY_DIR}/libxml2/include/" "${CMAKE_CURRENT_BINARY_DIR}/third_party/libxml2/include/")
 message(STATUS "Extra include directories: ${EXTRA_INCLUDE_DIRS}")
-add_dependencies(LibXml2 libiconv-static zlib)
+add_dependencies(LibXml2 libiconv-static zlibstatic)
 
 # note the TARGET_LINKER_FILE generator expression gives us the export library on windows
 set(LIBXML_LIBRARY "$<TARGET_LINKER_FILE:LibXml2>")
@@ -79,7 +79,7 @@ else (WIN32)
     set(LIBSBML_INCLUDE_DIR "$<TARGET_PROPERTY:sbml-static,INCLUDE_DIRECTORIES>")
 endif (WIN32)
 
-add_dependencies("${LIBSBML_TARGET_ID}" LibXml2 libiconv-static zlib)
+add_dependencies("${LIBSBML_TARGET_ID}" LibXml2 zlibstatic libiconv-static libz2)
 
 ## rr-libstruct
 message(STATUS "Adding rr-libstruct as subdirectory")
