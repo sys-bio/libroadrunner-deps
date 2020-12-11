@@ -27,7 +27,7 @@ set(LIBZ_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/zlib/")
 #set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "${CMAKE_CURRENT_BINARY_DIR}/zlib/")
 set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>")
 message(STATUS "Extra include directories: ${EXTRA_INCLUDE_DIRS}")
-set(LIBZ_LIBRARY "$<TARGET_LINKER_FILE:zlibstatic>")
+set(LIBZ_LIBRARY zlibstatic)
 
 # iconv
 message(STATUS "Adding iconv as subdirectory")
@@ -38,10 +38,10 @@ set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "$<TARGET_PROPERTY:libiconv-stati
 # It also just adds the WS2_32.lib library, regardless of whether it's compiling on 
 # windows or not.  So, I went ahead and basically replicated that here.
 #set(LIBICONV_LIBRARY "$<TARGET_LINKER_FILE:libiconv>")
-set(EXTRA_LIBS "${EXTRA_LIBS}" "$<TARGET_LINKER_FILE:libiconv-static>")
+set(EXTRA_LIBS "${EXTRA_LIBS}" libiconv-static)
 if (WIN32)
     set(EXTRA_LIBS "${EXTRA_LIBS}" "WS2_32.lib")
-endif(WIN32)
+endif (WIN32)
 
 # clapack
 message(STATUS "Adding clapack as subdirectory")
@@ -72,6 +72,13 @@ set(WITH_BZIP2 "OFF")
 set(LIBSBML_SKIP_SHARED_LIBRARY "ON")
 # add_subdirectory(libSBML-5.18.1-experimental-Source)
 add_subdirectory(libsbml)
+if ($<TARGET_EXISTS:sbml>)
+    add_dependencies(sbml zlibstatic)
+    add_dependencies(sbml-static zlibstatic)
+elseif ($<TARGET_EXISTS:libsbml>)
+    add_dependencies(libsbml zlibstatic)
+    add_dependencies(libsbml-static zlibstatic)
+endif ()
 
 # needed because of the weird way libsbml handles the "lib" prefix
 if (WIN32)
