@@ -4,17 +4,8 @@
 # https://aka.ms/yaml
 name: $(Date:yyyyMMdd)$(Rev:.r)
 trigger:
-  - develop-new-buildsystem
-#  - master
-#  - develop
-#
-#
-#
-#
-#pr:
-##  - master
-##  - develop
-#  - azure-tests
+  - master
+  - develop
 
 stages:
     - stage: BuildRoadrunnerDeps
@@ -25,24 +16,36 @@ stages:
         continueOnError: "false"
         pool:
           vmImage: "ubuntu-18.04"
-
+        variables:
+          CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
+          BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
+          SOURCE_DIRECTORY: '$(System.DefaultWorkingDirectory)'
+          INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
         strategy:
           matrix:
             64-bit Linux Release:
               BuildType: Release
-              CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-release"
             64-bit Linux Debug:
               BuildType: Debug
-              CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-debug"
         steps:
-          - task: CMake@1
+          - script: |
+              mkdir $(BUILD_DIRECTORY)
+              cd $(BUILD_DIRECTORY)
+              cmake -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY)/$(BUILD_TYPE) ..
             displayName: ConfigureCommand
-            inputs:
-              cmakeArgs: $(CMakeArgs) -DCMAKE_BUILD_TYPE=$(BuildType) ..
-          - task: CMake@1
+          - script: |
+              cd $(BUILD_DIRECTORY)
+              cmake --build . --target install --config $(BUILD_TYPE) -j 12
             displayName: BuildCommand
+          - task: CopyFiles@2
             inputs:
-              cmakeArgs: --build . --target install --config $(BuildType) -j 12
+              contents: '$(INSTALL_DIRECTORY)/$(BuildType)'
+              targetFolder: $(Build.ArtifactStagingDirectory)
+          - task: PublishBuildArtifacts@1
+            inputs:
+              pathToPublish: $(Build.ArtifactStagingDirectory)
+              artifactName: libroadrunner-deps-x64-gcc
+
 
 
       - job: BuildRoadrunnerDepsWindows
@@ -51,26 +54,36 @@ stages:
         continueOnError: "false"
         pool:
           vmImage: "windows-2019"
-
+        variables:
+          CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
+          BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
+          SOURCE_DIRECTORY: '$(System.DefaultWorkingDirectory)'
+          INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
         strategy:
           matrix:
             64-bit Windows Release:
               BuildType: Release
-              CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-release"
             64-bit Windows Debug:
               BuildType: Debug
-              CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-debug"
 
         steps:
-          - task: CMake@1
+          - script: |
+              mkdir $(BUILD_DIRECTORY)
+              cd $(BUILD_DIRECTORY)
+              cmake -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY)/$(BUILD_TYPE) ..
             displayName: ConfigureCommand
-            inputs:
-              cmakeArgs: $(CMakeArgs) ..
-          - task: CMake@1
+          - script: |
+              cd $(BUILD_DIRECTORY)
+              cmake --build . --target install --config $(BUILD_TYPE) -j 12
             displayName: BuildCommand
+          - task: CopyFiles@2
             inputs:
-              cmakeArgs: --build . --target install --config $(BuildType) -j 12
-
+              contents: '$(INSTALL_DIRECTORY)/$(BuildType)'
+              targetFolder: $(Build.ArtifactStagingDirectory)
+          - task: PublishBuildArtifacts@1
+            inputs:
+              pathToPublish: $(Build.ArtifactStagingDirectory)
+              artifactName: libroadrunner-deps-x64-gcc
 
 
       - job: BuildRoadrunnerDepsMac
@@ -79,7 +92,11 @@ stages:
         continueOnError: "false"
         pool:
           vmImage: 'macOS-10.15'
-
+        variables:
+          CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
+          BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
+          SOURCE_DIRECTORY: '$(System.DefaultWorkingDirectory)'
+          INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
         strategy:
           matrix:
             64-bit Mac Release:
@@ -90,12 +107,20 @@ stages:
               CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-debug"
 
         steps:
-          - task: CMake@1
+          - script: |
+              mkdir $(BUILD_DIRECTORY)
+              cd $(BUILD_DIRECTORY)
+              cmake -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY)/$(BUILD_TYPE) ..
             displayName: ConfigureCommand
-            inputs:
-              cmakeArgs: $(CMakeArgs) ..
-          - task: CMake@1
+          - script: |
+              cd $(BUILD_DIRECTORY)
+              cmake --build . --target install --config $(BUILD_TYPE) -j 12
             displayName: BuildCommand
+          - task: CopyFiles@2
             inputs:
-              cmakeArgs: --build . --target install --config $(BuildType) -j 12
-
+              contents: '$(INSTALL_DIRECTORY)/$(BuildType)'
+              targetFolder: $(Build.ArtifactStagingDirectory)
+          - task: PublishBuildArtifacts@1
+            inputs:
+              pathToPublish: $(Build.ArtifactStagingDirectory)
+              artifactName: libroadrunner-deps-x64-gcc
