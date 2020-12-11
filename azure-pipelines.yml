@@ -33,20 +33,18 @@ stages:
           - script: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
-              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BUILD_TYPE)" ..
+              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" ..
             displayName: ConfigureCommand
           - script: |
               cd $(BUILD_DIRECTORY)
-              cmake --build . --target install --config $(BUILD_TYPE) -j 12
+              cmake --build . --target install --config $(BuildType) -j 12
             displayName: BuildCommand
           - task: CopyFiles@2
             inputs:
-              contents: '$(INSTALL_DIRECTORY)/$(BuildType)'
+              contents: '$(INSTALL_DIRECTORY)/$(BuildType)/**'
               targetFolder: $(Build.ArtifactStagingDirectory)
-          - task: PublishBuildArtifacts@1
-            inputs:
-              pathToPublish: $(Build.ArtifactStagingDirectory)
-              artifactName: libroadrunner-deps-$(Agent.OS)-$(BuildType)
+          - publish: $(Build.ArtifactStagingDirectory)
+            artifact: libroadrunner-$(Agent.OS)-$(BUILD_TYPE)
 
       - job: BuildRoadrunnerDepsWindows
         timeoutInMinutes: "0"
@@ -80,12 +78,10 @@ stages:
             displayName: BuildCommand
           - task: CopyFiles@2
             inputs:
-              contents: '$(INSTALL_DIRECTORY)/$(BuildType)'
+              contents: '$(INSTALL_DIRECTORY)/$(BuildType)/**'
               targetFolder: $(Build.ArtifactStagingDirectory)
-          - task: PublishBuildArtifacts@1
-            inputs:
-              pathToPublish: $(Build.ArtifactStagingDirectory)
-              artifactName: libroadrunner-deps-$(Agent.OS)-$(BuildType)
+          - publish: $(Build.ArtifactStagingDirectory)
+            artifact: libroadrunner-$(Agent.OS)-$(BUILD_TYPE)
 
 
       - job: BuildRoadrunnerDepsMac
@@ -114,15 +110,15 @@ stages:
           - script: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
-              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BUILD_TYPE)" ..
+              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" ..
             displayName: ConfigureCommand
           - script: |
               cd $(BUILD_DIRECTORY)
-              cmake --build . --target install --config $(BUILD_TYPE) -j 12
+              cmake --build . --target install --config $(BuildType) -j 12
             displayName: BuildCommand
           - task: CopyFiles@2
             inputs:
-              contents: '$(INSTALL_DIRECTORY)/$(BuildType)'
+              contents: '$(INSTALL_DIRECTORY)/$(BuildType)/**'
               targetFolder: $(Build.ArtifactStagingDirectory)
           - task: PublishBuildArtifacts@1
             inputs:
