@@ -28,6 +28,8 @@ stages:
             64-bit Linux Debug:
               BuildType: Debug
         steps:
+          - checkout: self
+            submodules: recursive          
           - script: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
@@ -56,9 +58,9 @@ stages:
           vmImage: "windows-2019"
         variables:
           CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
-          BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
           SOURCE_DIRECTORY: '$(System.DefaultWorkingDirectory)'
-          INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
+          BUILD_DIRECTORY: '$(SOURCE_DIRECTORY)\build'
+          INSTALL_DIRECTORY: '$(SOURCE_DIRECTORY)\install-azure'
         strategy:
           matrix:
             64-bit Windows Release:
@@ -67,10 +69,12 @@ stages:
               BuildType: Debug
 
         steps:
+          - checkout: self
+            submodules: recursive          
           - script: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
-              cmake -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY)/$(BUILD_TYPE) ..
+              cmake -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY)\$(BUILD_TYPE) ..
             displayName: ConfigureCommand
           - script: |
               cd $(BUILD_DIRECTORY)
@@ -107,6 +111,8 @@ stages:
               CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-debug"
 
         steps:
+          - checkout: self
+            submodules: recursive          
           - script: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
