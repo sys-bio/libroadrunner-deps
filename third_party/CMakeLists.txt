@@ -114,9 +114,12 @@ if (${BUILD_LLVM})
     message(STATUS "Adding llvm-6.x/llvm as subdirectory")
     add_subdirectory(llvm-6.x/llvm)
 else ()
-    message(WARNING "Not building LLVM. LLVM is a required dependency of roadrunner. Not \
-marking LLVM for building means that you already have a built copy of llvm-6.x built and installed. If installed in a \
-non-standard location you will have to give the install directory to roadrunner cmake with
+    message(WARNING "Not building LLVM (-DBUILD_LLVM=ON). LLVM is a required dependency of roadrunner. Not \
+marking LLVM for building means that you must already have a built copy of llvm-6.x. If this is in a \
+system directory (like \"/usr/local\" or \"C:\\Program Files\") this will be found automatically \
+when you run the cmake command for the main roadrunner repository. If installed in a \
+non-standard location you will need to provide the full path to the llvm-6.x install directory when running \
+the cmake command for roadrunner i.e.
     -DLLVM_INSTALL_PREFIX=\"/full/path/to/llvm\"
 If you do not already have llvm-6.x, please re-run cmake with
     -DBUILD_LLVM=ON
