@@ -33,7 +33,7 @@ stages:
           - script: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
-              cmake -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY)/$(BUILD_TYPE) ..
+              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BUILD_TYPE)" ..
             displayName: ConfigureCommand
           - script: |
               cd $(BUILD_DIRECTORY)
@@ -72,7 +72,7 @@ stages:
           - powershell: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
-              cmake -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY)/$(BUILD_TYPE) ..
+              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BUILD_TYPE)" ..
             displayName: ConfigureCommand
           - powershell: |
               cd $(BUILD_DIRECTORY)
@@ -114,7 +114,7 @@ stages:
           - script: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
-              cmake -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY)/$(BUILD_TYPE) ..
+              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BUILD_TYPE)" ..
             displayName: ConfigureCommand
           - script: |
               cd $(BUILD_DIRECTORY)
