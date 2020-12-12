@@ -29,7 +29,14 @@ stages:
               BuildType: Debug
         steps:
           - checkout: self
-            submodules: recursive          
+            submodules: recursive
+          - script: |
+              echo "Build.DefinitionName $(Build.DefinitionName)"
+              echo "System.DefinitionId	 $(System.DefinitionId)"
+              echo "Agent.OS $(Agent.OS)"
+              echo "System.TeamProject $(System.TeamProject)"
+              echo "System.TeamProjectId $(System.TeamProjectId)"
+            displayName: Print Variables
           - script: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
