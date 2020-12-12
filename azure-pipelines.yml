@@ -36,6 +36,32 @@ stages:
               echo "Agent.OS $(Agent.OS)"
               echo "System.TeamProject $(System.TeamProject)"
               echo "System.TeamProjectId $(System.TeamProjectId)"
+              echo "System.AccessToken  $(System.AccessToken)"
+              echo "System.CollectionId $(System.CollectionId)"
+              echo "System.CollectionUri  $(System.CollectionUri)"
+              echo "System.DefaultWorkingDirectory  $(System.DefaultWorkingDirectory)"
+              echo "System.DefinitionId $(System.DefinitionId)"
+              echo "System.HostType $(System.HostType)"
+              echo "System.JobAttempt $(System.JobAttempt)"
+              echo "System.JobDisplayName $(System.JobDisplayName)"
+              echo "System.JobId  $(System.JobId)"
+              echo "System.JobName  $(System.JobName)"
+              echo "System.PhaseAttempt $(System.PhaseAttempt)"
+              echo "System.PhaseDisplayName $(System.PhaseDisplayName)"
+              echo "System.PhaseName  $(System.PhaseName)"
+              echo "System.StageAttempt $(System.StageAttempt)"
+              echo "System.StageDisplayName $(System.StageDisplayName)"
+              echo "System.StageName  $(System.StageName)"
+              echo "System.PullRequest.IsFork $(System.PullRequest.IsFork)"
+              echo "System.PullRequest.PullRequestId $(System.PullRequest.PullRequestId)"
+              echo "System.PullRequest.PullRequestNumber $(System.PullRequest.PullRequestNumber)"
+              echo "System.PullRequest.SourceBranch $(System.PullRequest.SourceBranch)"
+              echo "System.PullRequest.SourceRepositoryURI $(System.PullRequest.SourceRepositoryURI)"
+              echo "System.PullRequest.TargetBranch $(System.PullRequest.TargetBranch)"
+              echo "System.TeamFoundationCollectionUri $(System.TeamFoundationCollectionUri)"
+              echo "System.TeamProject $(System.TeamProject)"
+              echo "System.TeamProjectId $(System.TeamProjectId)"
+              echo "TF_BUILD $(TF_BUILD)"
             displayName: Print Variables
           - script: |
               mkdir $(BUILD_DIRECTORY)
@@ -74,6 +100,40 @@ stages:
         steps:
           - checkout: self
             submodules: recursive          
+
+          - script: |
+              echo "Build.DefinitionName $(Build.DefinitionName)"
+              echo "System.DefinitionId	 $(System.DefinitionId)"
+              echo "Agent.OS $(Agent.OS)"
+              echo "System.TeamProject $(System.TeamProject)"
+              echo "System.TeamProjectId $(System.TeamProjectId)"
+              echo "System.AccessToken  $(System.AccessToken)"
+              echo "System.CollectionId $(System.CollectionId)"
+              echo "System.CollectionUri  $(System.CollectionUri)"
+              echo "System.DefaultWorkingDirectory  $(System.DefaultWorkingDirectory)"
+              echo "System.DefinitionId $(System.DefinitionId)"
+              echo "System.HostType $(System.HostType)"
+              echo "System.JobAttempt $(System.JobAttempt)"
+              echo "System.JobDisplayName $(System.JobDisplayName)"
+              echo "System.JobId  $(System.JobId)"
+              echo "System.JobName  $(System.JobName)"
+              echo "System.PhaseAttempt $(System.PhaseAttempt)"
+              echo "System.PhaseDisplayName $(System.PhaseDisplayName)"
+              echo "System.PhaseName  $(System.PhaseName)"
+              echo "System.StageAttempt $(System.StageAttempt)"
+              echo "System.StageDisplayName $(System.StageDisplayName)"
+              echo "System.StageName  $(System.StageName)"
+              echo "System.PullRequest.IsFork $(System.PullRequest.IsFork)"
+              echo "System.PullRequest.PullRequestId $(System.PullRequest.PullRequestId)"
+              echo "System.PullRequest.PullRequestNumber $(System.PullRequest.PullRequestNumber)"
+              echo "System.PullRequest.SourceBranch $(System.PullRequest.SourceBranch)"
+              echo "System.PullRequest.SourceRepositoryURI $(System.PullRequest.SourceRepositoryURI)"
+              echo "System.PullRequest.TargetBranch $(System.PullRequest.TargetBranch)"
+              echo "System.TeamFoundationCollectionUri $(System.TeamFoundationCollectionUri)"
+              echo "System.TeamProject $(System.TeamProject)"
+              echo "System.TeamProjectId $(System.TeamProjectId)"
+              echo "TF_BUILD $(TF_BUILD)"
+            displayName: Print Variables
           - powershell: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
@@ -114,6 +174,39 @@ stages:
         steps:
           - checkout: self
             submodules: recursive          
+          - script: |
+              echo "Build.DefinitionName $(Build.DefinitionName)"
+              echo "System.DefinitionId	 $(System.DefinitionId)"
+              echo "Agent.OS $(Agent.OS)"
+              echo "System.TeamProject $(System.TeamProject)"
+              echo "System.TeamProjectId $(System.TeamProjectId)"
+              echo "System.AccessToken  $(System.AccessToken)"
+              echo "System.CollectionId $(System.CollectionId)"
+              echo "System.CollectionUri  $(System.CollectionUri)"
+              echo "System.DefaultWorkingDirectory  $(System.DefaultWorkingDirectory)"
+              echo "System.DefinitionId $(System.DefinitionId)"
+              echo "System.HostType $(System.HostType)"
+              echo "System.JobAttempt $(System.JobAttempt)"
+              echo "System.JobDisplayName $(System.JobDisplayName)"
+              echo "System.JobId  $(System.JobId)"
+              echo "System.JobName  $(System.JobName)"
+              echo "System.PhaseAttempt $(System.PhaseAttempt)"
+              echo "System.PhaseDisplayName $(System.PhaseDisplayName)"
+              echo "System.PhaseName  $(System.PhaseName)"
+              echo "System.StageAttempt $(System.StageAttempt)"
+              echo "System.StageDisplayName $(System.StageDisplayName)"
+              echo "System.StageName  $(System.StageName)"
+              echo "System.PullRequest.IsFork $(System.PullRequest.IsFork)"
+              echo "System.PullRequest.PullRequestId $(System.PullRequest.PullRequestId)"
+              echo "System.PullRequest.PullRequestNumber $(System.PullRequest.PullRequestNumber)"
+              echo "System.PullRequest.SourceBranch $(System.PullRequest.SourceBranch)"
+              echo "System.PullRequest.SourceRepositoryURI $(System.PullRequest.SourceRepositoryURI)"
+              echo "System.PullRequest.TargetBranch $(System.PullRequest.TargetBranch)"
+              echo "System.TeamFoundationCollectionUri $(System.TeamFoundationCollectionUri)"
+              echo "System.TeamProject $(System.TeamProject)"
+              echo "System.TeamProjectId $(System.TeamProjectId)"
+              echo "TF_BUILD $(TF_BUILD)"
+            displayName: Print Variables
           - script: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
