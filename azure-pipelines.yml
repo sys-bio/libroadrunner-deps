@@ -44,7 +44,7 @@ stages:
               contents: '$(INSTALL_DIRECTORY)/$(BuildType)/**'
               targetFolder: $(Build.ArtifactStagingDirectory)
           - publish: $(Build.ArtifactStagingDirectory)
-            artifact: libroadrunner-$(Agent.OS)-$(BuildType)
+            artifact: libroadrunner-deps-$(Agent.OS)-$(BuildType)
 
       - job: BuildRoadrunnerDepsWindows
         timeoutInMinutes: "0"
@@ -81,7 +81,7 @@ stages:
               contents: '$(INSTALL_DIRECTORY)/$(BuildType)/**'
               targetFolder: $(Build.ArtifactStagingDirectory)
           - publish: $(Build.ArtifactStagingDirectory)
-            artifact: libroadrunner-$(Agent.OS)-$(BuildType)
+            artifact: libroadrunner-deps-$(Agent.OS)-$(BuildType)
 
 
       - job: BuildRoadrunnerDepsMac
