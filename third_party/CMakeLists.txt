@@ -102,6 +102,16 @@ if (${BUILD_SHARED_LIBS})
     set(_TEMP_NO_SHARED_LIBS ON) # marker of shared lib needs turning on
 endif ()
 
+# sundials options
+set(BUILD_ARKODE OFF)
+set(BUILD_CVODES ON)
+set(BUILD_IDA OFF)
+set(BUILD_IDAS OFF)
+set(BUILD_KINSOL ON)
+set(BUILD_CVODE ON)
+set(EXAMPLES_ENABLE_C OFF)
+set(EXAMPLES_INSTALL OFF)
+
 add_subdirectory(sundials)
 
 # turn BUILD_SHARED_LIBS back on, if it was on before
