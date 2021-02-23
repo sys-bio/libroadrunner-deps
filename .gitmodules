@@ -31,3 +31,6 @@
 [submodule "third_party/libsbml"]
 	path = third_party/libsbml
 	url = https://github.com/sbmlteam/libsbml.git
+[submodule "third_party/sundials"]
+	path = third_party/sundials
+	url = https://github.com/LLNL/sundials.git
