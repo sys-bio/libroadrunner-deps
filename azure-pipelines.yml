@@ -23,6 +23,7 @@ stages:
         steps:
           - checkout: self
             submodules: recursive
+          - script: git checkout compile-with-cxx-20
           - script: |
               echo "Build.DefinitionName $(Build.DefinitionName)"
               echo "System.DefinitionId	 $(System.DefinitionId)"
@@ -93,7 +94,7 @@ stages:
         steps:
           - checkout: self
             submodules: recursive          
-
+          - script: git checkout compile-with-cxx-20
           - script: |
               echo "Build.DefinitionName $(Build.DefinitionName)"
               echo "System.DefinitionId	 $(System.DefinitionId)"
@@ -166,7 +167,8 @@ stages:
 
         steps:
           - checkout: self
-            submodules: recursive          
+            submodules: recursive
+          - script: git checkout compile-with-cxx-20
           - script: |
               echo "Build.DefinitionName $(Build.DefinitionName)"
               echo "System.DefinitionId	 $(System.DefinitionId)"
