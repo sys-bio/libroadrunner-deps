@@ -23,7 +23,15 @@ stages:
         steps:
           - checkout: self
             submodules: recursive
-          - script: git checkout compile-with-cxx-20
+          - script: |
+              git checkout compile-with-cxx-20
+              cd third_party/poco
+              git checkout poco-v1.10.1
+              cd ../libsbml
+              git remote remove origin
+              git remote add origin https://github.com/sys-bio/libsbml
+              git fetch
+              git checkout cxx-20
           - script: |
               echo "Build.DefinitionName $(Build.DefinitionName)"
               echo "System.DefinitionId	 $(System.DefinitionId)"
@@ -94,7 +102,15 @@ stages:
         steps:
           - checkout: self
             submodules: recursive          
-          - script: git checkout compile-with-cxx-20
+          - script: |
+              git checkout compile-with-cxx-20
+              cd third_party/poco
+              git checkout poco-v1.10.1
+              cd ../libsbml
+              git remote remove origin
+              git remote add origin https://github.com/sys-bio/libsbml
+              git fetch
+              git checkout cxx-20
           - script: |
               echo "Build.DefinitionName $(Build.DefinitionName)"
               echo "System.DefinitionId	 $(System.DefinitionId)"
@@ -168,7 +184,15 @@ stages:
         steps:
           - checkout: self
             submodules: recursive
-          - script: git checkout compile-with-cxx-20
+          - script: |
+              git checkout compile-with-cxx-20
+              cd third_party/poco
+              git checkout poco-v1.10.1
+              cd ../libsbml
+              git remote remove origin
+              git remote add origin https://github.com/sys-bio/libsbml
+              git fetch
+              git checkout cxx-20
           - script: |
               echo "Build.DefinitionName $(Build.DefinitionName)"
               echo "System.DefinitionId	 $(System.DefinitionId)"
