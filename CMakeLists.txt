@@ -57,7 +57,8 @@ cmake_policy(SET CMP0063 NEW)
 option(BUILD_PACKAGING "Build the packaging" OFF)
 option(BUILD_LLVM "build llvm" OFF)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 14 CACHE STRING "The C++ standard to compile with")
+message(STATUS "Compiling with CXX standard: ${CMAKE_CXX_STANDARD}")
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
