@@ -78,11 +78,6 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib")
 
 set(CMAKE_MACOSX_RPATH 1)
 
-#visibility settings
-# note - this is recommended by cmake gurus. I tried it and it broke the build.
-#set(CMAKE_CXX_VISIBILITY_PRESET hidden)
-#set(CMAKE_VISIBILITY_INLINES_HIDDEN YES)
-
 # preset libxml2 options
 option(LIBXML2_WITH_LZMA "libxm2 with or without lzma" OFF)
 mark_as_advanced(LIBXML2_WITH_LZMA)
