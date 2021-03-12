@@ -154,10 +154,23 @@ struct Namelist {
 	};
 typedef struct Namelist Namelist;
 
+/**
+ * these macros interfere with standard library in C++
+ * so change f2c to also use standard library
+ */
+#ifdef __cplusplus
+#include <cmath>
+using std::abs;
+using std::min;
+using std::max;
+#else
 #define abs(x) ((x) >= 0 ? (x) : -(x))
-#define dabs(x) (doublereal)abs(x)
 #define min(a,b) ((a) <= (b) ? (a) : (b))
 #define max(a,b) ((a) >= (b) ? (a) : (b))
+#endif
+
+
+#define dabs(x) (doublereal)abs(x)
 #define dmin(a,b) (doublereal)min(a,b)
 #define dmax(a,b) (doublereal)max(a,b)
 #define bit_test(a,b)	((a) >> (b) & 1)
