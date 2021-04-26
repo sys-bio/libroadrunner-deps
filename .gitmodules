@@ -28,9 +28,6 @@
 [submodule "third_party/rr-libstruct"]
 	path = third_party/rr-libstruct
 	url = https://github.com/sys-bio/rr-libstruct.git
-[submodule "third_party/libsbml"]
-	path = third_party/libsbml
-	url = https://github.com/sbmlteam/libsbml.git
 [submodule "third_party/sundials"]
 	path = third_party/sundials
 	url = https://github.com/LLNL/sundials.git
