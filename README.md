@@ -12,7 +12,7 @@ Assuming cmake is ready for usage:
 | --- |
 
 ```
-$ git clone https://github.com/CiaranWelsh/libroadrunner-deps.git
+$ git clone https://github.com/sys-bio/libroadrunner-deps.git
 $ cd libroadrunner-deps
 $ mkdir build
 $ cd build
