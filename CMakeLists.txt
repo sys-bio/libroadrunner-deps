@@ -46,9 +46,17 @@ include(GenerateExportHeader)
 
 
 ##############################################################
-#   policies
+#   CMake Policy's
 #
-cmake_policy(SET CMP0063 NEW)
+cmake_policy(SET CMP0063 NEW) # What is it for?
+
+if (${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.20")
+    # Source file extensions do not need to be explicitly
+    #   specified if CMP0115 set to OLD.
+    #   New behavior requires all extensions be explicit
+    cmake_policy(SET CMP0115 OLD)
+endif()
+
 
 ###############################################################
 #   options and varibles
