@@ -1,5 +1,8 @@
 name: $(Date:yyyyMMdd)$(Rev:.r)
 
+variables:
+  BUILD_LLVM: 'ON'
+
 stages:
     - stage: BuildRoadrunnerDeps
       jobs:
@@ -59,8 +62,7 @@ stages:
           - script: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
-              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) -DBUILD_LLVM=ON ..
-            displayName: ConfigureCommand
+              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) -DBUILD_LLVM=$(BUILD_LLVM) ..            displayName: ConfigureCommand
           - script: |
               cd $(BUILD_DIRECTORY)
               cmake --build . --target install --config $(BuildType) -j 12
@@ -130,8 +132,7 @@ stages:
           - powershell: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
-              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) ..
-            displayName: ConfigureCommand
+              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) -DBUILD_LLVM=$(BUILD_LLVM) ..            displayName: ConfigureCommand
           - powershell: |
               cd $(BUILD_DIRECTORY)
               cmake --build . --target install --config $(BuildType) -j 12
@@ -142,7 +143,6 @@ stages:
               targetFolder: $(Build.ArtifactStagingDirectory)
           - publish: $(Build.ArtifactStagingDirectory)
             artifact: libroadrunner-deps-$(Agent.OS)-$(BuildType)
-
 
       - job: BuildRoadrunnerDepsMac
         timeoutInMinutes: "0"
@@ -203,8 +203,7 @@ stages:
           - script: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
-              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) ..
-            displayName: ConfigureCommand
+              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) -DBUILD_LLVM=$(BUILD_LLVM) ..            displayName: ConfigureCommand
           - script: |
               cd $(BUILD_DIRECTORY)
               cmake --build . --target install --config $(BuildType) -j 12
