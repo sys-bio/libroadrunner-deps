@@ -132,7 +132,8 @@ stages:
           - powershell: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
-              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) -DBUILD_LLVM=$(BUILD_LLVM) ..            displayName: ConfigureCommand
+              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) -DBUILD_LLVM=$(BUILD_LLVM) ..
+              displayName: ConfigureCommand
           - powershell: |
               cd $(BUILD_DIRECTORY)
               cmake --build . --target install --config $(BuildType) -j 12
@@ -203,7 +204,8 @@ stages:
           - script: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
-              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) -DBUILD_LLVM=$(BUILD_LLVM) ..            displayName: ConfigureCommand
+              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) -DBUILD_LLVM=$(BUILD_LLVM) ..
+              displayName: ConfigureCommand
           - script: |
               cd $(BUILD_DIRECTORY)
               cmake --build . --target install --config $(BuildType) -j 12
