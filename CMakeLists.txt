@@ -168,7 +168,7 @@ option(ENABLE_PAGECOMPILER_FILE2PAGE "poco option \"ENABLE_PAGECOMPILER_FILE2PAG
 option(ENABLE_REDIS "poco option \"ENABLE_REDIS\"" OFF)
 option(ENABLE_POCODOC "poco option \"ENABLE_POCODOC\"" OFF)
 option(ENABLE_TESTS "poco option \"ENABLE_TESTS\"" OFF)
-option(POCO_STATIC "build poco as a static library. Set to off for SHARED" ON)
+option(BUILD_SHARED_LIBS "build poco as a static library only (no shared). Set to ON for SHARED libraries" OFF)
 
 
 mark_as_advanced(

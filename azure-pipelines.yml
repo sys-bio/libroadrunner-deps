@@ -1,7 +1,7 @@
 name: $(Date:yyyyMMdd)$(Rev:.r)
 
 variables:
-  BUILD_LLVM: 'ON'
+  BUILD_LLVM: 'OFF'
 
 stages:
     - stage: BuildRoadrunnerDeps
