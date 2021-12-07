@@ -95,7 +95,7 @@ option(WITH_BZIP2 "libsbml option \"WITH_BZIP2\"" ON)
 option(WITH_SWIG "libsbml option \"WITH_SWIG\"" OFF)
 option(WITH_ZLIB "libsbml option \"WITH_ZLIB\"" ON)
 option(WITH_CPP_NAMESPACE "libsbml option \"WITH_CPP_NAMESPACE\"" ON)
-option(ENABLE_ARRAYS "libsbml option \"ENABLE_ARRAYS\"" OFF)
+option(ENABLE_ARRAYS "libsbml option \"ENABLE_ARRAYS\"" ON) #Need this for Antimony
 option(ENABLE_COMP "libsbml option \"ENABLE_COMP\"" ON)
 option(ENABLE_DISTRIB "libsbml option \"ENABLE_DISTRIB\"" ON)
 option(ENABLE_DYN "libsbml option \"ENABLE_DYN\"" OFF)
