@@ -19,12 +19,9 @@
 [submodule "third_party/poco"]
 	path = third_party/poco
 	url = https://github.com/sys-bio/poco.git
-[submodule "third_party/libSBML-5.18.0-core-plus-packages"]
-	path = third_party/libSBML-5.18.0-core-plus-packages
-	url = https://github.com/sys-bio/libSBML-5.18.0-core-plus-packages.git
-[submodule "third_party/llvm-6.x"]
-	path = third_party/llvm-6.x
-	url = https://github.com/sys-bio/llvm-6.x.git
+[submodule "third_party/llvm-13.x"]
+	path = third_party/llvm-13.x
+	url = https://github.com/sys-bio/llvm-13.x.git
 [submodule "third_party/rr-libstruct"]
 	path = third_party/rr-libstruct
 	url = https://github.com/sys-bio/rr-libstruct.git

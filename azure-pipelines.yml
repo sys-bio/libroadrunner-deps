@@ -1,5 +1,8 @@
 name: $(Date:yyyyMMdd)$(Rev:.r)
 
+variables:
+  BUILD_LLVM: 'OFF'
+
 stages:
     - stage: BuildRoadrunnerDeps
       jobs:
@@ -59,7 +62,7 @@ stages:
           - script: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
-              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) ..
+              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) -DBUILD_LLVM=$(BUILD_LLVM) ..
             displayName: ConfigureCommand
           - script: |
               cd $(BUILD_DIRECTORY)
@@ -130,7 +133,7 @@ stages:
           - powershell: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
-              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) ..
+              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) -DBUILD_LLVM=$(BUILD_LLVM) ..
             displayName: ConfigureCommand
           - powershell: |
               cd $(BUILD_DIRECTORY)
@@ -142,7 +145,6 @@ stages:
               targetFolder: $(Build.ArtifactStagingDirectory)
           - publish: $(Build.ArtifactStagingDirectory)
             artifact: libroadrunner-deps-$(Agent.OS)-$(BuildType)
-
 
       - job: BuildRoadrunnerDepsMac
         timeoutInMinutes: "0"
@@ -203,7 +205,7 @@ stages:
           - script: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
-              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) ..
+              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) -DBUILD_LLVM=$(BUILD_LLVM) ..
             displayName: ConfigureCommand
           - script: |
               cd $(BUILD_DIRECTORY)
