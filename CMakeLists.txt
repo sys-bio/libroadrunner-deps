@@ -127,10 +127,10 @@ mark_as_advanced(
 )
 # sundials options
 option(BUILD_CVODE "sundials option: \"BUILD_CVODE\"" TRUE)
-option(BUILD_CVODES "sundials option: \"BUILD_CVODES\"" OFF)
+option(BUILD_CVODES "sundials option: \"BUILD_CVODES\"" TRUE)
 option(BUILD_IDA "sundials option: \"BUILD_IDA\"" OFF)
 option(BUILD_IDAS "sundials option: \"BUILD_IDAS\"" OFF)
-option(BUILD_KINSOL "sundials option: \"BUILD_KINSOL\"" OFF)
+option(BUILD_KINSOL "sundials option: \"BUILD_KINSOL\"" TRUE)
 option(BUILD_UNIT_TEST "sundials option: \"BUILD_UNIT_TEST\"" OFF)
 mark_as_advanced(
         BUILD_CVODE
