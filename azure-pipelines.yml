@@ -141,7 +141,9 @@ stages:
             displayName: BuildCommand
           - script: |
               echo "Delete extra files to save space."
-              cd $(INSTALL_DIRECTORY)/${BuildType/
+              tree /f
+              echo cd $(INSTALL_DIRECTORY)/$(BuildType)
+              cd $(INSTALL_DIRECTORY)/$(BuildType)
               rm -r share/
               ls
             displayName: Remove 'share' directory
