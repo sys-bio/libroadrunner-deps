@@ -131,6 +131,8 @@ stages:
               echo "TF_BUILD $(TF_BUILD)"
             displayName: Print Variables
           - powershell: |
+              echo "cmake --version"
+              cmake --version
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
               cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) -DBUILD_LLVM=$(BUILD_LLVM) ..
