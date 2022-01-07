@@ -141,14 +141,6 @@ stages:
               cd $(BUILD_DIRECTORY)
               cmake --build . --target install --config $(BuildType) -j 12
             displayName: BuildCommand
-          - script: |
-              echo "Delete extra files to save space."
-              tree /f
-              echo cd $(INSTALL_DIRECTORY)/$(BuildType)
-              cd $(INSTALL_DIRECTORY)/$(BuildType)
-              rm -r share/
-              ls
-            displayName: Remove 'share' directory
           - task: CopyFiles@2
             inputs:
               contents: '$(INSTALL_DIRECTORY)/$(BuildType)/**'
