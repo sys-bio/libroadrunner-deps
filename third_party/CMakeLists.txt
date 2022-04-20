@@ -48,6 +48,12 @@ message(STATUS "Adding clapack as subdirectory")
 add_subdirectory(clapack)
 set(CLAPACK_INCLUDE_DIR "$<TARGET_PROPERTY:lapack,INCLUDE_DIRECTORIES>")
 
+# check
+set(DONT_INSTALL_WHEN_SUBPROJECT OFF)
+message(STATUS "Adding check as subdirectory")
+add_subdirectory(check)
+set(CHECK_INCLUDE_DIR "$<TARGET_PROPERTY:check,INCLUDE_DIRECTORIES>")
+
 # libxml2
 message(STATUS "Adding libxml2 as subdirectory")
 add_subdirectory(libxml2)
@@ -66,10 +72,6 @@ add_subdirectory(poco)
 
 # libsbml
 message(STATUS "Adding libsbml as subdirectory")
-#Try as I might, I couldn't get anything to recognize the bzip2 library, so I just
-# disabled it here.
-set(WITH_BZIP2 "OFF")
-set(LIBSBML_SKIP_SHARED_LIBRARY "ON")
 # add_subdirectory(libSBML-5.18.1-experimental-Source)
 add_subdirectory(libsbml)
 
