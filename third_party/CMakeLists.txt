@@ -37,7 +37,7 @@ set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "$<TARGET_PROPERTY:libiconv-stati
 #libsbml does a thing now where it only creates LIBICONV_LIBRARY if EXTRA_LIBS is blank.
 # It also just adds the WS2_32.lib library, regardless of whether it's compiling on 
 # windows or not.  So, I went ahead and basically replicated that here.
-#set(LIBICONV_LIBRARY "$<TARGET_LINKER_FILE:libiconv>")
+set(LIBICONV_LIBRARY "$<TARGET_LINKER_FILE:libiconv>")
 set(EXTRA_LIBS "${EXTRA_LIBS}" libiconv-static)
 if (WIN32)
     set(EXTRA_LIBS "${EXTRA_LIBS}" "WS2_32.lib")
@@ -56,12 +56,21 @@ set(CHECK_INCLUDE_DIR "$<TARGET_PROPERTY:check,INCLUDE_DIRECTORIES>")
 
 # libxml2
 message(STATUS "Adding libxml2 as subdirectory")
+set (LIBXML2_WITH_ICONV OFF)           # disable iconv
+set (LIBXML2_WITH_LZMA OFF)            # disable liblzma
+set (LIBXML2_WITH_PYTHON OFF)          # disable Python
+set (LIBXML2_WITH_ZLIB OFF)            # disable libz
+set (LIBXML2_WITH_FTP OFF)
+set (LIBXML2_WITH_FTP OFF)
+set (LIBXML2_WITH_PROGRAMS OFF)
+set (LIBXML2_WITH_TESTS OFF)
 add_subdirectory(libxml2)
 add_dependencies(LibXml2 zlibstatic libiconv-static libz2)
 set(LIBXML_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/libxml2/include")
 set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "${CMAKE_CURRENT_BINARY_DIR}/libxml2/include/" "${CMAKE_CURRENT_BINARY_DIR}/third_party/libxml2/include/")
 message(STATUS "Extra include directories: ${EXTRA_INCLUDE_DIRS}")
 add_dependencies(LibXml2 libiconv-static zlibstatic)
+
 
 # note the TARGET_LINKER_FILE generator expression gives us the export library on windows
 set(LIBXML_LIBRARY LibXml2)
