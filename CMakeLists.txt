@@ -91,7 +91,10 @@ option(LIBXML2_WITH_LZMA "libxm2 with or without lzma" OFF)
 mark_as_advanced(LIBXML2_WITH_LZMA)
 
 #pre set libsbml options
-option(WITH_BZIP2 "libsbml option \"WITH_BZIP2\"" ON)
+#Try as I might, I couldn't get anything to recognize the bzip2 library,
+# so I just disabled it here.
+#option(WITH_BZIP2 "libsbml option \"WITH_BZIP2\"" OFF)
+set(WITH_BZIP2 "OFF")
 option(WITH_SWIG "libsbml option \"WITH_SWIG\"" OFF)
 option(WITH_ZLIB "libsbml option \"WITH_ZLIB\"" ON)
 option(WITH_CPP_NAMESPACE "libsbml option \"WITH_CPP_NAMESPACE\"" ON)
@@ -107,8 +110,11 @@ option(ENABLE_QUAL "libsbml option \"ENABLE_QUAL\"" ON)
 option(ENABLE_RENDER "libsbml option \"ENABLE_RENDER\"" ON)
 option(ENABLE_REQUIREDELEMENTS "libsbml option \"ENABLE_REQUIREDELEMENTS\"" OFF)
 option(ENABLE_SPATIAL "libsbml option \"ENABLE_SPATIAL\"" OFF)
+set(LIBSBML_SKIP_SHARED_LIBRARY "ON")
+set(WITH_CPP_NAMESPACE "ON")
+
 mark_as_advanced(
-        WITH_BZIP2
+#        WITH_BZIP2
         WITH_SWIG
         WITH_ZLIB
         WITH_CPP_NAMESPACE
