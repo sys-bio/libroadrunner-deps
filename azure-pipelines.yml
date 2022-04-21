@@ -4,6 +4,80 @@ variables:
   BUILD_LLVM: 'OFF'
 
 stages:
+  - stage: ManyLinuxBuild
+    dependsOn: []
+    jobs:
+      - job: ManyLinuxBuild
+        timeoutInMinutes: "0"
+        displayName: LinuxBuildAntimonyCpp
+        continueOnError: "false"
+        pool:
+          vmImage: 'ubuntu-18.04'
+        container: sysbiouw/roadrunner-manylinux2014-base:latest
+        variables:
+          CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
+          BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
+          SOURCE_DIRECTORY: '$(System.DefaultWorkingDirectory)'
+          INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
+        strategy:
+          matrix:
+            ManyLinux Release:
+              BuildType: Release
+            ManyLinux Debug:
+              BuildType: Debug
+        steps:
+          - checkout: self
+            submodules: recursive
+          - script: |
+              echo "Build.DefinitionName $(Build.DefinitionName)"
+              echo "System.DefinitionId	 $(System.DefinitionId)"
+              echo "Agent.OS $(Agent.OS)"
+              echo "System.TeamProject $(System.TeamProject)"
+              echo "System.TeamProjectId $(System.TeamProjectId)"
+              echo "System.AccessToken  $(System.AccessToken)"
+              echo "System.CollectionId $(System.CollectionId)"
+              echo "System.CollectionUri  $(System.CollectionUri)"
+              echo "System.DefaultWorkingDirectory  $(System.DefaultWorkingDirectory)"
+              echo "System.DefinitionId $(System.DefinitionId)"
+              echo "System.HostType $(System.HostType)"
+              echo "System.JobAttempt $(System.JobAttempt)"
+              echo "System.JobDisplayName $(System.JobDisplayName)"
+              echo "System.JobId  $(System.JobId)"
+              echo "System.JobName  $(System.JobName)"
+              echo "System.PhaseAttempt $(System.PhaseAttempt)"
+              echo "System.PhaseDisplayName $(System.PhaseDisplayName)"
+              echo "System.PhaseName  $(System.PhaseName)"
+              echo "System.StageAttempt $(System.StageAttempt)"
+              echo "System.StageDisplayName $(System.StageDisplayName)"
+              echo "System.StageName  $(System.StageName)"
+              echo "System.PullRequest.IsFork $(System.PullRequest.IsFork)"
+              echo "System.PullRequest.PullRequestId $(System.PullRequest.PullRequestId)"
+              echo "System.PullRequest.PullRequestNumber $(System.PullRequest.PullRequestNumber)"
+              echo "System.PullRequest.SourceBranch $(System.PullRequest.SourceBranch)"
+              echo "System.PullRequest.SourceRepositoryURI $(System.PullRequest.SourceRepositoryURI)"
+              echo "System.PullRequest.TargetBranch $(System.PullRequest.TargetBranch)"
+              echo "System.TeamFoundationCollectionUri $(System.TeamFoundationCollectionUri)"
+              echo "System.TeamProject $(System.TeamProject)"
+              echo "System.TeamProjectId $(System.TeamProjectId)"
+              echo "TF_BUILD $(TF_BUILD)"
+            displayName: Print Variables
+          - script: |
+              mkdir $(BUILD_DIRECTORY)
+              cd $(BUILD_DIRECTORY)
+              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) -DBUILD_LLVM=$(BUILD_LLVM) ..
+            displayName: ConfigureCommand
+          - script: |
+              cd $(BUILD_DIRECTORY)
+              cmake --build . --target install --config $(BuildType) -j 12
+            displayName: BuildCommand
+          - task: CopyFiles@2
+            inputs:
+              contents: '$(INSTALL_DIRECTORY)/$(BuildType)/**'
+              targetFolder: $(Build.ArtifactStagingDirectory)
+          - publish: $(Build.ArtifactStagingDirectory)
+            artifact: libroadrunner-deps-manylinux2014-$(BuildType)
+
+
     - stage: BuildRoadrunnerDeps
       jobs:
       - job: BuildRoadrunnerDepsLinux
