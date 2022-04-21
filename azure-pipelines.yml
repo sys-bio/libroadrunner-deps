@@ -7,9 +7,9 @@ stages:
   - stage: ManyLinuxBuild
     dependsOn: []
     jobs:
-      - job: ManyLinuxBuild
+      - job: ManyLinux
         timeoutInMinutes: "0"
-        displayName: LinuxBuildAntimonyCpp
+        displayName: ManyLinux Build
         continueOnError: "false"
         pool:
           vmImage: 'ubuntu-18.04'
@@ -21,9 +21,9 @@ stages:
           INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
         strategy:
           matrix:
-            ManyLinux Release:
+            Release:
               BuildType: Release
-            ManyLinux Debug:
+            Debug:
               BuildType: Debug
         steps:
           - checkout: self
@@ -79,7 +79,7 @@ stages:
 
       - job: BuildRoadrunnerDepsLinux
         timeoutInMinutes: "0"
-        displayName: Linux
+        displayName: Ubuntu
         continueOnError: "false"
         pool:
           vmImage: "ubuntu-18.04"
@@ -90,9 +90,9 @@ stages:
           INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
         strategy:
           matrix:
-            64-bit Linux Release:
+            Release:
               BuildType: Release
-            64-bit Linux Debug:
+            Debug:
               BuildType: Debug
         steps:
           - checkout: self
@@ -159,9 +159,9 @@ stages:
           INSTALL_DIRECTORY: '$(SOURCE_DIRECTORY)\install-azure'
         strategy:
           matrix:
-            64-bit Windows Release:
+            Release:
               BuildType: Release
-            64-bit Windows Debug:
+            Debug:
               BuildType: Debug
 
         steps:
@@ -232,10 +232,10 @@ stages:
           INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
         strategy:
           matrix:
-            64-bit Mac Release:
+            Release:
               BuildType: Release
               CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-release"
-            64-bit Mac Debug:
+            Debug:
               BuildType: Debug
               CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-debug"
 
