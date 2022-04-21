@@ -77,9 +77,6 @@ stages:
           - publish: $(Build.ArtifactStagingDirectory)
             artifact: libroadrunner-deps-manylinux2014-$(BuildType)
 
-
-    - stage: BuildRoadrunnerDeps
-      jobs:
       - job: BuildRoadrunnerDepsLinux
         timeoutInMinutes: "0"
         displayName: Linux
