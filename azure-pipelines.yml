@@ -159,10 +159,18 @@ stages:
           INSTALL_DIRECTORY: '$(SOURCE_DIRECTORY)\install-azure'
         strategy:
           matrix:
-            Release:
+            Release-64:
               BuildType: Release
-            Debug:
+              BuildPlatform: x64
+            Debug-64:
               BuildType: Debug
+              BuildPlatform: x64
+            Release-32:
+              BuildType: Release
+              BuildPlatform: x86
+            Debug-32:
+              BuildType: Debug
+              BuildPlatform: x86
 
         steps:
           - checkout: self
@@ -206,7 +214,7 @@ stages:
               cmake --version
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
-              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) -DBUILD_LLVM=$(BUILD_LLVM) ..
+              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) -DCMAKE_GENERATOR_PLATFORM=$(BuildPlatform) -DBUILD_LLVM=$(BUILD_LLVM) ..
             displayName: ConfigureCommand
           - powershell: |
               cd $(BUILD_DIRECTORY)
@@ -217,7 +225,7 @@ stages:
               contents: '$(INSTALL_DIRECTORY)/$(BuildType)/**'
               targetFolder: $(Build.ArtifactStagingDirectory)
           - publish: $(Build.ArtifactStagingDirectory)
-            artifact: libroadrunner-deps-$(Agent.OS)-$(BuildType)
+            artifact: libroadrunner-deps-$(Agent.OS)-$(BuildType)-$(BuildPlatform)
 
       - job: BuildRoadrunnerDepsMac
         timeoutInMinutes: "0"
