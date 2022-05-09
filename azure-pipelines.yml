@@ -162,15 +162,19 @@ stages:
             Release-64:
               BuildType: Release
               BuildPlatform: x64
+              platform=Win64
             Debug-64:
               BuildType: Debug
               BuildPlatform: x64
+              platform=Win64
             Release-32:
               BuildType: Release
               BuildPlatform: x86
+              platform=Win32
             Debug-32:
               BuildType: Debug
               BuildPlatform: x86
+              platform=Win32
 
         steps:
           - checkout: self
