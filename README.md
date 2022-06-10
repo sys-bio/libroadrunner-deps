@@ -12,7 +12,7 @@ Assuming cmake is ready for usage:
 | --- |
 
 ```
-$ git clone https://github.com/sys-bio/libroadrunner-deps.git
+$ git clone https://github.com/sys-bio/libroadrunner-deps.git --recurse-submodules
 $ cd libroadrunner-deps
 $ mkdir build
 $ cd build
