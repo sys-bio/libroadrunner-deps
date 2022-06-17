@@ -92,7 +92,7 @@ set(CMAKE_MACOSX_RPATH 1)
 #option(WITH_BZIP2 "libsbml option \"WITH_BZIP2\"" OFF)
 set(WITH_BZIP2 "OFF")
 option(WITH_SWIG "libsbml option \"WITH_SWIG\"" OFF)
-option(WITH_ZLIB "libsbml option \"WITH_ZLIB\"" OFF)
+option(WITH_ZLIB "libsbml option \"WITH_ZLIB\"" ON)
 option(WITH_CPP_NAMESPACE "libsbml option \"WITH_CPP_NAMESPACE\"" ON)
 option(ENABLE_ARRAYS "libsbml option \"ENABLE_ARRAYS\"" ON) #Need this for Antimony
 option(ENABLE_COMP "libsbml option \"ENABLE_COMP\"" ON)

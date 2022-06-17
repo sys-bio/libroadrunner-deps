@@ -19,15 +19,15 @@ set(LIBBZ_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/bzip2")
 #set(LIBBZ_LIBRARY "$<TARGET_LINKER_FILE:bzip2>")
 
 # zlib
-#message(STATUS "Adding zlib as subdirectory")
-#add_subdirectory(zlib)
-#set(ZLIB_INCLUDE_DIR "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>" "${CMAKE_CURRENT_SOURCE_DIR}/zlib")
-#set(LIBZ_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/zlib/")
-#For the auto-generated zconf.h:
-#set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "${CMAKE_CURRENT_BINARY_DIR}/zlib/")
-#set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>")
-#message(STATUS "Extra include directories: ${EXTRA_INCLUDE_DIRS}")
-#set(LIBZ_LIBRARY zlibstatic)
+message(STATUS "Adding zlib as subdirectory")
+add_subdirectory(zlib)
+set(ZLIB_INCLUDE_DIR "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>" "${CMAKE_CURRENT_SOURCE_DIR}/zlib")
+set(LIBZ_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/zlib/")
+For the auto-generated zconf.h:
+set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "${CMAKE_CURRENT_BINARY_DIR}/zlib/")
+set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>")
+message(STATUS "Extra include directories: ${EXTRA_INCLUDE_DIRS}")
+set(LIBZ_LIBRARY zlibstatic)
 
 # clapack
 message(STATUS "Adding clapack as subdirectory")
