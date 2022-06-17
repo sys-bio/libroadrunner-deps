@@ -76,7 +76,7 @@ else (WIN32)
     set(LIBSBML_INCLUDE_DIR "$<TARGET_PROPERTY:sbml-static,INCLUDE_DIRECTORIES>")
 endif (WIN32)
 
-add_dependencies("${LIBSBML_TARGET_ID}" expat libz2)
+add_dependencies("${LIBSBML_TARGET_ID}" expat zlibstatic)
 
 ## rr-libstruct
 message(STATUS "Adding rr-libstruct as subdirectory")
