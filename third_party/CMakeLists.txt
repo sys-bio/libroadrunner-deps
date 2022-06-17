@@ -1,10 +1,18 @@
-
+# zlib
+message(STATUS "Adding zlib as subdirectory")
+add_subdirectory(zlib)
+set(ZLIB_INCLUDE_DIR "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>" "${CMAKE_CURRENT_SOURCE_DIR}/zlib")
+set(LIBZ_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/zlib/")
+#For the auto-generated zconf.h:
+#set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "${CMAKE_CURRENT_BINARY_DIR}/zlib/")
+set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>")
+message(STATUS "Extra include directories: ${EXTRA_INCLUDE_DIRS}")
+set(LIBZ_LIBRARY zlibstatic)
 
 # nleq1
 message(STATUS "Adding nleq1 as subdirectory")
 add_subdirectory(nleq1)
 set(NLEQ1_INCLUDE_DIR "$<TARGET_PROPERTY:nleq1,INCLUDE_DIRECTORIES>") # or libsbml
-
 
 # nleq2
 message(STATUS "Adding nleq2 as subdirectory")
@@ -18,22 +26,11 @@ add_subdirectory(bzip2)
 set(LIBBZ_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/bzip2")
 #set(LIBBZ_LIBRARY "$<TARGET_LINKER_FILE:bzip2>")
 
-# zlib
-message(STATUS "Adding zlib as subdirectory")
-add_subdirectory(zlib)
-set(ZLIB_INCLUDE_DIR "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>" "${CMAKE_CURRENT_SOURCE_DIR}/zlib")
-set(LIBZ_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/zlib/")
-#For the auto-generated zconf.h:
-set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "${CMAKE_CURRENT_BINARY_DIR}/zlib/")
-set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>")
-message(STATUS "Extra include directories: ${EXTRA_INCLUDE_DIRS}")
-set(LIBZ_LIBRARY zlibstatic)
-
 # clapack
 message(STATUS "Adding clapack as subdirectory")
 add_subdirectory(clapack)
 set(CLAPACK_INCLUDE_DIR "$<TARGET_PROPERTY:lapack,INCLUDE_DIRECTORIES>")
-add_dependencies(lapack zlibstatic)
+add_dependencies(lapack zlib zlibstatic)
 
 # check
 #set(DONT_INSTALL_WHEN_SUBPROJECT OFF)
@@ -77,7 +74,7 @@ else (WIN32)
     set(LIBSBML_INCLUDE_DIR "$<TARGET_PROPERTY:sbml-static,INCLUDE_DIRECTORIES>")
 endif (WIN32)
 
-add_dependencies("${LIBSBML_TARGET_ID}" expat zlibstatic)
+add_dependencies("${LIBSBML_TARGET_ID}" expat zlib zlibstatic)
 
 ## rr-libstruct
 message(STATUS "Adding rr-libstruct as subdirectory")
