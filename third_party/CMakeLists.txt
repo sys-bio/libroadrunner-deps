@@ -33,6 +33,7 @@ set(LIBZ_LIBRARY zlibstatic)
 message(STATUS "Adding clapack as subdirectory")
 add_subdirectory(clapack)
 set(CLAPACK_INCLUDE_DIR "$<TARGET_PROPERTY:lapack,INCLUDE_DIRECTORIES>")
+add_dependencies(lapack zlibstatic)
 
 # check
 #set(DONT_INSTALL_WHEN_SUBPROJECT OFF)
