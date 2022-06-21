@@ -2,9 +2,11 @@
 message(STATUS "Adding zlib as subdirectory")
 add_subdirectory(zlib)
 set(ZLIB_INCLUDE_DIR "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>")
+#set(LIBZ_INCLUDE_DIR "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>")
 #For the auto-generated zconf.h:
 #set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "${CMAKE_CURRENT_BINARY_DIR}/zlib/")
 set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>")
+#message(STATUS "LIBZ_INCLUDE_DIR: ${LIBZ_INCLUDE_DIR}")
 message(STATUS "Extra include directories: ${EXTRA_INCLUDE_DIRS}")
 set(LIBZ_LIBRARY zlibstatic)
 
@@ -29,7 +31,7 @@ set(LIBBZ_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/bzip2")
 message(STATUS "Adding clapack as subdirectory")
 add_subdirectory(clapack)
 set(CLAPACK_INCLUDE_DIR "$<TARGET_PROPERTY:lapack,INCLUDE_DIRECTORIES>")
-add_dependencies(lapack zlib zlibstatic)
+add_dependencies(lapack zlibstatic)
 
 # check
 #set(DONT_INSTALL_WHEN_SUBPROJECT OFF)
@@ -73,7 +75,7 @@ else (WIN32)
     set(LIBSBML_INCLUDE_DIR "$<TARGET_PROPERTY:sbml-static,INCLUDE_DIRECTORIES>")
 endif (WIN32)
 
-add_dependencies("${LIBSBML_TARGET_ID}" expat zlib zlibstatic)
+add_dependencies("${LIBSBML_TARGET_ID}" expat zlibstatic)
 
 ## rr-libstruct
 message(STATUS "Adding rr-libstruct as subdirectory")
