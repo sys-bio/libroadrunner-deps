@@ -86,10 +86,6 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib")
 
 set(CMAKE_MACOSX_RPATH 1)
 
-# preset libxml2 options
-option(LIBXML2_WITH_LZMA "libxm2 with or without lzma" OFF)
-mark_as_advanced(LIBXML2_WITH_LZMA)
-
 #pre set libsbml options
 #Try as I might, I couldn't get anything to recognize the bzip2 library,
 # so I just disabled it here.
@@ -111,7 +107,8 @@ option(ENABLE_RENDER "libsbml option \"ENABLE_RENDER\"" ON)
 option(ENABLE_REQUIREDELEMENTS "libsbml option \"ENABLE_REQUIREDELEMENTS\"" OFF)
 option(ENABLE_SPATIAL "libsbml option \"ENABLE_SPATIAL\"" OFF)
 set(LIBSBML_SKIP_SHARED_LIBRARY "ON")
-set(WITH_CPP_NAMESPACE "ON")
+set(WITH_CPP_NAMESPACE ON)
+set(WITH_EXPAT ON)
 
 mark_as_advanced(
 #        WITH_BZIP2
