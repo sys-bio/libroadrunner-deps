@@ -77,6 +77,9 @@ endif (WIN32)
 
 add_dependencies("${LIBSBML_TARGET_ID}" expat zlibstatic)
 
+# Revert LIBZ_INCLUDE_DIR because it'll make things fail otherwise.
+set(LIBZ_INCLUDE_DIR "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>")
+
 ## rr-libstruct
 message(STATUS "Adding rr-libstruct as subdirectory")
 add_subdirectory(rr-libstruct)
