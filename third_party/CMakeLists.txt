@@ -116,6 +116,20 @@ if (_TEMP_NO_SHARED_LIBS)
 endif ()
 unset(_TEMP_NO_SHARED_LIBS) # clean up temp variable
 
+
+# libNuML
+message(STATUS "Adding NuML/libnuml as subdirectory")
+set(LIBSBML_LIBRARY libsbml::libsbml-static)
+add_subdirectory(NuML/libnuml)
+
+
+# libSEDML
+message(STATUS "Adding libSEDML as subdirectory")
+set(LIBNUML_LIBRARY libnuml::libnuml-static)
+add_subdirectory(libSEDML)
+add_dependencies(libsedml "${LIBSBML_TARGET_ID}" libnuml)
+
+
 if (${BUILD_LLVM})
     message(STATUS "Adding llvm-13.x/llvm as subdirectory")
     add_subdirectory(llvm-13.x/llvm)
