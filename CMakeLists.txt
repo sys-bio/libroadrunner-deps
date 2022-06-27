@@ -36,6 +36,16 @@ x64 bit machine")
     endif ()
 endif ()
 
+set(USE_UNIVERSAL_BINARIES "ON" CACHE BOOL "Build and link to universal binaries on MacOS")
+
+if (USE_UNIVERSAL_BINARIES)
+    set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64" CACHE INTERNAL "Compile for intel and M1 chips on apple" FORCE)
+    message(STATUS "building on mac with universal binaries")
+endif()
+
+# Enable cmake printing out commands
+set(CMAKE_VERBOSE_MAKEFILE TRUE)
+
 ##############################################################
 #   includes
 #
@@ -108,7 +118,6 @@ option(ENABLE_REQUIREDELEMENTS "libsbml option \"ENABLE_REQUIREDELEMENTS\"" OFF)
 option(ENABLE_SPATIAL "libsbml option \"ENABLE_SPATIAL\"" OFF)
 set(LIBSBML_SKIP_SHARED_LIBRARY "ON")
 set(WITH_CPP_NAMESPACE ON)
-set(WITH_EXPAT ON)
 
 mark_as_advanced(
 #        WITH_BZIP2
