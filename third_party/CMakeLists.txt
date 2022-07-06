@@ -77,6 +77,9 @@ endif (WIN32)
 
 add_dependencies("${LIBSBML_TARGET_ID}" expat zlibstatic)
 
+# Revert LIBZ_INCLUDE_DIR because it'll make things fail otherwise.
+set(LIBZ_INCLUDE_DIR "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>")
+
 ## rr-libstruct
 message(STATUS "Adding rr-libstruct as subdirectory")
 add_subdirectory(rr-libstruct)
@@ -112,6 +115,20 @@ if (_TEMP_NO_SHARED_LIBS)
     set(BUILD_SHARED_LIBS ON)
 endif ()
 unset(_TEMP_NO_SHARED_LIBS) # clean up temp variable
+
+
+# libNuML
+message(STATUS "Adding NuML/libnuml as subdirectory")
+set(LIBSBML_LIBRARY libsbml::libsbml-static)
+add_subdirectory(NuML/libnuml)
+
+
+# libSEDML
+message(STATUS "Adding libSEDML as subdirectory")
+set(LIBNUML_LIBRARY libnuml::libnuml-static)
+add_subdirectory(libSEDML)
+add_dependencies(libsedml "${LIBSBML_TARGET_ID}" libnuml)
+
 
 if (${BUILD_LLVM})
     message(STATUS "Adding llvm-13.x/llvm as subdirectory")
