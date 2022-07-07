@@ -77,6 +77,9 @@ endif (WIN32)
 
 add_dependencies("${LIBSBML_TARGET_ID}" expat zlibstatic)
 
+# Revert LIBZ_INCLUDE_DIR because it'll make things fail otherwise.
+set(LIBZ_INCLUDE_DIR "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>")
+
 ## rr-libstruct
 message(STATUS "Adding rr-libstruct as subdirectory")
 add_subdirectory(rr-libstruct)
@@ -112,6 +115,37 @@ if (_TEMP_NO_SHARED_LIBS)
     set(BUILD_SHARED_LIBS ON)
 endif ()
 unset(_TEMP_NO_SHARED_LIBS) # clean up temp variable
+
+
+# libNuML
+message(STATUS "Adding NuML/libnuml as subdirectory")
+
+set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "${CMAKE_BINARY_DIR}/third_party/libsbml/src" "${CMAKE_BINARY_DIR}/third_party/libsbml" "${CMAKE_BINARY_DIR}/third_party/NuML/libnuml/src" "${CMAKE_BINARY_DIR}/third_party/NuML/libnuml" "${CMAKE_BINARY_DIR}/third_party/NuML/libnuml/src/numl" "${LIBSBML_INCLUDE_DIR}")
+
+set(LIBSBML_LIBRARY "$<TARGET_LINKER_FILE:libsbml-static>" CACHE FILEPATH "libsbml library" FORCE)
+
+set(EXTRA_LIBS "$<TARGET_LINKER_FILE:expat>" "$<TARGET_LINKER_FILE:zlibstatic>")
+set(LIBSBML_LIBRARY_NAME "${LIBSBML_LIBRARY}")
+
+
+#set(LIBSBML_LIBRARY libsbml::libsbml-static)
+add_subdirectory(NuML/libnuml)
+add_dependencies(libnuml "${LIBSBML_TARGET_ID}")
+
+
+# libSEDML
+message(STATUS "Adding libSEDML as subdirectory")
+
+set(LIBSBML_INCLUDE_DIR "${CMAKE_BINARY_DIR}/third_party/libsbml/src")
+set(LIBNUML_INCLUDE_DIR "${CMAKE_BINARY_DIR}/third_party/NuML/libnuml/src")
+
+
+set(LIBNUML_LIBRARY "$<TARGET_LINKER_FILE:libnuml-static>" CACHE FILEPATH "libnuml library" FORCE)
+set(LIBNUML_LIBRARY_NAME "${LIBNUML_LIBRARY}")
+set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "$<TARGET_PROPERTY:libnuml,INCLUDE_DIRECTORIES>")
+add_subdirectory(libSEDML)
+add_dependencies(libsedml "${LIBSBML_TARGET_ID}" libnuml-static)
+
 
 if (${BUILD_LLVM})
     message(STATUS "Adding llvm-13.x/llvm as subdirectory")
@@ -151,3 +185,40 @@ endmacro()
 get_all_targets(all_targets)
 message(STATUS "All targets: ${all_targets}")
 
+set(BUILD_TESTS OFF CACHE BOOL "Build tests" FORCE)
+
+## https://stackoverflow.com/questions/32183975/how-to-print-all-the-properties-of-a-target-in-cmake/56738858#56738858
+## https://stackoverflow.com/a/56738858/3743145
+
+## Get all properties that cmake supports
+execute_process(COMMAND cmake --help-property-list OUTPUT_VARIABLE CMAKE_PROPERTY_LIST)
+## Convert command output into a CMake list
+STRING(REGEX REPLACE ";" "\\\\;" CMAKE_PROPERTY_LIST "${CMAKE_PROPERTY_LIST}")
+STRING(REGEX REPLACE "\n" ";" CMAKE_PROPERTY_LIST "${CMAKE_PROPERTY_LIST}")
+
+list(REMOVE_DUPLICATES CMAKE_PROPERTY_LIST)
+
+function(print_target_properties tgt)
+    if(NOT TARGET ${tgt})
+      message("There is no target named '${tgt}'")
+      return()
+    endif()
+
+    foreach (prop ${CMAKE_PROPERTY_LIST})
+        string(REPLACE "<CONFIG>" "${CMAKE_BUILD_TYPE}" prop ${prop})
+        get_target_property(propval ${tgt} ${prop})
+        if (propval)
+            message ("${tgt} ${prop} = ${propval}")
+        endif()
+    endforeach(prop)
+endfunction(print_target_properties)
+
+#cmake_language(CALL print_target_properties zlib)
+#cmake_language(CALL print_target_properties zlibstatic)
+#cmake_language(CALL print_target_properties expat)
+
+
+
+message(STATUS "Extra libs: ${EXTRA_LIBS}")
+message(STATUS "Extra include dirs: ${EXTRA_INCLUDE_DIRS}")
+message(STATUS "libsbml library name: ${LIBSBML_LIBRARY_NAME}")
