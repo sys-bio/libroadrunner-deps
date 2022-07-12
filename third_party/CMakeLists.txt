@@ -126,7 +126,7 @@ unset(_TEMP_NO_SHARED_LIBS) # clean up temp variable
 message(STATUS "Adding NuML/libnuml as subdirectory")
 
 set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "${CMAKE_BINARY_DIR}/third_party/libsbml/src" "${CMAKE_BINARY_DIR}/third_party/libsbml" "${CMAKE_BINARY_DIR}/third_party/NuML/libnuml/src" "${CMAKE_BINARY_DIR}/third_party/NuML/libnuml" "${CMAKE_BINARY_DIR}/third_party/NuML/libnuml/src/numl" "${LIBSBML_INCLUDE_DIR}")
-set(BUILD_TESTS OFF)
+set(BUILD_TESTS OFF CACHE BOOL "Find libsbml." FORCE)
 
 
 set(EXTRA_LIBS "$<TARGET_LINKER_FILE:expat>" "$<TARGET_LINKER_FILE:zlibstatic>")
