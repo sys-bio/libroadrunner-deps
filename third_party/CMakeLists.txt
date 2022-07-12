@@ -159,7 +159,7 @@ message(STATUS "Adding libSEDML as subdirectory")
 set(LIBSBML_INCLUDE_DIR "${CMAKE_BINARY_DIR}/third_party/libsbml/src")
 set(LIBNUML_INCLUDE_DIR "${CMAKE_BINARY_DIR}/third_party/NuML/libnuml/src")
 set(LIBNUML_LIBRARY_NAME "${LIBNUML_LIBRARY}")
-set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "${LIBSBML_INCLUDE_DIRS}" "${LIBNUML_INCLUDE_DIRS}")
+set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "${LIBSBML_INCLUDE_DIRS}" "${LIBNUML_INCLUDE_DIRS}" "${CMAKE_SOURCE_DIR}/third_party_NuML/libnuml/src")
 add_subdirectory(libSEDML)
 
 # needed because of the weird way libsbml-modeled makefiles handle the "lib" prefix
