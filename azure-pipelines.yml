@@ -12,7 +12,7 @@ stages:
         displayName: ManyLinux Build
         continueOnError: "false"
         pool:
-          vmImage: 'ubuntu-18.04'
+          vmImage: 'ubuntu-20.04'
         container: sysbiouw/roadrunner-manylinux2014-base:latest
         variables:
           CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
@@ -82,7 +82,7 @@ stages:
         displayName: Ubuntu
         continueOnError: "false"
         pool:
-          vmImage: "ubuntu-18.04"
+          vmImage: "ubuntu-20.04"
         variables:
           CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
           BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
@@ -224,7 +224,7 @@ stages:
         displayName: MacOS
         continueOnError: "false"
         pool:
-          vmImage: 'macOS-10.15'
+          vmImage: 'macOS-11'
         variables:
           CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
           BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
