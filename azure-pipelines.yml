@@ -1,49 +1,150 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
 name: $(Date:yyyyMMdd)$(Rev:.r)
-trigger:
-  - develop-new-buildsystem
-#  - master
-#  - develop
-#
-#
-#
-#
-#pr:
-##  - master
-##  - develop
-#  - azure-tests
+
+variables:
+  BUILD_LLVM: 'OFF'
 
 stages:
-    - stage: BuildRoadrunnerDeps
-      jobs:
-      - job: BuildRoadrunnerDepsLinux
+  - stage: ManyLinuxBuild
+    dependsOn: []
+    jobs:
+      - job: ManyLinux
         timeoutInMinutes: "0"
-        displayName: Linux
+        displayName: ManyLinux Build
         continueOnError: "false"
         pool:
-          vmImage: "ubuntu-18.04"
-
+          vmImage: 'ubuntu-20.04'
+        container: sysbiouw/roadrunner-manylinux2014-base:latest
+        variables:
+          CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
+          BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
+          SOURCE_DIRECTORY: '$(System.DefaultWorkingDirectory)'
+          INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
         strategy:
           matrix:
-            64-bit Linux Release:
+            Release:
               BuildType: Release
-              CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-release"
-            64-bit Linux Debug:
+            Debug:
               BuildType: Debug
-              CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-debug"
         steps:
-          - task: CMake@1
+          - checkout: self
+            submodules: recursive
+          - script: |
+              echo "Build.DefinitionName $(Build.DefinitionName)"
+              echo "System.DefinitionId	 $(System.DefinitionId)"
+              echo "Agent.OS $(Agent.OS)"
+              echo "System.TeamProject $(System.TeamProject)"
+              echo "System.TeamProjectId $(System.TeamProjectId)"
+              echo "System.AccessToken  $(System.AccessToken)"
+              echo "System.CollectionId $(System.CollectionId)"
+              echo "System.CollectionUri  $(System.CollectionUri)"
+              echo "System.DefaultWorkingDirectory  $(System.DefaultWorkingDirectory)"
+              echo "System.DefinitionId $(System.DefinitionId)"
+              echo "System.HostType $(System.HostType)"
+              echo "System.JobAttempt $(System.JobAttempt)"
+              echo "System.JobDisplayName $(System.JobDisplayName)"
+              echo "System.JobId  $(System.JobId)"
+              echo "System.JobName  $(System.JobName)"
+              echo "System.PhaseAttempt $(System.PhaseAttempt)"
+              echo "System.PhaseDisplayName $(System.PhaseDisplayName)"
+              echo "System.PhaseName  $(System.PhaseName)"
+              echo "System.StageAttempt $(System.StageAttempt)"
+              echo "System.StageDisplayName $(System.StageDisplayName)"
+              echo "System.StageName  $(System.StageName)"
+              echo "System.PullRequest.IsFork $(System.PullRequest.IsFork)"
+              echo "System.PullRequest.PullRequestId $(System.PullRequest.PullRequestId)"
+              echo "System.PullRequest.PullRequestNumber $(System.PullRequest.PullRequestNumber)"
+              echo "System.PullRequest.SourceBranch $(System.PullRequest.SourceBranch)"
+              echo "System.PullRequest.SourceRepositoryURI $(System.PullRequest.SourceRepositoryURI)"
+              echo "System.PullRequest.TargetBranch $(System.PullRequest.TargetBranch)"
+              echo "System.TeamFoundationCollectionUri $(System.TeamFoundationCollectionUri)"
+              echo "System.TeamProject $(System.TeamProject)"
+              echo "System.TeamProjectId $(System.TeamProjectId)"
+              echo "TF_BUILD $(TF_BUILD)"
+            displayName: Print Variables
+          - script: |
+              mkdir $(BUILD_DIRECTORY)
+              cd $(BUILD_DIRECTORY)
+              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) -DBUILD_LLVM=$(BUILD_LLVM) ..
             displayName: ConfigureCommand
-            inputs:
-              cmakeArgs: $(CMakeArgs) -DCMAKE_BUILD_TYPE=$(BuildType) ..
-          - task: CMake@1
+          - script: |
+              cd $(BUILD_DIRECTORY)
+              cmake --build . --target install --config $(BuildType) -j 12
             displayName: BuildCommand
+          - task: CopyFiles@2
             inputs:
-              cmakeArgs: --build . --target install --config $(BuildType) -j 12
+              contents: '$(INSTALL_DIRECTORY)/$(BuildType)/**'
+              targetFolder: $(Build.ArtifactStagingDirectory)
+          - publish: $(Build.ArtifactStagingDirectory)
+            artifact: libroadrunner-deps-manylinux2014-$(BuildType)
 
+      - job: BuildRoadrunnerDepsLinux
+        timeoutInMinutes: "0"
+        displayName: Ubuntu
+        continueOnError: "false"
+        pool:
+          vmImage: "ubuntu-20.04"
+        variables:
+          CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
+          BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
+          SOURCE_DIRECTORY: '$(System.DefaultWorkingDirectory)'
+          INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
+        strategy:
+          matrix:
+            Release:
+              BuildType: Release
+            Debug:
+              BuildType: Debug
+        steps:
+          - checkout: self
+            submodules: recursive
+          - script: |
+              echo "Build.DefinitionName $(Build.DefinitionName)"
+              echo "System.DefinitionId	 $(System.DefinitionId)"
+              echo "Agent.OS $(Agent.OS)"
+              echo "System.TeamProject $(System.TeamProject)"
+              echo "System.TeamProjectId $(System.TeamProjectId)"
+              echo "System.AccessToken  $(System.AccessToken)"
+              echo "System.CollectionId $(System.CollectionId)"
+              echo "System.CollectionUri  $(System.CollectionUri)"
+              echo "System.DefaultWorkingDirectory  $(System.DefaultWorkingDirectory)"
+              echo "System.DefinitionId $(System.DefinitionId)"
+              echo "System.HostType $(System.HostType)"
+              echo "System.JobAttempt $(System.JobAttempt)"
+              echo "System.JobDisplayName $(System.JobDisplayName)"
+              echo "System.JobId  $(System.JobId)"
+              echo "System.JobName  $(System.JobName)"
+              echo "System.PhaseAttempt $(System.PhaseAttempt)"
+              echo "System.PhaseDisplayName $(System.PhaseDisplayName)"
+              echo "System.PhaseName  $(System.PhaseName)"
+              echo "System.StageAttempt $(System.StageAttempt)"
+              echo "System.StageDisplayName $(System.StageDisplayName)"
+              echo "System.StageName  $(System.StageName)"
+              echo "System.PullRequest.IsFork $(System.PullRequest.IsFork)"
+              echo "System.PullRequest.PullRequestId $(System.PullRequest.PullRequestId)"
+              echo "System.PullRequest.PullRequestNumber $(System.PullRequest.PullRequestNumber)"
+              echo "System.PullRequest.SourceBranch $(System.PullRequest.SourceBranch)"
+              echo "System.PullRequest.SourceRepositoryURI $(System.PullRequest.SourceRepositoryURI)"
+              echo "System.PullRequest.TargetBranch $(System.PullRequest.TargetBranch)"
+              echo "System.TeamFoundationCollectionUri $(System.TeamFoundationCollectionUri)"
+              echo "System.TeamProject $(System.TeamProject)"
+              echo "System.TeamProjectId $(System.TeamProjectId)"
+              echo "TF_BUILD $(TF_BUILD)"
+            displayName: Print Variables
+          - script: |
+              mkdir $(BUILD_DIRECTORY)
+              cd $(BUILD_DIRECTORY)
+              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) -DBUILD_LLVM=$(BUILD_LLVM) ..
+            displayName: ConfigureCommand
+          - script: |
+              cd $(BUILD_DIRECTORY)
+              cmake --build . --target install --config $(BuildType) -j 12
+            displayName: BuildCommand
+          - task: CopyFiles@2
+            inputs:
+              contents: '$(INSTALL_DIRECTORY)/$(BuildType)/**'
+              targetFolder: $(Build.ArtifactStagingDirectory)
+          - publish: $(Build.ArtifactStagingDirectory)
+            artifact: libroadrunner-deps-$(Agent.OS)-$(BuildType)
 
       - job: BuildRoadrunnerDepsWindows
         timeoutInMinutes: "0"
@@ -51,51 +152,143 @@ stages:
         continueOnError: "false"
         pool:
           vmImage: "windows-2019"
-
+        variables:
+          CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
+          SOURCE_DIRECTORY: '$(System.DefaultWorkingDirectory)'
+          BUILD_DIRECTORY: '$(SOURCE_DIRECTORY)\build'
+          INSTALL_DIRECTORY: '$(SOURCE_DIRECTORY)\install-azure'
         strategy:
           matrix:
-            64-bit Windows Release:
+            Release:
               BuildType: Release
-              CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-release"
-            64-bit Windows Debug:
+            Debug:
               BuildType: Debug
-              CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-debug"
 
         steps:
-          - task: CMake@1
+          - checkout: self
+            submodules: recursive          
+
+          - script: |
+              echo "Build.DefinitionName $(Build.DefinitionName)"
+              echo "System.DefinitionId	 $(System.DefinitionId)"
+              echo "Agent.OS $(Agent.OS)"
+              echo "System.TeamProject $(System.TeamProject)"
+              echo "System.TeamProjectId $(System.TeamProjectId)"
+              echo "System.AccessToken  $(System.AccessToken)"
+              echo "System.CollectionId $(System.CollectionId)"
+              echo "System.CollectionUri  $(System.CollectionUri)"
+              echo "System.DefaultWorkingDirectory  $(System.DefaultWorkingDirectory)"
+              echo "System.DefinitionId $(System.DefinitionId)"
+              echo "System.HostType $(System.HostType)"
+              echo "System.JobAttempt $(System.JobAttempt)"
+              echo "System.JobDisplayName $(System.JobDisplayName)"
+              echo "System.JobId  $(System.JobId)"
+              echo "System.JobName  $(System.JobName)"
+              echo "System.PhaseAttempt $(System.PhaseAttempt)"
+              echo "System.PhaseDisplayName $(System.PhaseDisplayName)"
+              echo "System.PhaseName  $(System.PhaseName)"
+              echo "System.StageAttempt $(System.StageAttempt)"
+              echo "System.StageDisplayName $(System.StageDisplayName)"
+              echo "System.StageName  $(System.StageName)"
+              echo "System.PullRequest.IsFork $(System.PullRequest.IsFork)"
+              echo "System.PullRequest.PullRequestId $(System.PullRequest.PullRequestId)"
+              echo "System.PullRequest.PullRequestNumber $(System.PullRequest.PullRequestNumber)"
+              echo "System.PullRequest.SourceBranch $(System.PullRequest.SourceBranch)"
+              echo "System.PullRequest.SourceRepositoryURI $(System.PullRequest.SourceRepositoryURI)"
+              echo "System.PullRequest.TargetBranch $(System.PullRequest.TargetBranch)"
+              echo "System.TeamFoundationCollectionUri $(System.TeamFoundationCollectionUri)"
+              echo "System.TeamProject $(System.TeamProject)"
+              echo "System.TeamProjectId $(System.TeamProjectId)"
+              echo "TF_BUILD $(TF_BUILD)"
+            displayName: Print Variables
+          - powershell: |
+              echo "cmake --version"
+              cmake --version
+              mkdir $(BUILD_DIRECTORY)
+              cd $(BUILD_DIRECTORY)
+              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) -DBUILD_LLVM=$(BUILD_LLVM) ..
             displayName: ConfigureCommand
-            inputs:
-              cmakeArgs: $(CMakeArgs) ..
-          - task: CMake@1
+          - powershell: |
+              cd $(BUILD_DIRECTORY)
+              cmake --build . --target install --config $(BuildType) -j 12
             displayName: BuildCommand
+          - task: CopyFiles@2
             inputs:
-              cmakeArgs: --build . --target install --config $(BuildType) -j 12
-
-
+              contents: '$(INSTALL_DIRECTORY)/$(BuildType)/**'
+              targetFolder: $(Build.ArtifactStagingDirectory)
+          - publish: $(Build.ArtifactStagingDirectory)
+            artifact: libroadrunner-deps-$(Agent.OS)-$(BuildType)
 
       - job: BuildRoadrunnerDepsMac
         timeoutInMinutes: "0"
         displayName: MacOS
         continueOnError: "false"
         pool:
-          vmImage: 'macOS-10.15'
-
+          vmImage: 'macOS-11'
+        variables:
+          CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
+          BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
+          SOURCE_DIRECTORY: '$(System.DefaultWorkingDirectory)'
+          INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
         strategy:
           matrix:
-            64-bit Mac Release:
+            Release:
               BuildType: Release
               CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-release"
-            64-bit Mac Debug:
+            Debug:
               BuildType: Debug
               CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-debug"
 
         steps:
-          - task: CMake@1
+          - checkout: self
+            submodules: recursive          
+          - script: |
+              echo "Build.DefinitionName $(Build.DefinitionName)"
+              echo "System.DefinitionId	 $(System.DefinitionId)"
+              echo "Agent.OS $(Agent.OS)"
+              echo "System.TeamProject $(System.TeamProject)"
+              echo "System.TeamProjectId $(System.TeamProjectId)"
+              echo "System.AccessToken  $(System.AccessToken)"
+              echo "System.CollectionId $(System.CollectionId)"
+              echo "System.CollectionUri  $(System.CollectionUri)"
+              echo "System.DefaultWorkingDirectory  $(System.DefaultWorkingDirectory)"
+              echo "System.DefinitionId $(System.DefinitionId)"
+              echo "System.HostType $(System.HostType)"
+              echo "System.JobAttempt $(System.JobAttempt)"
+              echo "System.JobDisplayName $(System.JobDisplayName)"
+              echo "System.JobId  $(System.JobId)"
+              echo "System.JobName  $(System.JobName)"
+              echo "System.PhaseAttempt $(System.PhaseAttempt)"
+              echo "System.PhaseDisplayName $(System.PhaseDisplayName)"
+              echo "System.PhaseName  $(System.PhaseName)"
+              echo "System.StageAttempt $(System.StageAttempt)"
+              echo "System.StageDisplayName $(System.StageDisplayName)"
+              echo "System.StageName  $(System.StageName)"
+              echo "System.PullRequest.IsFork $(System.PullRequest.IsFork)"
+              echo "System.PullRequest.PullRequestId $(System.PullRequest.PullRequestId)"
+              echo "System.PullRequest.PullRequestNumber $(System.PullRequest.PullRequestNumber)"
+              echo "System.PullRequest.SourceBranch $(System.PullRequest.SourceBranch)"
+              echo "System.PullRequest.SourceRepositoryURI $(System.PullRequest.SourceRepositoryURI)"
+              echo "System.PullRequest.TargetBranch $(System.PullRequest.TargetBranch)"
+              echo "System.TeamFoundationCollectionUri $(System.TeamFoundationCollectionUri)"
+              echo "System.TeamProject $(System.TeamProject)"
+              echo "System.TeamProjectId $(System.TeamProjectId)"
+              echo "TF_BUILD $(TF_BUILD)"
+            displayName: Print Variables
+          - script: |
+              mkdir $(BUILD_DIRECTORY)
+              cd $(BUILD_DIRECTORY)
+              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) -DBUILD_LLVM=$(BUILD_LLVM) -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" ..
             displayName: ConfigureCommand
-            inputs:
-              cmakeArgs: $(CMakeArgs) ..
-          - task: CMake@1
+          - script: |
+              cd $(BUILD_DIRECTORY)
+              cmake --build . --target install --config $(BuildType) -j 12
             displayName: BuildCommand
+          - task: CopyFiles@2
             inputs:
-              cmakeArgs: --build . --target install --config $(BuildType) -j 12
-
+              contents: '$(INSTALL_DIRECTORY)/$(BuildType)/**'
+              targetFolder: $(Build.ArtifactStagingDirectory)
+          - task: PublishBuildArtifacts@1
+            inputs:
+              pathToPublish: $(Build.ArtifactStagingDirectory)
+              artifactName: libroadrunner-deps-$(Agent.OS)-$(BuildType)

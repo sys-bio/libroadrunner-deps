@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 
 set(VERSION_MAJOR 2)
 set(VERSION_MINOR 0)
-set(VERSION_MICRO 1)
+set(VERSION_MICRO 6)
 
 set(LIBROADRUNNER_DEPS_VERSION "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO}")
 
@@ -36,6 +36,16 @@ x64 bit machine")
     endif ()
 endif ()
 
+set(USE_UNIVERSAL_BINARIES "ON" CACHE BOOL "Build and link to universal binaries on MacOS")
+
+if (USE_UNIVERSAL_BINARIES)
+    set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64" CACHE INTERNAL "Compile for intel and M1 chips on apple" FORCE)
+    message(STATUS "building on mac with universal binaries")
+endif()
+
+# Enable cmake printing out commands
+set(CMAKE_VERBOSE_MAKEFILE TRUE)
+
 ##############################################################
 #   includes
 #
@@ -46,9 +56,17 @@ include(GenerateExportHeader)
 
 
 ##############################################################
-#   policies
+#   CMake Policy's
 #
-cmake_policy(SET CMP0063 NEW)
+cmake_policy(SET CMP0063 NEW) # What is it for?
+
+if (${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.20")
+    # Source file extensions do not need to be explicitly
+    #   specified if CMP0115 set to OLD.
+    #   New behavior requires all extensions be explicit
+    cmake_policy(SET CMP0115 OLD)
+endif()
+
 
 ###############################################################
 #   options and varibles
@@ -57,7 +75,7 @@ cmake_policy(SET CMP0063 NEW)
 option(BUILD_PACKAGING "Build the packaging" OFF)
 option(BUILD_LLVM "build llvm" OFF)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
@@ -78,21 +96,15 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib")
 
 set(CMAKE_MACOSX_RPATH 1)
 
-#visibility settings
-# note - this is recommended by cmake gurus. I tried it and it broke the build.
-#set(CMAKE_CXX_VISIBILITY_PRESET hidden)
-#set(CMAKE_VISIBILITY_INLINES_HIDDEN YES)
-
-# preset libxml2 options
-option(LIBXML2_WITH_LZMA "libxm2 with or without lzma" OFF)
-mark_as_advanced(LIBXML2_WITH_LZMA)
-
 #pre set libsbml options
-option(WITH_BZIP2 "libsbml option \"WITH_BZIP2\"" ON)
+#Try as I might, I couldn't get anything to recognize the bzip2 library,
+# so I just disabled it here.
+#option(WITH_BZIP2 "libsbml option \"WITH_BZIP2\"" OFF)
+set(WITH_BZIP2 "OFF")
 option(WITH_SWIG "libsbml option \"WITH_SWIG\"" OFF)
 option(WITH_ZLIB "libsbml option \"WITH_ZLIB\"" ON)
 option(WITH_CPP_NAMESPACE "libsbml option \"WITH_CPP_NAMESPACE\"" ON)
-option(ENABLE_ARRAYS "libsbml option \"ENABLE_ARRAYS\"" OFF)
+option(ENABLE_ARRAYS "libsbml option \"ENABLE_ARRAYS\"" ON) #Need this for Antimony
 option(ENABLE_COMP "libsbml option \"ENABLE_COMP\"" ON)
 option(ENABLE_DISTRIB "libsbml option \"ENABLE_DISTRIB\"" ON)
 option(ENABLE_DYN "libsbml option \"ENABLE_DYN\"" OFF)
@@ -104,8 +116,13 @@ option(ENABLE_QUAL "libsbml option \"ENABLE_QUAL\"" ON)
 option(ENABLE_RENDER "libsbml option \"ENABLE_RENDER\"" ON)
 option(ENABLE_REQUIREDELEMENTS "libsbml option \"ENABLE_REQUIREDELEMENTS\"" OFF)
 option(ENABLE_SPATIAL "libsbml option \"ENABLE_SPATIAL\"" OFF)
+set(LIBSBML_SKIP_SHARED_LIBRARY "ON")
+set(LIBNUML_SKIP_SHARED_LIBRARY "ON")
+set(LIBSEDML_SKIP_SHARED_LIBRARY "ON")
+set(WITH_CPP_NAMESPACE ON)
+
 mark_as_advanced(
-        WITH_BZIP2
+#        WITH_BZIP2
         WITH_SWIG
         WITH_ZLIB
         WITH_CPP_NAMESPACE
@@ -124,10 +141,10 @@ mark_as_advanced(
 )
 # sundials options
 option(BUILD_CVODE "sundials option: \"BUILD_CVODE\"" TRUE)
-option(BUILD_CVODES "sundials option: \"BUILD_CVODES\"" OFF)
+option(BUILD_CVODES "sundials option: \"BUILD_CVODES\"" TRUE)
 option(BUILD_IDA "sundials option: \"BUILD_IDA\"" OFF)
 option(BUILD_IDAS "sundials option: \"BUILD_IDAS\"" OFF)
-option(BUILD_KINSOL "sundials option: \"BUILD_KINSOL\"" OFF)
+option(BUILD_KINSOL "sundials option: \"BUILD_KINSOL\"" TRUE)
 option(BUILD_UNIT_TEST "sundials option: \"BUILD_UNIT_TEST\"" OFF)
 mark_as_advanced(
         BUILD_CVODE
@@ -165,7 +182,7 @@ option(ENABLE_PAGECOMPILER_FILE2PAGE "poco option \"ENABLE_PAGECOMPILER_FILE2PAG
 option(ENABLE_REDIS "poco option \"ENABLE_REDIS\"" OFF)
 option(ENABLE_POCODOC "poco option \"ENABLE_POCODOC\"" OFF)
 option(ENABLE_TESTS "poco option \"ENABLE_TESTS\"" OFF)
-option(POCO_STATIC "build poco as a static library. Set to off for SHARED" ON)
+option(BUILD_SHARED_LIBS "build poco as a static library only (no shared). Set to ON for SHARED libraries" OFF)
 
 
 mark_as_advanced(
@@ -203,43 +220,43 @@ mark_as_advanced(
 # ... or we could hard code the options that we extract from llvm-config
 # and save some built time on llvm. The downside of this idea is reduced flexibility
 # should we choose to update llvm.
-option(LLVM_INCLUDE_TOOLS "llvm option \"LLVM_INCLUDE_TOOLS\"" ON)
-option(LLVM_BUILD_TOOLS "llvm option \"LLVM_BUILD_TOOLS\"" ON)
-option(LLVM_INCLUDE_UTILS "llvm option \"LLVM_INCLUDE_UTILS\"" OFF)
-option(LLVM_BUILD_UTILS "llvm option \"LLVM_BUILD_UTILS\"" OFF)
-option(LLVM_INCLUDE_RUNTIMES "llvm option \"LLVM_INCLUDE_RUNTIMES\"" OFF)
-option(LLVM_BUILD_RUNTIMES "llvm option \"LLVM_BUILD_RUNTIMES\"" OFF)
-option(LLVM_BUILD_RUNTIME "llvm option \"LLVM_BUILD_RUNTIME\"" OFF)
-option(LLVM_INCLUDE_TESTS "llvm option \"LLVM_INCLUDE_TESTS\"" OFF)
-option(LLVM_BUILD_TESTS "llvm option \"LLVM_BUILD_TESTS\"" OFF)
-option(LLVM_INCLUDE_TESTS "llvm option \"LLVM_INCLUDE_TESTS\"" OFF)
-option(LLVM_BUILD_EXAMPLES "llvm option \"LLVM_BUILD_EXAMPLES\"" OFF)
-option(LLVM_INCLUDE_EXAMPLES "llvm option \"LLVM_INCLUDE_EXAMPLES\"" OFF)
-option(LLVM_BUILD_DOCS "llvm option \"LLVM_BUILD_DOCS\"" OFF)
-option(LLVM_INCLUDE_DOCS "llvm option \"LLVM_INCLUDE_DOCS\"" OFF)
-option(LLVM_ENABLE_DOXYGEN "llvm option \"LLVM_ENABLE_DOXYGEN\"" OFF)
-option(LLVM_ENABLE_SPHINX "llvm option \"LLVM_ENABLE_SPHINX\"" OFF)
-option(LLVM_ENABLE_OCAMLDOC "llvm option \"LLVM_ENABLE_OCAMLDOC\"" OFF)
-
-mark_as_advanced(
-        LLVM_INCLUDE_TOOLS
-        LLVM_BUILD_TOOLS
-        LLVM_INCLUDE_UTILS
-        LLVM_BUILD_UTILS
-        LLVM_INCLUDE_RUNTIMES
-        LLVM_BUILD_RUNTIMES
-        LLVM_BUILD_RUNTIME
-        LLVM_INCLUDE_TESTS
-        LLVM_BUILD_TESTS
-        LLVM_INCLUDE_TESTS
-        LLVM_BUILD_EXAMPLES
-        LLVM_INCLUDE_EXAMPLES
-        LLVM_BUILD_DOCS
-        LLVM_INCLUDE_DOCS
-        LLVM_ENABLE_DOXYGEN
-        LLVM_ENABLE_SPHINX
-        LLVM_ENABLE_OCAMLDOC
-)
+#option(LLVM_INCLUDE_TOOLS "llvm option \"LLVM_INCLUDE_TOOLS\"" ON)
+#option(LLVM_BUILD_TOOLS "llvm option \"LLVM_BUILD_TOOLS\"" ON)
+#option(LLVM_INCLUDE_UTILS "llvm option \"LLVM_INCLUDE_UTILS\"" OFF)
+#option(LLVM_BUILD_UTILS "llvm option \"LLVM_BUILD_UTILS\"" OFF)
+#option(LLVM_INCLUDE_RUNTIMES "llvm option \"LLVM_INCLUDE_RUNTIMES\"" OFF)
+#option(LLVM_BUILD_RUNTIMES "llvm option \"LLVM_BUILD_RUNTIMES\"" OFF)
+#option(LLVM_BUILD_RUNTIME "llvm option \"LLVM_BUILD_RUNTIME\"" OFF)
+#option(LLVM_INCLUDE_TESTS "llvm option \"LLVM_INCLUDE_TESTS\"" OFF)
+#option(LLVM_BUILD_TESTS "llvm option \"LLVM_BUILD_TESTS\"" OFF)
+#option(LLVM_INCLUDE_TESTS "llvm option \"LLVM_INCLUDE_TESTS\"" OFF)
+#option(LLVM_BUILD_EXAMPLES "llvm option \"LLVM_BUILD_EXAMPLES\"" OFF)
+#option(LLVM_INCLUDE_EXAMPLES "llvm option \"LLVM_INCLUDE_EXAMPLES\"" OFF)
+#option(LLVM_BUILD_DOCS "llvm option \"LLVM_BUILD_DOCS\"" OFF)
+#option(LLVM_INCLUDE_DOCS "llvm option \"LLVM_INCLUDE_DOCS\"" OFF)
+#option(LLVM_ENABLE_DOXYGEN "llvm option \"LLVM_ENABLE_DOXYGEN\"" OFF)
+#option(LLVM_ENABLE_SPHINX "llvm option \"LLVM_ENABLE_SPHINX\"" OFF)
+#option(LLVM_ENABLE_OCAMLDOC "llvm option \"LLVM_ENABLE_OCAMLDOC\"" OFF)
+#
+#mark_as_advanced(
+#        LLVM_INCLUDE_TOOLS
+#        LLVM_BUILD_TOOLS
+#        LLVM_INCLUDE_UTILS
+#        LLVM_BUILD_UTILS
+#        LLVM_INCLUDE_RUNTIMES
+#        LLVM_BUILD_RUNTIMES
+#        LLVM_BUILD_RUNTIME
+#        LLVM_INCLUDE_TESTS
+#        LLVM_BUILD_TESTS
+#        LLVM_INCLUDE_TESTS
+#        LLVM_BUILD_EXAMPLES
+#        LLVM_INCLUDE_EXAMPLES
+#        LLVM_BUILD_DOCS
+#        LLVM_INCLUDE_DOCS
+#        LLVM_ENABLE_DOXYGEN
+#        LLVM_ENABLE_SPHINX
+#        LLVM_ENABLE_OCAMLDOC
+#)
 message(STATUS "BUILD_CVODE 1: ${BUILD_CVODE}")
 add_subdirectory(third_party)
 
