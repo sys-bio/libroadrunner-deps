@@ -36,7 +36,7 @@ x64 bit machine")
     endif ()
 endif ()
 
-set(USE_UNIVERSAL_BINARIES "ON" CACHE BOOL "Build and link to universal binaries on MacOS")
+#set(USE_UNIVERSAL_BINARIES "ON" CACHE BOOL "Build and link to universal binaries on MacOS")
 
 if (USE_UNIVERSAL_BINARIES)
     set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64" CACHE INTERNAL "Compile for intel and M1 chips on apple" FORCE)
