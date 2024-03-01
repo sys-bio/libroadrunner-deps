@@ -149,7 +149,10 @@ stages:
           - script: |
               cd $(BUILD_DIRECTORY)
               cmake --build . --target install --config $(BuildType) -j 12
+              echo "rm -r -f *"
               rm -r -f *
+              echo "rm -r -f $(SOURCE_DIRECTORY)"s
+              rm -r -f $(SOURCE_DIRECTORY)
             displayName: BuildCommand
           - task: CopyFiles@2
             inputs:
