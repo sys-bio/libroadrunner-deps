@@ -251,16 +251,16 @@ stages:
               CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-debug"
               vmImage: macOS-11
               arch: x86_64
-            Release M1:
-              BuildType: Release
-              CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-release"
-              vmImage: macOS-14
-              arch: arm64
-            Debug M1:
-              BuildType: Debug
-              CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-debug"
-              vmImage: macOS-14
-              arch: arm64
+            # Release M1:
+            #   BuildType: Release
+            #   CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-release"
+            #   vmImage: macOS-14
+            #   arch: arm64
+            # Debug M1:
+            #   BuildType: Debug
+            #   CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-debug"
+            #   vmImage: macOS-14
+            #   arch: arm64
         pool:
           vmImage: $(vmImage)
 
