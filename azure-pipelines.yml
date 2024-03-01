@@ -148,16 +148,16 @@ stages:
             displayName: ConfigureCommand
           - script: |
               cd $(BUILD_DIRECTORY)
+              echo "cmake --build . --target install --config $(BuildType) -j 12"
               cmake --build . --target install --config $(BuildType) -j 12
               echo "rm -r -f *"
               rm -r -f *
               echo "rm -r -f $(SOURCE_DIRECTORY)"s
               rm -r -f $(SOURCE_DIRECTORY)
             displayName: BuildCommand
-          - task: CopyFiles@2
-            inputs:
-              contents: '$(INSTALL_DIRECTORY)/$(BuildType)/**'
-              targetFolder: $(Build.ArtifactStagingDirectory)
+          - script: |
+              echo "mv $(INSTALL_DIRECTORY)/$(BuildType)/* $(Build.ArtifactStagingDirectory)"
+              mv $(INSTALL_DIRECTORY)/$(BuildType)/* $(Build.ArtifactStagingDirectory)
           - publish: $(Build.ArtifactStagingDirectory)
             artifact: libroadrunner-deps-$(Agent.OS)-$(BuildType)
 
