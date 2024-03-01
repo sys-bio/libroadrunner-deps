@@ -68,12 +68,14 @@ stages:
             displayName: ConfigureCommand
           - script: |
               cd $(BUILD_DIRECTORY)
+              echo "cmake --build . --target install --config $(BuildType) -j 12"
               cmake --build . --target install --config $(BuildType) -j 12
+              echo "rm -r -f *"
+              rm -r -f *
             displayName: BuildCommand
-          - task: CopyFiles@2
-            inputs:
-              contents: '$(INSTALL_DIRECTORY)/$(BuildType)/**'
-              targetFolder: $(Build.ArtifactStagingDirectory)
+          - script: |
+              echo "mv $(INSTALL_DIRECTORY)/$(BuildType)/* $(Build.ArtifactStagingDirectory)"
+              mv $(INSTALL_DIRECTORY)/$(BuildType)/* $(Build.ArtifactStagingDirectory)
           - publish: $(Build.ArtifactStagingDirectory)
             artifact: libroadrunner-deps-manylinux2014-$(BuildType)
 
@@ -148,12 +150,12 @@ stages:
             displayName: ConfigureCommand
           - script: |
               cd $(BUILD_DIRECTORY)
+              echo "cmake --build . --target install --config $(BuildType) -j 12"
               cmake --build . --target install --config $(BuildType) -j 12
             displayName: BuildCommand
-          - task: CopyFiles@2
-            inputs:
-              contents: '$(INSTALL_DIRECTORY)/$(BuildType)/**'
-              targetFolder: $(Build.ArtifactStagingDirectory)
+          - script: |
+              echo "mv $(INSTALL_DIRECTORY)/$(BuildType)/* $(Build.ArtifactStagingDirectory)"
+              mv $(INSTALL_DIRECTORY)/$(BuildType)/* $(Build.ArtifactStagingDirectory)
           - publish: $(Build.ArtifactStagingDirectory)
             artifact: libroadrunner-deps-$(Agent.OS)-$(BuildType)
 
@@ -234,8 +236,6 @@ stages:
         timeoutInMinutes: "0"
         displayName: MacOS
         continueOnError: "false"
-        pool:
-          vmImage: 'macOS-11'
         variables:
           CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
           BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
@@ -243,12 +243,28 @@ stages:
           INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
         strategy:
           matrix:
-            Release:
+            Release x86:
               BuildType: Release
               CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-release"
-            Debug:
+              vmImage: macOS-11
+              arch: x86_64
+            Debug x86:
               BuildType: Debug
               CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-debug"
+              vmImage: macOS-11
+              arch: x86_64
+            # Release M1:
+            #   BuildType: Release
+            #   CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-release"
+            #   vmImage: macOS-14
+            #   arch: arm64
+            # Debug M1:
+            #   BuildType: Debug
+            #   CMakeArgs: "-DCMAKE_INSTALL_PREFIX=../install-azure-debug"
+            #   vmImage: macOS-14
+            #   arch: arm64
+        pool:
+          vmImage: $(vmImage)
 
         steps:
           - checkout: self
@@ -289,7 +305,7 @@ stages:
           - script: |
               mkdir $(BUILD_DIRECTORY)
               cd $(BUILD_DIRECTORY)
-              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) -DBUILD_LLVM=$(BUILD_LLVM) -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" ..
+              cmake -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)/$(BuildType)" -DCMAKE_BUILD_TYPE=$(BuildType) -DBUILD_LLVM=$(BUILD_LLVM) -DCMAKE_OSX_ARCHITECTURES="$(arch)" ..
             displayName: ConfigureCommand
           - script: |
               cd $(BUILD_DIRECTORY)
@@ -302,4 +318,4 @@ stages:
           - task: PublishBuildArtifacts@1
             inputs:
               pathToPublish: $(Build.ArtifactStagingDirectory)
-              artifactName: libroadrunner-deps-$(Agent.OS)-$(BuildType)
+              artifactName: libroadrunner-deps-$(Agent.OS)-$(BuildType)-$(arch)
