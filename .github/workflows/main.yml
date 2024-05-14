@@ -10,7 +10,7 @@ on:
 
 jobs:
   build_on_OSs:
-    name: Build LibRoadRunner Dependencies on ${{ matrix.platform.name }}
+    name: ${{ matrix.platform.name }} libroadrunner dependencies.
     strategy:
       fail-fast: false
       matrix:
@@ -23,13 +23,13 @@ jobs:
             os_type: macos
             os_name: macos-11
             build_type: Debug
-          - name: macos-latest-release
+          - name: macos-14-release
             os_type: macos
-            os_name: macos-latest
+            os_name: macos-14
             build_type: Release
-          - name: macos-latest-debug
+          - name: macos-14-debug
             os_type: macos
-            os_name: macos-latest
+            os_name: macos-14
             build_type: Debug
           - name: ubuntu-latest-release
             os_type: ubuntu
