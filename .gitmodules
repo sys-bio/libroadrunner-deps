@@ -35,3 +35,7 @@
 	path = third_party/libSEDML
 	url = https://github.com/fbergmann/libSEDML.git
 	branch = use-as-submodule
+[submodule "third_party/SBMLNetwork"]
+	path = third_party/SBMLNetwork
+	url = https://github.com/adelhpour/SBMLNetwork.git
+	branch = use-as-submodule

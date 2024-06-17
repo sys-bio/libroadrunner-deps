@@ -180,6 +180,16 @@ add_dependencies("${LIBSEDML_TARGET_ID}" "${LIBSBML_TARGET_ID}" "${LIBNUML_TARGE
 #add_dependencies("${LIBSEDML_TARGET_ID_NS}" "${LIBSBML_TARGET_ID}" "${LIBNUML_TARGET_ID}")
 
 
+# SBMLNetwork
+message(STATUS "Adding SBMLNetwork as subdirectory")
+add_subdirectory(SBMLNetwork)
+set(SBMLNETWORK_INCLUDE_DIR "$<TARGET_PROPERTY:libsbml,INCLUDE_DIRECTORIES>")
+set(SBMLNETWORK_TARGET_ID "sbmlnetwork-static")
+add_dependencies(${SBMLNETWORK_TARGET_ID} "${LIBSBML_TARGET_ID}" expat zlibstatic)
+set(DEPENDENCIES_INCLUDE_DIR "$<TARGET_PROPERTY:libsbml,INCLUDE_DIRECTORIES>")
+set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "${LIBSBML_INCLUDE_DIRS}" "${LIBNUML_INCLUDE_DIRS}" "${CMAKE_SOURCE_DIR}/third_party/NuML/libnuml/src")
+
+
 if (${BUILD_LLVM})
     message(STATUS "Adding llvm-13.x/llvm as subdirectory")
     add_subdirectory(llvm-13.x/llvm)
