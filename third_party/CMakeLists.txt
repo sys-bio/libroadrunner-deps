@@ -182,12 +182,15 @@ add_dependencies("${LIBSEDML_TARGET_ID}" "${LIBSBML_TARGET_ID}" "${LIBNUML_TARGE
 
 # SBMLNetwork
 message(STATUS "Adding SBMLNetwork as subdirectory")
+set(DEPENDENCIES_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/third_party/libsbml/src" "${CMAKE_BINARY_DIR}/third_party/libsbml/src")
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build the dynamic version of the library" FORCE)
 add_subdirectory(SBMLNetwork)
-set(SBMLNETWORK_INCLUDE_DIR "$<TARGET_PROPERTY:libsbml,INCLUDE_DIRECTORIES>")
-set(SBMLNETWORK_TARGET_ID "sbmlnetwork-static")
+if (WIN32)
+    set(SBMLNETWORK_TARGET_ID "libsbmlnetwork-static")
+else (WIN32)
+    set(SBMLNETWORK_TARGET_ID "sbmlnetwork-static")
+endif (WIN32)
 add_dependencies(${SBMLNETWORK_TARGET_ID} "${LIBSBML_TARGET_ID}" expat zlibstatic)
-set(DEPENDENCIES_INCLUDE_DIR "$<TARGET_PROPERTY:libsbml,INCLUDE_DIRECTORIES>")
-set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "${LIBSBML_INCLUDE_DIRS}" "${LIBNUML_INCLUDE_DIRS}" "${CMAKE_SOURCE_DIR}/third_party/NuML/libnuml/src")
 
 
 if (${BUILD_LLVM})
