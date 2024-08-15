@@ -185,11 +185,7 @@ message(STATUS "Adding SBMLNetwork as subdirectory")
 set(DEPENDENCIES_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/third_party/libsbml/src" "${CMAKE_BINARY_DIR}/third_party/libsbml/src")
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build the dynamic version of the library" FORCE)
 add_subdirectory(SBMLNetwork)
-if (WIN32)
-    set(SBMLNETWORK_TARGET_ID "libsbmlnetwork-static")
-else (WIN32)
-    set(SBMLNETWORK_TARGET_ID "sbmlnetwork-static")
-endif (WIN32)
+set(SBMLNETWORK_TARGET_ID "sbmlnetwork-static")
 add_dependencies(${SBMLNETWORK_TARGET_ID} "${LIBSBML_TARGET_ID}" expat zlibstatic)
 
 
