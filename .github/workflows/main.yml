@@ -1,0 +1,202 @@
+name: BuildLibRoadRunnerDependencies
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  build_on_OSs:
+    name: ${{ matrix.platform.name }} libroadrunner dependencies.
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - name: macos-12-release
+            os_type: macos
+            os_name: macos-12
+            build_type: Release
+          - name: macos-12-debug
+            os_type: macos
+            os_name: macos-12
+            build_type: Debug
+          - name: macos-14-release
+            os_type: macos
+            os_name: macos-14
+            build_type: Release
+          - name: macos-14-debug
+            os_type: macos
+            os_name: macos-14
+            build_type: Debug
+          - name: ubuntu-latest-release
+            os_type: ubuntu
+            os_name: ubuntu-latest
+            build_type: Release
+          - name: ubuntu-latest-debug
+            os_type: ubuntu
+            os_name: ubuntu-latest
+            build_type: Debug
+          - name: windows-latest-release
+            os_type: windows
+            os_name: windows-latest
+            build_type: Release
+          - name: windows-latest-debug
+            os_type: windows
+            os_name: windows-latest
+            build_type: Debug
+          - name: manylinux_2_28-release
+            os_type: manylinux
+            os_name: ubuntu-latest
+            container_image: quay.io/pypa/manylinux_2_28_x86_64
+            build_type: Release
+          - name: manylinux_2_28-debug
+            os_type: manylinux
+            os_name: ubuntu-latest
+            container_image: quay.io/pypa/manylinux_2_28_x86_64
+            build_type: Debug
+    runs-on: ${{ matrix.platform.os_name }}
+    container:
+      image: ${{ matrix.platform.container_image || '' }}
+
+    steps:
+      - name: Checkout LibRoadRunner Dependencies
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Set MSVC as the default compiler on Windows
+        if: matrix.platform.os_type == 'windows'
+        uses: ilammy/msvc-dev-cmd@v1.6.0
+
+      - name: Upgrade gcc on Linux
+        if: matrix.platform.os_type == 'manylinux'
+        shell: bash
+        run: |
+          if [ "${{ matrix.platform.os_type }}" == 'ubuntu' ]; then
+            apt-get update
+            apt-get install -y software-properties-common
+            add-apt-repository -y ppa:ubuntu-toolchain-r/test
+            apt-get update
+            apt-get install -y gcc-11 g++-11
+            update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 90
+            update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-11 90
+          elif [ "${{ matrix.platform.os_type }}" == 'manylinux' ]; then
+            dnf install -y gcc-toolset-11
+            scl enable gcc-toolset-11 bash
+            echo "/opt/rh/gcc-toolset-11/root/usr/bin" >> "${GITHUB_PATH}"
+          fi
+
+      - name: Setup Ninja
+        uses: seanmiddleditch/gha-setup-ninja@master
+
+      - name: Get Host Architecture
+        shell: bash
+        run: |
+          architecture=$(uname -m)
+          echo "host_architecture=$architecture" >> "${GITHUB_ENV}"
+          if [ "${{ matrix.platform.os_type }}" == 'macos' ]; then
+            echo "OSX_ARCHITECTURES=$architecture" >> "${GITHUB_ENV}"
+          fi
+
+      - name: Install ccache
+        shell: bash
+        run: |
+          cd ${RUNNER_WORKSPACE}
+          if [ "${{ matrix.platform.os_type }}" == 'macos' ]; then
+            brew install ccache
+          elif [ "${{ matrix.platform.os_type }}" == 'ubuntu' ]; then
+            sudo apt-get update
+            sudo apt-get install -y ccache
+          elif [ "${{ matrix.platform.os_type }}" == 'manylinux' ]; then
+            mkdir -p ccache
+            cd ccache
+            curl -L https://github.com/ccache/ccache/releases/download/v4.9.1/ccache-4.9.1.tar.gz > ccache.tar.gz
+            tar -zxf ccache.tar.gz
+            rm ccache.tar.gz
+            mkdir -p build-ccache
+            mkdir -p install-ccache
+            cd build-ccache
+            cmake -DCMAKE_INSTALL_PREFIX="$RUNNER_WORKSPACE/ccache/install-ccache" -DCMAKE_BUILD_TYPE=Release ../ccache-4.9.1
+            cmake --build . --target install
+            echo "$RUNNER_WORKSPACE/ccache/install-ccache/bin" >> $GITHUB_PATH
+          fi
+
+      - name: Prepare ccache timestamp on non-Windows platforms
+        if: matrix.platform.os_type != 'windows'
+        id: ccache_cache_timestamp
+        shell: cmake -P {0}
+        run: |
+          string(TIMESTAMP current_date "%Y-%m-%d-%H;%M;%S" UTC)
+          message("::set-output name=timestamp::${current_date}")
+
+      - name: Set ccache cache directory on non-Windows
+        if: matrix.platform.os_type != 'windows'
+        shell: bash
+        run: |
+          cd ${RUNNER_WORKSPACE}
+          echo "CCACHE_DIR=${RUNNER_WORKSPACE}/.ccache" >> "${GITHUB_ENV}"
+          echo "COMPILER_LAUNCHER=ccache" >> "${GITHUB_ENV}"
+
+      - name: Cache ccache files on non-Windows
+        if: matrix.platform.os_type != 'windows'
+        uses: actions/cache@v4
+        with:
+          path: ${RUNNER_WORKSPACE}/.ccache
+          key:
+            ${{ runner.os }}-${{ steps.ccache_cache_timestamp.outputs.timestamp
+            }}
+          restore-keys: |
+            ${{ runner.os }}-${{ steps.ccache_cache_timestamp.outputs.timestamp }}
+            ${{ runner.os }}-
+
+      - name: Create build directory
+        shell: bash
+        run: mkdir -p ${RUNNER_WORKSPACE}/build-libroadrunner-deps
+
+      - name: Configure CMake for LibRoadRunner Dependencies
+        shell: bash
+        run: |
+          cd ${RUNNER_WORKSPACE}/build-libroadrunner-deps
+          cmake $GITHUB_WORKSPACE \
+          -G "Ninja" \
+          -DCMAKE_C_COMPILER_LAUNCHER=${COMPILER_LAUNCHER} \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=${COMPILER_LAUNCHER} \
+          -DCMAKE_BUILD_TYPE=${{ matrix.platform.build_type }} \
+          -DCMAKE_OSX_ARCHITECTURES=${OSX_ARCHITECTURES} \
+          -DCMAKE_INSTALL_PREFIX="${RUNNER_WORKSPACE}/install-libroadrunner-deps"
+
+      - name: Build and install LibRoadRunner Dependencies
+        shell: bash
+        run: |
+          cd ${RUNNER_WORKSPACE}/build-libroadrunner-deps
+          cmake --build . --target install --config ${{ matrix.platform.build_type }}
+
+      - name: Set artifacts path and name
+        shell: bash
+        run: |
+          cd ${RUNNER_WORKSPACE}
+          artifacts_name=""
+          if [ "${{ matrix.platform.os_type }}" == 'windows' ]; then
+            compiler_version=$(ls "C:\Program Files\Microsoft Visual Studio")
+            echo "artifacts_name=libroadrunner-deps-${{ matrix.platform.os_type }}-msvc$compiler_version-${host_architecture}-${{ matrix.platform.build_type }}" >> "${GITHUB_ENV}"
+          elif [ "${{ matrix.platform.os_type }}" == 'macos' ]; then
+            os_version=$(sw_vers -productVersion | cut -d '.' -f 1)
+            echo "artifacts_name=libroadrunner-deps-${{ matrix.platform.os_type }}-$os_version-${host_architecture}-${{ matrix.platform.build_type }}" >> "${GITHUB_ENV}"
+          elif [ "${{ matrix.platform.os_type }}" == 'ubuntu' ]; then
+            os_version=$(lsb_release -rs | cut -d '.' -f 1)
+            echo "artifacts_name=libroadrunner-deps-${{ matrix.platform.os_type }}-$os_version-${host_architecture}-${{ matrix.platform.build_type }}" >> "${GITHUB_ENV}"
+          elif [ "${{ matrix.platform.os_type }}" == 'manylinux' ]; then
+            os_name="${{ matrix.platform.name }}"
+            os_name_without_build_type="${os_name%%-*}"
+            echo "artifacts_name=libroadrunner-deps-${os_name_without_build_type}-${host_architecture}-${{ matrix.platform.build_type }}" >> "${GITHUB_ENV}"
+          fi
+          echo "artifacts_path=../install-libroadrunner-deps" >> "${GITHUB_ENV}"
+
+      - name: Upload LibRoadRunner Dependencies binaries
+        uses: actions/upload-artifact@v1
+        with:
+          name: ${{env.artifacts_name}}
+          path: ${{env.artifacts_path}}
