@@ -9,6 +9,8 @@ set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "$<TARGET_PROPERTY:zlib,INCLUDE_D
 #message(STATUS "LIBZ_INCLUDE_DIR: ${LIBZ_INCLUDE_DIR}")
 message(STATUS "Extra include directories: ${EXTRA_INCLUDE_DIRS}")
 set(LIBZ_LIBRARY zlibstatic)
+add_library(ZLIB:ZLIB ALIAS zlibstatic)
+set(ZLIB_LIBRARY "$<TARGET_LINKER_FILE:zlibstatic>" CACHE FILEPATH "zlib static library" FORCE)
 
 # nleq1
 message(STATUS "Adding nleq1 as subdirectory")
@@ -71,19 +73,16 @@ if (WIN32)
     set(LIBSBML_TARGET_ID "libsbml-static")
     set(LIBSBML_INCLUDE_DIR "$<TARGET_PROPERTY:libsbml-static,INCLUDE_DIRECTORIES>")
     set(LIBSBML_INCLUDE_DIRS "$<TARGET_PROPERTY:libsbml-static,INCLUDE_DIRECTORIES>")
-    set(LIBSBML_LIBRARY "$<TARGET_LINKER_FILE:libsbml-static>" CACHE FILEPATH "libsbml library" FORCE)
+    set(LIBSBML_LIBRARY "$<TARGET_LINKER_FILE:libsbml-static>" CACHE FILEPATH "libsbml static library" FORCE)
 else (WIN32)
     set(LIBSBML_TARGET_ID "sbml-static")
     set(LIBSBML_INCLUDE_DIR "$<TARGET_PROPERTY:sbml-static,INCLUDE_DIRECTORIES>")
     set(LIBSBML_INCLUDE_DIRS "$<TARGET_PROPERTY:sbml-static,INCLUDE_DIRECTORIES>")
-    set(LIBSBML_LIBRARY "$<TARGET_LINKER_FILE:sbml-static>" CACHE FILEPATH "libsbml library" FORCE)
+    set(LIBSBML_LIBRARY "$<TARGET_LINKER_FILE:sbml-static>" CACHE FILEPATH "libsbml static library" FORCE)
 endif (WIN32)
 
 add_dependencies("${LIBSBML_TARGET_ID}" expat zlibstatic)
 set(FIND_LIBSBML OFF CACHE BOOL "Find libsbml." FORCE)
-
-# Revert LIBZ_INCLUDE_DIR because it'll make things fail otherwise.
-set(LIBZ_INCLUDE_DIR "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>")
 
 ## rr-libstruct
 message(STATUS "Adding rr-libstruct as subdirectory")
