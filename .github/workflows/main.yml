@@ -196,7 +196,7 @@ jobs:
           echo "artifacts_path=../install-libroadrunner-deps" >> "${GITHUB_ENV}"
 
       - name: Upload LibRoadRunner Dependencies binaries
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: ${{env.artifacts_name}}
           path: ${{env.artifacts_path}}
