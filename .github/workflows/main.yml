@@ -130,7 +130,7 @@ jobs:
         shell: cmake -P {0}
         run: |
           string(TIMESTAMP current_date "%Y-%m-%d-%H;%M;%S" UTC)
-          echo "timestamp=${current_date}" >> $GITHUB_OUTPUT
+          message("timestamp=${current_date}" >> $GITHUB_OUTPUT)
 
       - name: Set ccache cache directory on non-Windows
         if: matrix.platform.os_type != 'windows'
