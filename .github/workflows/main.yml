@@ -193,7 +193,7 @@ jobs:
             os_name_without_build_type="${os_name%%-*}"
             echo "artifacts_name=libroadrunner-deps-${os_name_without_build_type}-${host_architecture}-${{ matrix.platform.build_type }}" >> "${GITHUB_ENV}"
           fi
-          echo "artifacts_path=../install-libroadrunner-deps" >> "${GITHUB_ENV}"
+          echo "artifacts_path=${RUNNER_WORKSPACE}/install-libroadrunner-deps" >> "${GITHUB_ENV}"
 
       - name: Upload LibRoadRunner Dependencies binaries
         uses: actions/upload-artifact@v4
