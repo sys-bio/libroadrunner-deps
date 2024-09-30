@@ -37,4 +37,4 @@
 	branch = use-as-submodule
 [submodule "third_party/SBMLNetwork"]
 	path = third_party/SBMLNetwork
-	url = https://github.com/adelhpour/SBMLNetwork.git
+	url = https://github.com/sys-bio/SBMLNetwork.git
