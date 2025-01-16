@@ -9,7 +9,7 @@ set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "$<TARGET_PROPERTY:zlib,INCLUDE_D
 #message(STATUS "LIBZ_INCLUDE_DIR: ${LIBZ_INCLUDE_DIR}")
 message(STATUS "Extra include directories: ${EXTRA_INCLUDE_DIRS}")
 set(LIBZ_LIBRARY zlibstatic)
-add_library(ZLIB:ZLIB ALIAS zlibstatic)
+#add_library(ZLIB:ZLIB ALIAS zlibstatic)
 set(ZLIB_LIBRARY "$<TARGET_LINKER_FILE:zlibstatic>" CACHE FILEPATH "zlib static library" FORCE)
 
 # nleq1
