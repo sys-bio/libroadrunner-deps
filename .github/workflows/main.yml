@@ -14,6 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        cpp_standard: [26]
         platform:
           - name: macos-13-release
             os_type: macos
@@ -166,6 +167,7 @@ jobs:
           -DCMAKE_CXX_COMPILER_LAUNCHER=${COMPILER_LAUNCHER} \
           -DCMAKE_BUILD_TYPE=${{ matrix.platform.build_type }} \
           -DCMAKE_OSX_ARCHITECTURES=${OSX_ARCHITECTURES} \
+          -DCMAKE_CXX_STANDARD=${{matrix.cpp_standard}} \
           -DCMAKE_INSTALL_PREFIX="${RUNNER_WORKSPACE}/install-libroadrunner-deps"
 
       - name: Build and install LibRoadRunner Dependencies
