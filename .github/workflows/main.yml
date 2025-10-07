@@ -32,6 +32,10 @@ jobs:
             os_type: macos
             os_name: macos-14
             build_type: Debug
+          - name: macos-15-release
+            os_type: macos
+            os_name: macos-15
+            build_type: Release
           - name: ubuntu-latest-release
             os_type: ubuntu
             os_name: ubuntu-latest
