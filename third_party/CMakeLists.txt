@@ -42,6 +42,7 @@ add_dependencies(lapack zlibstatic)
 #set(CHECK_INCLUDE_DIR "$<TARGET_PROPERTY:check,INCLUDE_DIRECTORIES>")
 
 ## poco
+set(ENABLE_UTIL OFF FORCE)
 message(STATUS "Adding poco as subdirectory")
 add_subdirectory(poco)
 
