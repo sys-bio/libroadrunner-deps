@@ -1,11 +1,14 @@
 # zlib
 message(STATUS "Adding zlib as subdirectory")
+set(ZLIB_BUILD_SHARED OFF CACHE BOOL "Don't build shared zlib libraries")
+# SET(SOME_EXPAT_OPTION OFF CACHE BOOL "Use some expat option")
 add_subdirectory(zlib)
-set(ZLIB_INCLUDE_DIR "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>")
-set(LIBZ_INCLUDE_DIR "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>")
+message(STATUS "The final value of zlib_build_shared: ${ZLIB_BUILD_SHARED}")
+set(ZLIB_INCLUDE_DIR "$<TARGET_PROPERTY:zlibstatic,INCLUDE_DIRECTORIES>")
+set(LIBZ_INCLUDE_DIR "$<TARGET_PROPERTY:zlibstatic,INCLUDE_DIRECTORIES>")
 #For the auto-generated zconf.h:
 #set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "${CMAKE_CURRENT_BINARY_DIR}/zlib/")
-set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "$<TARGET_PROPERTY:zlib,INCLUDE_DIRECTORIES>")
+set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "$<TARGET_PROPERTY:zlibstatic,INCLUDE_DIRECTORIES>")
 #message(STATUS "LIBZ_INCLUDE_DIR: ${LIBZ_INCLUDE_DIR}")
 message(STATUS "Extra include directories: ${EXTRA_INCLUDE_DIRS}")
 set(LIBZ_LIBRARY zlibstatic)
@@ -42,7 +45,8 @@ add_dependencies(lapack zlibstatic)
 #set(CHECK_INCLUDE_DIR "$<TARGET_PROPERTY:check,INCLUDE_DIRECTORIES>")
 
 ## poco
-set(ENABLE_UTIL OFF FORCE)
+set(ENABLE_UTIL OFF "Turn off util functions" FORCE)
+
 message(STATUS "Adding poco as subdirectory")
 add_subdirectory(poco)
 
