@@ -16,14 +16,6 @@ jobs:
       matrix:
         cpp_standard: [26]
         platform:
-          - name: macos-13-release
-            os_type: macos
-            os_name: macos-13
-            build_type: Release
-          - name: macos-13-debug
-            os_type: macos
-            os_name: macos-13
-            build_type: Debug
           - name: macos-14-release
             os_type: macos
             os_name: macos-14
@@ -31,6 +23,14 @@ jobs:
           - name: macos-14-debug
             os_type: macos
             os_name: macos-14
+            build_type: Debug
+          - name: macos-15-intel-release
+            os_type: macos
+            os_name: macos-15-intel
+            build_type: Release
+          - name: macos-15-intel-debug
+            os_type: macos
+            os_name: macos-15-intel
             build_type: Debug
           - name: ubuntu-latest-release
             os_type: ubuntu
