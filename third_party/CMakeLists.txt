@@ -71,6 +71,8 @@ set(EXPAT_LIBRARY "$<TARGET_LINKER_FILE:expat>" CACHE FILEPATH "Expat library" F
 message(STATUS "Adding libsbml as subdirectory")
 set(WITH_EXPAT ON CACHE BOOL "Compile libsbml with the expat library" FORCE)
 set(WITH_LIBXML OFF CACHE BOOL "Compile libsbml with libxml (off by default)" FORCE)
+SET(BZIP_INITIAL_VALUE OFF CACHE BOOL "Compile libsbml without bzip" FORCE)
+SET(WITH_ZLIB OFF CACHE BOOL "Compile libsbml without zlib" FORCE)
 add_subdirectory(libsbml)
 
 # needed because of the weird way libsbml handles the "lib" prefix
