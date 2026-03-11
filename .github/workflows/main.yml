@@ -64,7 +64,7 @@ jobs:
 
     steps:
       - name: Checkout LibRoadRunner Dependencies
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           submodules: recursive
 
@@ -89,9 +89,6 @@ jobs:
             scl enable gcc-toolset-11 bash
             echo "/opt/rh/gcc-toolset-11/root/usr/bin" >> "${GITHUB_PATH}"
           fi
-
-      - name: Setup Ninja
-        uses: seanmiddleditch/gha-setup-ninja@master
 
       - name: Get Host Architecture
         shell: bash
@@ -143,7 +140,7 @@ jobs:
 
       - name: Cache ccache files on non-Windows
         if: matrix.platform.os_type != 'windows'
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ${RUNNER_WORKSPACE}/.ccache
           key:
@@ -198,7 +195,7 @@ jobs:
           echo "artifacts_path=${RUNNER_WORKSPACE}/install-libroadrunner-deps" >> "${GITHUB_ENV}"
 
       - name: Upload LibRoadRunner Dependencies binaries
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{env.artifacts_name}}
           path: ${{env.artifacts_path}}
