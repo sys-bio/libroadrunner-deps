@@ -184,12 +184,19 @@ jobs:
         run: |
           DEST="${RUNNER_WORKSPACE}/install-antimony-deps"
           SRC="${RUNNER_WORKSPACE}/install-libroadrunner-deps"
-          mkdir -p "$DEST/include" "$DEST/lib" "$DEST/bin"
-          cp "$SRC"/include/expat*.h "$DEST/include/" 2>/dev/null
-          cp -r "$SRC"/include/sbml "$DEST/include/" 2>/dev/null
-          cp -r "$SRC"/include/sbmlnetwork "$DEST/include/" 2>/dev/null
-          cp "$SRC"/lib/*expat* "$DEST/lib/" 2>/dev/null
-          cp "$SRC"/lib/*sbml* "$DEST/lib/" 2>/dev/null
+          mkdir -p "$DEST/include" "$DEST/lib"
+          cp "$SRC"/include/expat*.h "$DEST/include/" 2>/dev/null || true
+          cp -r "$SRC"/include/sbml "$DEST/include/" 2>/dev/null || true
+          cp -r "$SRC"/include/sbmlnetwork "$DEST/include/" 2>/dev/null || true
+          if [ "${{ matrix.platform.os_type }}" == 'manylinux' ]; then
+            LIBDIR="$SRC/lib64"
+          else
+            LIBDIR="$SRC/lib"
+          fi
+          cp "$LIBDIR"/*expat* "$DEST/lib/" 2>/dev/null || true
+          cp "$LIBDIR"/*sbml* "$DEST/lib/" 2>/dev/null || true
+          test -n "$(ls -A "$DEST/lib")" || { echo "No libs matched — check naming"; exit 1; }
+          test -n "$(ls -A "$DEST/include")" || { echo "No headers matched — check naming"; exit 1; }
 
       - name: Set artifacts path and name
         shell: bash
