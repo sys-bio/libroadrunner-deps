@@ -219,7 +219,7 @@ jobs:
           fi
           echo "artifacts_name=libroadrunner-deps-${suffix}" >> "${GITHUB_ENV}"
           echo "artifacts_path=${RUNNER_WORKSPACE}/install-libroadrunner-deps" >> "${GITHUB_ENV}"
-          echo "antimony_artifacts_name=libroadrunner-deps-antimony-${suffix}" >> "${GITHUB_ENV}"
+          echo "antimony_artifacts_name=antimony-deps-${suffix}" >> "${GITHUB_ENV}"
           echo "antimony_artifacts_path=${RUNNER_WORKSPACE}/install-antimony-deps" >> "${GITHUB_ENV}"
 
       - name: Upload libroadrunner dependencies binaries
