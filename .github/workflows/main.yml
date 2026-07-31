@@ -222,8 +222,14 @@ jobs:
           fi
           echo "artifacts_path=${RUNNER_WORKSPACE}/install-libroadrunner-deps" >> "${GITHUB_ENV}"
 
-      - name: Upload LibRoadRunner Dependencies binaries
+      - name: Upload libRoadRunner dependencies binaries
         uses: actions/upload-artifact@main
         with:
           name: ${{env.artifacts_name}}
           path: ${{env.artifacts_path}}
+
+      - name: Upload antimony-only dependency binaries
+        uses: actions/upload-artifact@main
+        with:
+          name: ${{env.antimony_artifacts_name}}
+          path: ${{env.antimony_artifacts_path}}
