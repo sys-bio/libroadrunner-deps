@@ -208,31 +208,22 @@ jobs:
           artifacts_name=""
           if [ "${{ matrix.platform.os_type }}" == 'windows' ]; then
             compiler_version=$(ls "C:\Program Files\Microsoft Visual Studio")
-            suffix="${{ matrix.platform.os_type }}-msvc$compiler_version-${host_architecture}-${{ matrix.platform.build_type }}"
+            echo "artifacts_name=libroadrunner-deps-${{ matrix.platform.os_type }}-msvc$compiler_version-${host_architecture}-${{ matrix.platform.build_type }}" >> "${GITHUB_ENV}"
           elif [ "${{ matrix.platform.os_type }}" == 'macos' ]; then
             os_version=$(sw_vers -productVersion | cut -d '.' -f 1)
-            suffix="${{ matrix.platform.os_type }}-$os_version-${host_architecture}-${{ matrix.platform.build_type }}"
+            echo "artifacts_name=libroadrunner-deps-${{ matrix.platform.os_type }}-$os_version-${host_architecture}-${{ matrix.platform.build_type }}" >> "${GITHUB_ENV}"
           elif [ "${{ matrix.platform.os_type }}" == 'ubuntu' ]; then
             os_version=$(lsb_release -rs | cut -d '.' -f 1)
-            suffix="${{ matrix.platform.os_type }}-$os_version-${host_architecture}-${{ matrix.platform.build_type }}"
+            echo "artifacts_name=libroadrunner-deps-${{ matrix.platform.os_type }}-$os_version-${host_architecture}-${{ matrix.platform.build_type }}" >> "${GITHUB_ENV}"
           elif [ "${{ matrix.platform.os_type }}" == 'manylinux' ]; then
             os_name="${{ matrix.platform.name }}"
             os_name_without_build_type="${os_name%%-*}"
-            suffix="${os_name_without_build_type}-${host_architecture}-${{ matrix.platform.build_type }}"
+            echo "artifacts_name=libroadrunner-deps-${os_name_without_build_type}-${host_architecture}-${{ matrix.platform.build_type }}" >> "${GITHUB_ENV}"
           fi
-          echo "artifacts_name=libroadrunner-deps-${suffix}" >> "${GITHUB_ENV}"
           echo "artifacts_path=${RUNNER_WORKSPACE}/install-libroadrunner-deps" >> "${GITHUB_ENV}"
-          echo "antimony_artifacts_name=antimony-deps-${suffix}" >> "${GITHUB_ENV}"
-          echo "antimony_artifacts_path=${RUNNER_WORKSPACE}/install-antimony-deps" >> "${GITHUB_ENV}"
 
-      - name: Upload libroadrunner dependencies binaries
+      - name: Upload LibRoadRunner Dependencies binaries
         uses: actions/upload-artifact@main
         with:
           name: ${{env.artifacts_name}}
           path: ${{env.artifacts_path}}
-
-      - name: Upload antimony-only dependency binaries
-        uses: actions/upload-artifact@main
-        with:
-          name: ${{env.antimony_artifacts_name}}
-          path: ${{env.antimony_artifacts_path}}
