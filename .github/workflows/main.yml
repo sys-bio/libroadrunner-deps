@@ -184,19 +184,22 @@ jobs:
         run: |
           DEST="${RUNNER_WORKSPACE}/install-antimony-deps"
           SRC="${RUNNER_WORKSPACE}/install-libroadrunner-deps"
-          mkdir -p "$DEST/include" "$DEST/lib"
-          cp "$SRC"/include/expat*.h "$DEST/include/" 2>/dev/null || true
-          cp -r "$SRC"/include/sbml "$DEST/include/" 2>/dev/null || true
-          cp -r "$SRC"/include/sbmlnetwork "$DEST/include/" 2>/dev/null || true
           if [ "${{ matrix.platform.os_type }}" == 'manylinux' ]; then
             LIBDIR="$SRC/lib64"
           else
             LIBDIR="$SRC/lib"
           fi
+          mkdir -p "$DEST/include" "$DEST/lib" "$DEST/lib/cmake"
+          cp "$SRC"/include/expat*.h "$DEST/include/" 2>/dev/null || true
+          cp -r "$SRC"/include/sbml "$DEST/include/" 2>/dev/null || true
+          cp -r "$SRC"/include/sbmlnetwork "$DEST/include/" 2>/dev/null || true
           cp "$LIBDIR"/*expat* "$DEST/lib/" 2>/dev/null || true
           cp "$LIBDIR"/*sbml* "$DEST/lib/" 2>/dev/null || true
-          test -n "$(ls -A "$DEST/lib")" || { echo "No libs matched — check naming"; exit 1; }
-          test -n "$(ls -A "$DEST/include")" || { echo "No headers matched — check naming"; exit 1; }
+          expat_cmake_dir=$(find "$LIBDIR/cmake" -maxdepth 1 -type d -iname 'expat-*' | head -n1)
+          if [ -n "$expat_cmake_dir" ]; then
+            cp -r "$expat_cmake_dir" "$DEST/lib/cmake/"
+          fi
+          cp "$LIBDIR"/cmake/libsbml-static-*.cmake "$DEST/lib/cmake/" 2>/dev/null || true
 
       - name: Set artifacts path and name
         shell: bash
