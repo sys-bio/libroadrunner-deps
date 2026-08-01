@@ -199,7 +199,7 @@ jobs:
           if [ -n "$expat_cmake_dir" ]; then
             cp -r "$expat_cmake_dir" "$DEST/lib/cmake/"
           fi
-          cp "$LIBDIR"/cmake/libsbml-static-*.cmake "$DEST/lib/cmake/" 2>/dev/null || true
+          cp "$LIBDIR"/cmake/*sbml-static-*.cmake "$DEST/lib/cmake/" 2>/dev/null || true
 
       - name: Set artifacts path and name
         shell: bash
