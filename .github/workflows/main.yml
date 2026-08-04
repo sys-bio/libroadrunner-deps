@@ -198,6 +198,7 @@ jobs:
           cp "$LIBDIR"/*expat* "$DEST_LIBDIR/" 2>/dev/null || true
           cp "$LIBDIR"/*sbml* "$DEST_LIBDIR/" 2>/dev/null || true
           cp "$LIBDIR"/*sbmlnetwork* "$DEST/lib/" 2>/dev/null || true
+          cp "$SRC/lib"/*sbmlnetwork* "$DEST/lib/" 2>/dev/null || true
           expat_cmake_dir=$(find "$LIBDIR/cmake" -maxdepth 1 -type d -iname 'expat-*' | head -n1)
           if [ -n "$expat_cmake_dir" ]; then
             cp -r "$expat_cmake_dir" "$DEST/lib/cmake/"
