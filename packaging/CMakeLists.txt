@@ -1,5 +1,3 @@
-#set(BUILD_LLVM ON )
-
 # We need a list of targets to ensure the install target defined below
 # gets built last
 set(
