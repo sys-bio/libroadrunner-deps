@@ -50,6 +50,15 @@ jobs:
             os_type: windows
             os_name: windows-latest
             build_type: Debug
+          # Pinned for a Visual Studio 2022 build
+          - name: windows-2022-release
+            os_type: windows
+            os_name: windows-2022
+            build_type: Release
+          - name: windows-2022-debug
+            os_type: windows
+            os_name: windows-2022
+            build_type: Debug
           - name: manylinux_2_28-release
             os_type: manylinux
             os_name: ubuntu-latest
