@@ -1,6 +1,7 @@
 # zlib
 message(STATUS "Adding zlib as subdirectory")
 set(ZLIB_BUILD_SHARED OFF CACHE BOOL "Don't build shared zlib libraries")
+set(ZLIB_BUILD_STATIC ON CACHE BOOL "Build static zlib library")
 set(ZLIB_BUILD_TESTING OFF CACHE BOOL "Don't build zlib examples/tests")
 # SET(SOME_EXPAT_OPTION OFF CACHE BOOL "Use some expat option")
 add_subdirectory(zlib)
