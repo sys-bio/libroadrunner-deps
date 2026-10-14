@@ -1,12 +1,10 @@
 # zlib
 message(STATUS "Adding zlib as subdirectory")
 set(ZLIB_BUILD_SHARED OFF CACHE BOOL "Don't build shared zlib libraries")
+set(ZLIB_BUILD_STATIC ON CACHE BOOL "Build static zlib library")
+set(ZLIB_BUILD_TESTING OFF CACHE BOOL "Don't build zlib examples/tests")
 # SET(SOME_EXPAT_OPTION OFF CACHE BOOL "Use some expat option")
 add_subdirectory(zlib)
-add_library(ZLIB::ZLIBSTATIC ALIAS zlibstatic)
-target_include_directories(zlibstatic INTERFACE
-    "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/zlib>"
-    "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/zlib>")
 message(STATUS "The final value of zlib_build_shared: ${ZLIB_BUILD_SHARED}")
 set(ZLIB_INCLUDE_DIR "$<TARGET_PROPERTY:zlibstatic,INCLUDE_DIRECTORIES>")
 set(LIBZ_INCLUDE_DIR "$<TARGET_PROPERTY:zlibstatic,INCLUDE_DIRECTORIES>")
