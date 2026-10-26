@@ -30,8 +30,11 @@ set(NLEQ2_INCLUDE_DIR "$<TARGET_PROPERTY:nleq2,INCLUDE_DIRECTORIES>")
 message(STATUS "Adding bzip2 as subdirectory")
 add_subdirectory(bzip2)
 # these are needed for libsbml
+add_library(BZ2::BZ2 ALIAS bz2)
 set(LIBBZ_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/bzip2")
-#set(LIBBZ_LIBRARY "$<TARGET_LINKER_FILE:bzip2>")
+set(LIBBZ_LIBRARY bz2)
+# bz2 is built in this configure, so skip libsbml's configure-time symbol check
+set(LIBBZ_FOUND_SYMBOL TRUE CACHE INTERNAL "bzip2 symbol check skipped")
 
 # clapack
 message(STATUS "Adding clapack as subdirectory")
@@ -72,8 +75,11 @@ set(EXPAT_LIBRARY "$<TARGET_LINKER_FILE:expat>" CACHE FILEPATH "Expat library" F
 message(STATUS "Adding libsbml as subdirectory")
 set(WITH_EXPAT ON CACHE BOOL "Compile libsbml with the expat library" FORCE)
 set(WITH_LIBXML OFF CACHE BOOL "Compile libsbml with libxml (off by default)" FORCE)
-SET(BZIP_INITIAL_VALUE OFF CACHE BOOL "Compile libsbml without bzip" FORCE)
-SET(WITH_ZLIB OFF CACHE BOOL "Compile libsbml without zlib" FORCE)
+if(NOT TARGET ZLIB::ZLIB)
+    add_library(ZLIB::ZLIB ALIAS zlibstatic)
+endif()
+SET(WITH_BZIP2 ON CACHE BOOL "Compile libsbml with bzip2" FORCE)
+SET(WITH_ZLIB ON CACHE BOOL "Compile libsbml with zlib" FORCE)
 add_subdirectory(libsbml)
 
 # needed because of the weird way libsbml handles the "lib" prefix
@@ -89,7 +95,7 @@ else (WIN32)
     set(LIBSBML_LIBRARY "$<TARGET_LINKER_FILE:sbml-static>" CACHE FILEPATH "libsbml static library" FORCE)
 endif (WIN32)
 
-add_dependencies("${LIBSBML_TARGET_ID}" expat zlibstatic)
+add_dependencies("${LIBSBML_TARGET_ID}" expat zlibstatic bz2)
 set(FIND_LIBSBML OFF CACHE BOOL "Find libsbml." FORCE)
 
 ## rr-libstruct

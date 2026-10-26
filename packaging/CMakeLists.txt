@@ -2,7 +2,7 @@
 # gets built last
 set(
         all_targets
-        libz2
+        bz2
         blas
         arithchk
         f2c
