@@ -96,10 +96,8 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib")
 set(CMAKE_MACOSX_RPATH 1)
 
 #pre set libsbml options
-#Try as I might, I couldn't get anything to recognize the bzip2 library,
-# so I just disabled it here.
-#option(WITH_BZIP2 "libsbml option \"WITH_BZIP2\"" OFF)
-set(WITH_BZIP2 "OFF")
+# libsbml is built against the bzip2 in third_party/bzip2 (see third_party/CMakeLists.txt).
+set(WITH_BZIP2 "ON")
 option(WITH_SWIG "libsbml option \"WITH_SWIG\"" OFF)
 option(WITH_ZLIB "libsbml option \"WITH_ZLIB\"" ON)
 option(WITH_CPP_NAMESPACE "libsbml option \"WITH_CPP_NAMESPACE\"" ON)
