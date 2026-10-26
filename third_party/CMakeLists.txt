@@ -31,6 +31,10 @@ message(STATUS "Adding bzip2 as subdirectory")
 add_subdirectory(bzip2)
 # these are needed for libsbml
 add_library(BZ2::BZ2 ALIAS bz2)
+# libsbml's exported config calls find_dependency(BZ2), so install a package of that name
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/bz2-config.cmake"
+     "include(\"\${CMAKE_CURRENT_LIST_DIR}/bzip2-config.cmake\")\n")
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/bz2-config.cmake" DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
 set(LIBBZ_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/bzip2")
 set(LIBBZ_LIBRARY bz2)
 # bz2 is built in this configure, so skip libsbml's configure-time symbol check
