@@ -204,6 +204,15 @@ jobs:
             cp -r "$expat_cmake_dir" "$DEST/lib/cmake/"
           fi
           cp "$LIBDIR"/cmake/*sbml-static-*.cmake "$DEST/lib/cmake/" 2>/dev/null || true
+          cp "$LIBDIR"/*bz2* "$DEST_LIBDIR/" 2>/dev/null || true
+          cp "$LIBDIR"/*libz* "$DEST_LIBDIR/" 2>/dev/null || true
+          cp "$LIBDIR"/*zlib* "$DEST_LIBDIR/" 2>/dev/null || true
+          cp "$SRC"/include/bzlib.h "$SRC"/include/zlib.h "$SRC"/include/zconf.h "$DEST/include/" 2>/dev/null || true
+          cp "$LIBDIR"/cmake/bzip2-*.cmake "$LIBDIR"/cmake/bz2-config.cmake "$DEST/lib/cmake/" 2>/dev/null || true
+          zlib_cmake_dir=$(find "$LIBDIR/cmake" -maxdepth 1 -type d -iname 'zlib*' | head -n1)
+          if [ -n "$zlib_cmake_dir" ]; then
+            cp -r "$zlib_cmake_dir" "$DEST/lib/cmake/"
+          fi
 
       - name: Set artifacts path and name
         shell: bash
