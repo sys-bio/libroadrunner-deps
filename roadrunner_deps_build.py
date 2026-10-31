@@ -3,11 +3,10 @@ Build the libroadrunner-deps  roadrunner dependency package.
 
 Usage:
 
-    python roadrunner_deps_build.py "/full/path/to/where/you/want/to/install/the/roadrunner/dependencies/" [--with-llvm] [--build-type=[Release|Debug]]
+    python roadrunner_deps_build.py "/full/path/to/where/you/want/to/install/the/roadrunner/dependencies/" [--build-type=[Release|Debug]]
 
 Options:
 
-    --with-llvm: turns on building llvm along with the other dependencies
     --build-type=value: where value is a valid cmake build type. Defaults to Release
 """
 
@@ -17,8 +16,6 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument("install_prefix", help="the cmake_install_prefix variable")
-parser.add_argument("--with_llvm", help="Download and build llvm-6.x (takes longer)", default=False,
-                    action="store_true")
 parser.add_argument("--build-type", type=str, help="the cmake_build_type variable", default="Release")
 args = parser.parse_args()
 
@@ -54,21 +51,12 @@ os.chdir(LIBROADRUNNER_DEPS_BUILD_DIR)
 
 
 # cmake command
-if (args.with_llvm):
-    do_check_call([
-        "cmake",
-        f"-DCMAKE_INSTALL_PREFIX={args.install_prefix}",
-        f"CMAKE_BUILD_TYPE={args.build_type}",
-        "-DBUILD_LLVM=ON",
-        LIBROADRUNNER_DEPS_DIR
-    ])
-else:
-    do_check_call([
-        "cmake",
-        f"-DCMAKE_INSTALL_PREFIX={args.install_prefix}",
-        f"CMAKE_BUILD_TYPE={args.build_type}",
-        LIBROADRUNNER_DEPS_DIR
-    ])
+do_check_call([
+    "cmake",
+    f"-DCMAKE_INSTALL_PREFIX={args.install_prefix}",
+    f"CMAKE_BUILD_TYPE={args.build_type}",
+    LIBROADRUNNER_DEPS_DIR
+])
 
 # build and install command
 do_check_call(["cmake" "--build", f"{LIBROADRUNNER_DEPS_BUILD_DIR}", "--target", "install", "-j", 12])

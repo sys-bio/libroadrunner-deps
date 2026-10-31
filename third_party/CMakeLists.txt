@@ -1,6 +1,8 @@
 # zlib
 message(STATUS "Adding zlib as subdirectory")
 set(ZLIB_BUILD_SHARED OFF CACHE BOOL "Don't build shared zlib libraries")
+set(ZLIB_BUILD_STATIC ON CACHE BOOL "Build static zlib library")
+set(ZLIB_BUILD_TESTING OFF CACHE BOOL "Don't build zlib examples/tests")
 # SET(SOME_EXPAT_OPTION OFF CACHE BOOL "Use some expat option")
 add_subdirectory(zlib)
 message(STATUS "The final value of zlib_build_shared: ${ZLIB_BUILD_SHARED}")
@@ -12,7 +14,6 @@ set(EXTRA_INCLUDE_DIRS "${EXTRA_INCLUDE_DIRS}" "$<TARGET_PROPERTY:zlibstatic,INC
 #message(STATUS "LIBZ_INCLUDE_DIR: ${LIBZ_INCLUDE_DIR}")
 message(STATUS "Extra include directories: ${EXTRA_INCLUDE_DIRS}")
 set(LIBZ_LIBRARY zlibstatic)
-#add_library(ZLIB:ZLIB ALIAS zlibstatic)
 set(ZLIB_LIBRARY "$<TARGET_LINKER_FILE:zlibstatic>" CACHE FILEPATH "zlib static library" FORCE)
 
 # nleq1
@@ -29,8 +30,15 @@ set(NLEQ2_INCLUDE_DIR "$<TARGET_PROPERTY:nleq2,INCLUDE_DIRECTORIES>")
 message(STATUS "Adding bzip2 as subdirectory")
 add_subdirectory(bzip2)
 # these are needed for libsbml
+add_library(BZ2::BZ2 ALIAS bz2)
+# libsbml's exported config calls find_dependency(BZ2), so install a package of that name
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/bz2-config.cmake"
+     "include(\"\${CMAKE_CURRENT_LIST_DIR}/bzip2-config.cmake\")\n")
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/bz2-config.cmake" DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
 set(LIBBZ_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/bzip2")
-#set(LIBBZ_LIBRARY "$<TARGET_LINKER_FILE:bzip2>")
+set(LIBBZ_LIBRARY bz2)
+# bz2 is built in this configure, so skip libsbml's configure-time symbol check
+set(LIBBZ_FOUND_SYMBOL TRUE CACHE INTERNAL "bzip2 symbol check skipped")
 
 # clapack
 message(STATUS "Adding clapack as subdirectory")
@@ -71,8 +79,11 @@ set(EXPAT_LIBRARY "$<TARGET_LINKER_FILE:expat>" CACHE FILEPATH "Expat library" F
 message(STATUS "Adding libsbml as subdirectory")
 set(WITH_EXPAT ON CACHE BOOL "Compile libsbml with the expat library" FORCE)
 set(WITH_LIBXML OFF CACHE BOOL "Compile libsbml with libxml (off by default)" FORCE)
-SET(BZIP_INITIAL_VALUE OFF CACHE BOOL "Compile libsbml without bzip" FORCE)
-SET(WITH_ZLIB OFF CACHE BOOL "Compile libsbml without zlib" FORCE)
+if(NOT TARGET ZLIB::ZLIB)
+    add_library(ZLIB::ZLIB ALIAS zlibstatic)
+endif()
+SET(WITH_BZIP2 ON CACHE BOOL "Compile libsbml with bzip2" FORCE)
+SET(WITH_ZLIB ON CACHE BOOL "Compile libsbml with zlib" FORCE)
 add_subdirectory(libsbml)
 
 # needed because of the weird way libsbml handles the "lib" prefix
@@ -88,7 +99,7 @@ else (WIN32)
     set(LIBSBML_LIBRARY "$<TARGET_LINKER_FILE:sbml-static>" CACHE FILEPATH "libsbml static library" FORCE)
 endif (WIN32)
 
-add_dependencies("${LIBSBML_TARGET_ID}" expat zlibstatic)
+add_dependencies("${LIBSBML_TARGET_ID}" expat zlibstatic bz2)
 set(FIND_LIBSBML OFF CACHE BOOL "Find libsbml." FORCE)
 
 ## rr-libstruct
@@ -194,22 +205,6 @@ add_subdirectory(SBMLNetwork)
 set(SBMLNETWORK_TARGET_ID "sbmlnetwork-static")
 add_dependencies(${SBMLNETWORK_TARGET_ID} "${LIBSBML_TARGET_ID}" expat zlibstatic)
 
-
-if (${BUILD_LLVM})
-    message(STATUS "Adding llvm-13.x/llvm as subdirectory")
-    add_subdirectory(llvm-13.x/llvm)
-else ()
-    message(WARNING "Not building LLVM (-DBUILD_LLVM=ON). LLVM is a required dependency of roadrunner. Not \
-marking LLVM for building means that you must already have a built copy of llvm-13.x. If this is in a \
-system directory (like \"/usr/local\" or \"C:\\Program Files\") this will be found automatically \
-when you run the cmake command for the main roadrunner repository. If installed in a \
-non-standard location you will need to provide the full path to the llvm-13.x install directory when running \
-the cmake command for roadrunner i.e.
-    -DLLVM_INSTALL_PREFIX=\"/full/path/to/llvm\"
-If you do not already have llvm-13.x, please re-run cmake with
-    -DBUILD_LLVM=ON
-")
-endif ()
 
 
 

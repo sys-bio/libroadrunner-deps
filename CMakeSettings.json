@@ -7,7 +7,7 @@
       "inheritEnvironments": [ "msvc_x64_x64" ],
       "buildRoot": "${projectDir}\\out\\build\\${name}",
       "installRoot": "${projectDir}\\out\\install\\${name}",
-      "cmakeCommandArgs": "-DCMAKE_INSTALL_PREFIX=..\\install-msvc-release -DBUILD_LLVM=ON",
+      "cmakeCommandArgs": "-DCMAKE_INSTALL_PREFIX=..\\install-msvc-release",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "variables": []
