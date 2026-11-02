@@ -21,7 +21,7 @@ static integer c_n1 = -1;
 static doublereal c_b42 = 0.;
 static doublereal c_b43 = 1.;
 
-/* Subroutine */ int dggesx_(char *jobvsl, char *jobvsr, char *sort, L_fp 
+/* Subroutine */ int dggesx_(char *jobvsl, char *jobvsr, char *sort, D_select3 
 	selctg, char *sense, integer *n, doublereal *a, integer *lda, 
 	doublereal *b, integer *ldb, integer *sdim, doublereal *alphar, 
 	doublereal *alphai, doublereal *beta, doublereal *vsl, integer *ldvsl, 

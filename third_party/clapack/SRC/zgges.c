@@ -21,7 +21,7 @@ static integer c__1 = 1;
 static integer c__0 = 0;
 static integer c_n1 = -1;
 
-/* Subroutine */ int zgges_(char *jobvsl, char *jobvsr, char *sort, L_fp 
+/* Subroutine */ int zgges_(char *jobvsl, char *jobvsr, char *sort, Z_select2 
 	selctg, integer *n, doublecomplex *a, integer *lda, doublecomplex *b, 
 	integer *ldb, integer *sdim, doublecomplex *alpha, doublecomplex *
 	beta, doublecomplex *vsl, integer *ldvsl, doublecomplex *vsr, integer 
