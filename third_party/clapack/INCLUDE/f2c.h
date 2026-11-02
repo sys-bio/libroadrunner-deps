@@ -205,6 +205,15 @@ typedef shortlogical (*K_fp)();
 typedef /* Character */ VOID (*H_fp)();
 typedef /* Subroutine */ int (*S_fp)();
 #endif
+/* selection callbacks for xGEES, xGEESX, xGGES, xGGESX */
+typedef logical (*S_select2)(real*, real*);
+typedef logical (*S_select3)(real*, real*, real*);
+typedef logical (*D_select2)(doublereal*, doublereal*);
+typedef logical (*D_select3)(doublereal*, doublereal*, doublereal*);
+typedef logical (*C_select1)(complex*);
+typedef logical (*C_select2)(complex*, complex*);
+typedef logical (*Z_select1)(doublecomplex*);
+typedef logical (*Z_select2)(doublecomplex*, doublecomplex*);
 /* E_fp is for real functions when -R is not specified */
 typedef VOID C_f;	/* complex function */
 typedef VOID H_f;	/* character function */
