@@ -591,12 +591,12 @@ doublereal snrm2_(integer *n, real *x, integer *incx);
 	lda, real *r__, real *c__, real *rowcnd, real *colcnd, real *amax, 
 	integer *info);
 
-/* Subroutine */ int cgees_(char *jobvs, char *sort, L_fp select, integer *n, 
+/* Subroutine */ int cgees_(char *jobvs, char *sort, C_select1 select, integer *n, 
 	complex *a, integer *lda, integer *sdim, complex *w, complex *vs, 
 	integer *ldvs, complex *work, integer *lwork, real *rwork, logical *
 	bwork, integer *info);
 
-/* Subroutine */ int cgeesx_(char *jobvs, char *sort, L_fp select, char *
+/* Subroutine */ int cgeesx_(char *jobvs, char *sort, C_select1 select, char *
 	sense, integer *n, complex *a, integer *lda, integer *sdim, complex *
 	w, complex *vs, integer *ldvs, real *rconde, real *rcondv, complex *
 	work, integer *lwork, real *rwork, logical *bwork, integer *info);
@@ -750,13 +750,13 @@ doublereal snrm2_(integer *n, real *x, integer *incx);
 	complex *b, integer *ldb, integer *ilo, integer *ihi, real *lscale, 
 	real *rscale, real *work, integer *info);
 
-/* Subroutine */ int cgges_(char *jobvsl, char *jobvsr, char *sort, L_fp 
+/* Subroutine */ int cgges_(char *jobvsl, char *jobvsr, char *sort, C_select2 
 	selctg, integer *n, complex *a, integer *lda, complex *b, integer *
 	ldb, integer *sdim, complex *alpha, complex *beta, complex *vsl, 
 	integer *ldvsl, complex *vsr, integer *ldvsr, complex *work, integer *
 	lwork, real *rwork, logical *bwork, integer *info);
 
-/* Subroutine */ int cggesx_(char *jobvsl, char *jobvsr, char *sort, L_fp 
+/* Subroutine */ int cggesx_(char *jobvsl, char *jobvsr, char *sort, C_select2 
 	selctg, char *sense, integer *n, complex *a, integer *lda, complex *b, 
 	 integer *ldb, integer *sdim, complex *alpha, complex *beta, complex *
 	vsl, integer *ldvsl, complex *vsr, integer *ldvsr, real *rconde, real 
@@ -2150,12 +2150,12 @@ doublereal clantr_(char *norm, char *uplo, char *diag, integer *m, integer *n,
 	lda, doublereal *r__, doublereal *c__, doublereal *rowcnd, doublereal 
 	*colcnd, doublereal *amax, integer *info);
 
-/* Subroutine */ int dgees_(char *jobvs, char *sort, L_fp select, integer *n, 
+/* Subroutine */ int dgees_(char *jobvs, char *sort, D_select2 select, integer *n, 
 	doublereal *a, integer *lda, integer *sdim, doublereal *wr, 
 	doublereal *wi, doublereal *vs, integer *ldvs, doublereal *work, 
 	integer *lwork, logical *bwork, integer *info);
 
-/* Subroutine */ int dgeesx_(char *jobvs, char *sort, L_fp select, char *
+/* Subroutine */ int dgeesx_(char *jobvs, char *sort, D_select2 select, char *
 	sense, integer *n, doublereal *a, integer *lda, integer *sdim, 
 	doublereal *wr, doublereal *wi, doublereal *vs, integer *ldvs, 
 	doublereal *rconde, doublereal *rcondv, doublereal *work, integer *
@@ -2331,14 +2331,14 @@ extern "C" int dgeqp3_(integer *m, integer *n, doublereal *a, integer *
 	doublereal *lscale, doublereal *rscale, doublereal *work, integer *
 	info);
 
-/* Subroutine */ int dgges_(char *jobvsl, char *jobvsr, char *sort, L_fp 
+/* Subroutine */ int dgges_(char *jobvsl, char *jobvsr, char *sort, D_select3 
 	selctg, integer *n, doublereal *a, integer *lda, doublereal *b, 
 	integer *ldb, integer *sdim, doublereal *alphar, doublereal *alphai, 
 	doublereal *beta, doublereal *vsl, integer *ldvsl, doublereal *vsr, 
 	integer *ldvsr, doublereal *work, integer *lwork, logical *bwork, 
 	integer *info);
 
-/* Subroutine */ int dggesx_(char *jobvsl, char *jobvsr, char *sort, L_fp 
+/* Subroutine */ int dggesx_(char *jobvsl, char *jobvsr, char *sort, D_select3 
 	selctg, char *sense, integer *n, doublereal *a, integer *lda, 
 	doublereal *b, integer *ldb, integer *sdim, doublereal *alphar, 
 	doublereal *alphai, doublereal *beta, doublereal *vsl, integer *ldvsl, 
@@ -3979,12 +3979,12 @@ doublereal scsum1_(integer *n, complex *cx, integer *incx);
 	real *r__, real *c__, real *rowcnd, real *colcnd, real *amax, integer 
 	*info);
 
-/* Subroutine */ int sgees_(char *jobvs, char *sort, L_fp select, integer *n, 
+/* Subroutine */ int sgees_(char *jobvs, char *sort, S_select2 select, integer *n, 
 	real *a, integer *lda, integer *sdim, real *wr, real *wi, real *vs, 
 	integer *ldvs, real *work, integer *lwork, logical *bwork, integer *
 	info);
 
-/* Subroutine */ int sgeesx_(char *jobvs, char *sort, L_fp select, char *
+/* Subroutine */ int sgeesx_(char *jobvs, char *sort, S_select2 select, char *
 	sense, integer *n, real *a, integer *lda, integer *sdim, real *wr, 
 	real *wi, real *vs, integer *ldvs, real *rconde, real *rcondv, real *
 	work, integer *lwork, integer *iwork, integer *liwork, logical *bwork, 
@@ -4137,13 +4137,13 @@ doublereal scsum1_(integer *n, complex *cx, integer *incx);
 	real *b, integer *ldb, integer *ilo, integer *ihi, real *lscale, real 
 	*rscale, real *work, integer *info);
 
-/* Subroutine */ int sgges_(char *jobvsl, char *jobvsr, char *sort, L_fp 
+/* Subroutine */ int sgges_(char *jobvsl, char *jobvsr, char *sort, S_select3 
 	selctg, integer *n, real *a, integer *lda, real *b, integer *ldb, 
 	integer *sdim, real *alphar, real *alphai, real *beta, real *vsl, 
 	integer *ldvsl, real *vsr, integer *ldvsr, real *work, integer *lwork, 
 	 logical *bwork, integer *info);
 
-/* Subroutine */ int sggesx_(char *jobvsl, char *jobvsr, char *sort, L_fp 
+/* Subroutine */ int sggesx_(char *jobvsl, char *jobvsr, char *sort, S_select3 
 	selctg, char *sense, integer *n, real *a, integer *lda, real *b, 
 	integer *ldb, integer *sdim, real *alphar, real *alphai, real *beta, 
 	real *vsl, integer *ldvsl, real *vsr, integer *ldvsr, real *rconde, 
@@ -5585,12 +5585,12 @@ doublereal slapy3_(real *x, real *y, real *z__);
 	integer *lda, doublereal *r__, doublereal *c__, doublereal *rowcnd, 
 	doublereal *colcnd, doublereal *amax, integer *info);
 
-/* Subroutine */ int zgees_(char *jobvs, char *sort, L_fp select, integer *n, 
+/* Subroutine */ int zgees_(char *jobvs, char *sort, Z_select1 select, integer *n, 
 	doublecomplex *a, integer *lda, integer *sdim, doublecomplex *w, 
 	doublecomplex *vs, integer *ldvs, doublecomplex *work, integer *lwork, 
 	 doublereal *rwork, logical *bwork, integer *info);
 
-/* Subroutine */ int zgeesx_(char *jobvs, char *sort, L_fp select, char *
+/* Subroutine */ int zgeesx_(char *jobvs, char *sort, Z_select1 select, char *
 	sense, integer *n, doublecomplex *a, integer *lda, integer *sdim, 
 	doublecomplex *w, doublecomplex *vs, integer *ldvs, doublereal *
 	rconde, doublereal *rcondv, doublecomplex *work, integer *lwork, 
@@ -5760,14 +5760,14 @@ doublereal slapy3_(real *x, real *y, real *z__);
 	doublereal *lscale, doublereal *rscale, doublereal *work, integer *
 	info);
 
-/* Subroutine */ int zgges_(char *jobvsl, char *jobvsr, char *sort, L_fp 
+/* Subroutine */ int zgges_(char *jobvsl, char *jobvsr, char *sort, Z_select2 
 	selctg, integer *n, doublecomplex *a, integer *lda, doublecomplex *b, 
 	integer *ldb, integer *sdim, doublecomplex *alpha, doublecomplex *
 	beta, doublecomplex *vsl, integer *ldvsl, doublecomplex *vsr, integer 
 	*ldvsr, doublecomplex *work, integer *lwork, doublereal *rwork, 
 	logical *bwork, integer *info);
 
-/* Subroutine */ int zggesx_(char *jobvsl, char *jobvsr, char *sort, L_fp 
+/* Subroutine */ int zggesx_(char *jobvsl, char *jobvsr, char *sort, Z_select2 
 	selctg, char *sense, integer *n, doublecomplex *a, integer *lda, 
 	doublecomplex *b, integer *ldb, integer *sdim, doublecomplex *alpha, 
 	doublecomplex *beta, doublecomplex *vsl, integer *ldvsl, 

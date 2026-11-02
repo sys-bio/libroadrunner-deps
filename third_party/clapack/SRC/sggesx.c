@@ -21,7 +21,7 @@ static integer c_n1 = -1;
 static real c_b42 = 0.f;
 static real c_b43 = 1.f;
 
-/* Subroutine */ int sggesx_(char *jobvsl, char *jobvsr, char *sort, L_fp 
+/* Subroutine */ int sggesx_(char *jobvsl, char *jobvsr, char *sort, S_select3 
 	selctg, char *sense, integer *n, real *a, integer *lda, real *b, 
 	integer *ldb, integer *sdim, real *alphar, real *alphai, real *beta, 
 	real *vsl, integer *ldvsl, real *vsr, integer *ldvsr, real *rconde, 

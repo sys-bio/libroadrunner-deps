@@ -19,7 +19,7 @@ static integer c__1 = 1;
 static integer c__0 = 0;
 static integer c_n1 = -1;
 
-/* Subroutine */ int sgeesx_(char *jobvs, char *sort, L_fp select, char *
+/* Subroutine */ int sgeesx_(char *jobvs, char *sort, S_select2 select, char *
 	sense, integer *n, real *a, integer *lda, integer *sdim, real *wr, 
 	real *wi, real *vs, integer *ldvs, real *rconde, real *rcondv, real *
 	work, integer *lwork, integer *iwork, integer *liwork, logical *bwork, 
