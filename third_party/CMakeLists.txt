@@ -85,6 +85,10 @@ endif()
 SET(WITH_BZIP2 ON CACHE BOOL "Compile libsbml with bzip2" FORCE)
 SET(WITH_ZLIB ON CACHE BOOL "Compile libsbml with zlib" FORCE)
 add_subdirectory(libsbml)
+# Makes the installed static-only libsbml package file ask for the static zlib (runs after libsbml's
+# own install rules); a libsbml submodule that already does this is left as it is.
+install(CODE "set(RR_DEPS_CONFIG_DIR \"\${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/cmake\")")
+install(SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/patch_libsbml_config.cmake")
 
 # needed because of the weird way libsbml handles the "lib" prefix
 if (WIN32)
