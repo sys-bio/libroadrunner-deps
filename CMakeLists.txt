@@ -143,6 +143,7 @@ option(BUILD_IDA "sundials option: \"BUILD_IDA\"" OFF)
 option(BUILD_IDAS "sundials option: \"BUILD_IDAS\"" OFF)
 option(BUILD_KINSOL "sundials option: \"BUILD_KINSOL\"" TRUE)
 option(BUILD_UNIT_TEST "sundials option: \"BUILD_UNIT_TEST\"" OFF)
+option(RR_BUILD_KLU "Build SuiteSparse (KLU, AMD, COLAMD, BTF) and the sparse direct solver KLU of sundials" ON)
 mark_as_advanced(
         BUILD_CVODE
         BUILD_CVODES
