@@ -108,6 +108,60 @@ add_subdirectory(rr-libstruct)
 add_dependencies(rr-libstruct-static "${LIBSBML_TARGET_ID}")
 
 #
+# SuiteSparse: only KLU and what it needs (SuiteSparse_config, AMD, COLAMD, BTF), for the sparse
+# direct solver KLU of sundials. KLU is built without CHOLMOD, so there is no BLAS/LAPACK and no
+# GPL code, and without OpenMP and the demos. Static libraries only.
+if (RR_BUILD_KLU)
+    if (CMAKE_VERSION VERSION_LESS 3.23)
+        message(FATAL_ERROR "SuiteSparse needs CMake 3.23 or later (CMake ${CMAKE_VERSION} was found). \
+Use a newer CMake or turn off RR_BUILD_KLU.")
+    endif ()
+    message(STATUS "Adding SuiteSparse (KLU) as subdirectory")
+    set(SUITESPARSE_ENABLE_PROJECTS "suitesparse_config;amd;colamd;btf;klu" CACHE STRING "SuiteSparse projects to build" FORCE)
+    set(KLU_USE_CHOLMOD OFF CACHE BOOL "Build KLU without CHOLMOD" FORCE)
+    set(SUITESPARSE_USE_OPENMP OFF CACHE BOOL "Do not use OpenMP in SuiteSparse" FORCE)
+    set(SUITESPARSE_USE_FORTRAN OFF CACHE BOOL "Do not use Fortran in SuiteSparse" FORCE)
+    set(SUITESPARSE_USE_PYTHON OFF CACHE BOOL "Do not build the SuiteSparse Python interfaces" FORCE)
+    set(SUITESPARSE_DEMOS OFF CACHE BOOL "Do not build the SuiteSparse demos" FORCE)
+    # only CHOLMOD, UMFPACK, SPQR and ParU need a BLAS; KLU, AMD, COLAMD and BTF do not
+    set(SUITESPARSE_REQUIRE_BLAS OFF CACHE BOOL "Do not require a BLAS" FORCE)
+    set(BUILD_STATIC_LIBS ON CACHE BOOL "Build static SuiteSparse libraries" FORCE)
+
+    # SuiteSparse builds shared libraries by default, here only static ones
+    set(_RR_SAVED_BUILD_SHARED_LIBS "${BUILD_SHARED_LIBS}")
+    set(BUILD_SHARED_LIBS OFF)
+    # Without a BLAS, SuiteSparse_config still reads BLA_VENDOR (SuiteSparse__blas_threading.cmake) and
+    # fails on an empty value. Give it a name that is neither Intel nor OpenBLAS; nothing here uses a BLAS.
+    set(BLA_VENDOR "Generic")
+    # SuiteSparse's root CMakeLists.txt looks for its modules below CMAKE_SOURCE_DIR, which is this
+    # project's root when it is a subdirectory
+    set(_RR_SAVED_MODULE_PATH "${CMAKE_MODULE_PATH}")
+    list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/SuiteSparse/SuiteSparse_config/cmake_modules")
+    add_subdirectory(SuiteSparse)
+    unset(BLA_VENDOR)
+    set(CMAKE_MODULE_PATH "${_RR_SAVED_MODULE_PATH}")
+    unset(_RR_SAVED_MODULE_PATH)
+    set(BUILD_SHARED_LIBS "${_RR_SAVED_BUILD_SHARED_LIBS}")
+    unset(_RR_SAVED_BUILD_SHARED_LIBS)
+
+    # SuiteSparse defines its SuiteSparse:: aliases in its own directory scope. sundials looks for
+    # SuiteSparse::KLU and SuiteSparse::AMD (cmake/tpl/FindKLU.cmake), so define them here.
+    add_library(SuiteSparse::SuiteSparseConfig ALIAS SuiteSparseConfig_static)
+    add_library(SuiteSparse::AMD ALIAS AMD_static)
+    add_library(SuiteSparse::COLAMD ALIAS COLAMD_static)
+    add_library(SuiteSparse::BTF ALIAS BTF_static)
+    add_library(SuiteSparse::KLU ALIAS KLU_static)
+
+    # sundials tries find_package(KLU CONFIG) first. Point it at a folder without a KLU package, so
+    # that a KLU installed on the build machine is not mixed with the one built here.
+    set(KLU_DIR "${CMAKE_CURRENT_BINARY_DIR}/no-installed-KLU" CACHE PATH "No installed KLU is used" FORCE)
+
+    set(SUNDIALS_ENABLE_KLU ON CACHE BOOL "Enable KLU support" FORCE)
+    # the compatibility check compiles against KLU, which is not built yet at configure time
+    set(SUNDIALS_ENABLE_KLU_CHECKS OFF CACHE BOOL "Enable KLU compatibility checks" FORCE)
+endif ()
+
+#
 ## sundials
 message(STATUS "Adding sundials as subdirectory")
 # sundials handles the BUILD_SHARED_LIBS variable
