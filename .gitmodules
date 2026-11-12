@@ -35,3 +35,6 @@
 [submodule "third_party/SBMLNetwork"]
 	path = third_party/SBMLNetwork
 	url = https://github.com/sys-bio/SBMLNetwork.git
+[submodule "third_party/SuiteSparse"]
+	path = third_party/SuiteSparse
+	url = https://github.com/DrTimothyAldenDavis/SuiteSparse.git

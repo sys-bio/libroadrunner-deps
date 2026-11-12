@@ -21,15 +21,7 @@ $ cmake --build . --target install --config Release
 ```
   
 Replace `Release` with another configuration (like Debug) to build in another cmake configuration.
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+
+
+
  
