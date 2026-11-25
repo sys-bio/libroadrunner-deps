@@ -40,11 +40,66 @@ set(LIBBZ_LIBRARY bz2)
 # bz2 is built in this configure, so skip libsbml's configure-time symbol check
 set(LIBBZ_FOUND_SYMBOL TRUE CACHE INTERNAL "bzip2 symbol check skipped")
 
-# clapack
-message(STATUS "Adding clapack as subdirectory")
-add_subdirectory(clapack)
-set(CLAPACK_INCLUDE_DIR "$<TARGET_PROPERTY:lapack,INCLUDE_DIRECTORIES>")
-add_dependencies(lapack zlibstatic)
+# f2c: the runtime library (libf2c) that nleq1 and nleq2 link against
+message(STATUS "Adding f2c as subdirectory")
+add_subdirectory(f2c)
+
+# OpenBLAS: BLAS and LAPACK. LAPACK is built from the C sources that OpenBLAS ships (translated from
+# the reference Fortran LAPACK), so no Fortran compiler is needed. Static library only.
+message(STATUS "Adding OpenBLAS as subdirectory")
+if (APPLE AND CMAKE_OSX_ARCHITECTURES MATCHES ";")
+    message(FATAL_ERROR "OpenBLAS cannot be built for several macOS architectures at once \
+(CMAKE_OSX_ARCHITECTURES is \"${CMAKE_OSX_ARCHITECTURES}\"). Build one architecture at a time.")
+endif ()
+set(NOFORTRAN ON CACHE BOOL "OpenBLAS: no Fortran compiler, LAPACK is built from its C sources" FORCE)
+set(C_LAPACK ON CACHE BOOL "OpenBLAS: build LAPACK from C sources" FORCE)
+set(BUILD_STATIC_LIBS ON CACHE BOOL "OpenBLAS: build the static library" FORCE)
+# LAPACKE (the C wrapper around LAPACK) is not used; rr-libstruct/lsLapack.h declares the routines
+set(BUILD_WITHOUT_LAPACKE ON CACHE BOOL "OpenBLAS: do not build LAPACKE" FORCE)
+if (RR_OPENBLAS_BUILD_CBLAS)
+    set(BUILD_WITHOUT_CBLAS OFF CACHE BOOL "OpenBLAS: do not build CBLAS" FORCE)
+else ()
+    set(BUILD_WITHOUT_CBLAS ON CACHE BOOL "OpenBLAS: do not build CBLAS" FORCE)
+endif ()
+# runtime CPU selection is what makes one binary run on any CPU of the architecture
+if (RR_OPENBLAS_DYNAMIC_ARCH AND CMAKE_SYSTEM_PROCESSOR MATCHES "^(x86_64|AMD64|aarch64|arm64|ARM64)$")
+    set(DYNAMIC_ARCH ON CACHE BOOL "OpenBLAS: select the CPU kernels at run time" FORCE)
+else ()
+    set(DYNAMIC_ARCH OFF CACHE BOOL "OpenBLAS: select the CPU kernels at run time" FORCE)
+endif ()
+# pin the kernels to a fixed CPU level so the result does not depend on the build machine
+if (RR_OPENBLAS_TARGET AND NOT DYNAMIC_ARCH)
+    set(TARGET "${RR_OPENBLAS_TARGET}")
+endif ()
+if (RR_OPENBLAS_USE_THREAD)
+    set(USE_THREAD 1)
+else ()
+    set(USE_THREAD 0)
+    # without locks the single threaded build cannot be called from several threads at once
+    set(USE_LOCKING ON CACHE BOOL "OpenBLAS: lock its memory allocator in the single threaded build" FORCE)
+endif ()
+# only the double precision real and complex routines are used
+set(BUILD_SINGLE OFF)
+set(BUILD_DOUBLE ON)
+set(BUILD_COMPLEX OFF)
+set(BUILD_COMPLEX16 ON)
+set(BUILD_LAPACK_DEPRECATED OFF CACHE BOOL "OpenBLAS: do not build the deprecated LAPACK routines" FORCE)
+# OpenBLAS builds shared libraries if BUILD_SHARED_LIBS is set; only the static one is wanted here
+set(_RR_SAVED_BUILD_SHARED_LIBS "${BUILD_SHARED_LIBS}")
+set(BUILD_SHARED_LIBS OFF)
+if (APPLE)
+    # OpenBLAS's macOS static library rule assumes it is the top-level project
+    set(CMAKE_PROJECT_OpenBLAS_INCLUDE "${CMAKE_CURRENT_SOURCE_DIR}/openblas-apple-static.cmake")
+endif ()
+add_subdirectory(OpenBLAS)
+unset(CMAKE_PROJECT_OpenBLAS_INCLUDE)
+unset(TARGET)
+unset(BUILD_SINGLE)
+unset(BUILD_DOUBLE)
+unset(BUILD_COMPLEX)
+unset(BUILD_COMPLEX16)
+set(BUILD_SHARED_LIBS "${_RR_SAVED_BUILD_SHARED_LIBS}")
+unset(_RR_SAVED_BUILD_SHARED_LIBS)
 
 # check
 #set(DONT_INSTALL_WHEN_SUBPROJECT OFF)
