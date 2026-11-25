@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.16)
 
 set(VERSION_MAJOR 2)
 set(VERSION_MINOR 0)
@@ -36,12 +36,6 @@ x64 bit machine")
     endif ()
 endif ()
 
-#set(USE_UNIVERSAL_BINARIES "ON" CACHE BOOL "Build and link to universal binaries on MacOS")
-
-if (USE_UNIVERSAL_BINARIES)
-    set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64" CACHE INTERNAL "Compile for intel and M1 chips on apple" FORCE)
-    message(STATUS "building on mac with universal binaries")
-endif()
 
 # Enable cmake printing out commands
 set(CMAKE_VERBOSE_MAKEFILE TRUE)
@@ -144,6 +138,10 @@ option(BUILD_IDAS "sundials option: \"BUILD_IDAS\"" OFF)
 option(BUILD_KINSOL "sundials option: \"BUILD_KINSOL\"" TRUE)
 option(BUILD_UNIT_TEST "sundials option: \"BUILD_UNIT_TEST\"" OFF)
 option(RR_BUILD_KLU "Build SuiteSparse (KLU, AMD, COLAMD, BTF) and the sparse direct solver KLU of sundials" ON)
+# OpenBLAS options (BLAS and LAPACK)
+option(RR_OPENBLAS_DYNAMIC_ARCH "Build OpenBLAS with runtime CPU selection (x86_64 and arm64 only); off builds for the CPU of the build machine" OFF)
+option(RR_OPENBLAS_USE_THREAD "Build OpenBLAS multithreaded; roadrunner's matrices are small, so the default is single threaded" OFF)
+option(RR_OPENBLAS_BUILD_CBLAS "Also build the CBLAS interface of OpenBLAS" OFF)
 mark_as_advanced(
         BUILD_CVODE
         BUILD_CVODES
