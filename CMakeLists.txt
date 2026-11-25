@@ -140,6 +140,7 @@ option(BUILD_UNIT_TEST "sundials option: \"BUILD_UNIT_TEST\"" OFF)
 option(RR_BUILD_KLU "Build SuiteSparse (KLU, AMD, COLAMD, BTF) and the sparse direct solver KLU of sundials" ON)
 # OpenBLAS options (BLAS and LAPACK)
 option(RR_OPENBLAS_DYNAMIC_ARCH "Build OpenBLAS with runtime CPU selection (x86_64 and arm64 only); off builds for the CPU of the build machine" OFF)
+set(RR_OPENBLAS_TARGET "" CACHE STRING "OpenBLAS CPU target (for example HASWELL) when DYNAMIC_ARCH is off; empty uses the CPU of the build machine")
 option(RR_OPENBLAS_USE_THREAD "Build OpenBLAS multithreaded; roadrunner's matrices are small, so the default is single threaded" OFF)
 option(RR_OPENBLAS_BUILD_CBLAS "Also build the CBLAS interface of OpenBLAS" OFF)
 mark_as_advanced(

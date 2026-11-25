@@ -67,6 +67,10 @@ if (RR_OPENBLAS_DYNAMIC_ARCH AND CMAKE_SYSTEM_PROCESSOR MATCHES "^(x86_64|AMD64|
 else ()
     set(DYNAMIC_ARCH OFF CACHE BOOL "OpenBLAS: select the CPU kernels at run time" FORCE)
 endif ()
+# pin the kernels to a fixed CPU level so the result does not depend on the build machine
+if (RR_OPENBLAS_TARGET AND NOT DYNAMIC_ARCH)
+    set(TARGET "${RR_OPENBLAS_TARGET}")
+endif ()
 if (RR_OPENBLAS_USE_THREAD)
     set(USE_THREAD 1)
 else ()
@@ -83,7 +87,13 @@ set(BUILD_LAPACK_DEPRECATED OFF CACHE BOOL "OpenBLAS: do not build the deprecate
 # OpenBLAS builds shared libraries if BUILD_SHARED_LIBS is set; only the static one is wanted here
 set(_RR_SAVED_BUILD_SHARED_LIBS "${BUILD_SHARED_LIBS}")
 set(BUILD_SHARED_LIBS OFF)
+if (APPLE)
+    # OpenBLAS's macOS static library rule assumes it is the top-level project
+    set(CMAKE_PROJECT_OpenBLAS_INCLUDE "${CMAKE_CURRENT_SOURCE_DIR}/openblas-apple-static.cmake")
+endif ()
 add_subdirectory(OpenBLAS)
+unset(CMAKE_PROJECT_OpenBLAS_INCLUDE)
+unset(TARGET)
 unset(BUILD_SINGLE)
 unset(BUILD_DOUBLE)
 unset(BUILD_COMPLEX)
