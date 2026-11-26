@@ -104,6 +104,10 @@ jobs:
           if [ "${{ matrix.platform.os_type }}" == 'macos' ]; then
             echo "OSX_ARCHITECTURES=$architecture" >> "${GITHUB_ENV}"
           fi
+          # plain C kernels for OpenBLAS on macOS x86_64
+          if [ "${{ matrix.platform.os_type }}" == 'macos' ] && [ "$architecture" == 'x86_64' ]; then
+            echo "OPENBLAS_TARGET=GENERIC" >> "${GITHUB_ENV}"
+          fi
 
       - name: Install ccache
         shell: bash
@@ -167,6 +171,7 @@ jobs:
           -DCMAKE_CXX_COMPILER_LAUNCHER=${COMPILER_LAUNCHER} \
           -DCMAKE_BUILD_TYPE=${{ matrix.platform.build_type }} \
           -DCMAKE_OSX_ARCHITECTURES=${OSX_ARCHITECTURES} \
+          -DRR_OPENBLAS_TARGET=${OPENBLAS_TARGET} \
           -DCMAKE_CXX_STANDARD=${{matrix.cpp_standard}} \
           ${{ matrix.platform.os_type == 'windows' && '-DCMAKE_POLICY_DEFAULT_CMP0141=NEW -DCMAKE_MSVC_DEBUG_INFORMATION_FORMAT=Embedded' || '' }} \
           -DCMAKE_INSTALL_PREFIX="${RUNNER_WORKSPACE}/install-libroadrunner-deps"
